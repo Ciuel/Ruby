@@ -70,7 +70,6 @@
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.3.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.8, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.13.9, ruby-3.0.4-p208) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pg (v1.4.4, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.6.5, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.0, ruby-3.0.4-p208) [gem]" level="application" />
@@ -79,6 +78,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rails (v7.0.4, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.0.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.4.3, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-i18n (v7.0.6, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v7.0.4, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.6.0, ruby-3.0.4-p208) [gem]" level="application" />
@@ -88,6 +88,7 @@
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.6.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.1.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.4.2, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.5.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.1.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.2.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.3.0, ruby-3.0.4-p208) [gem]" level="application" />

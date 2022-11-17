@@ -9,6 +9,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+Trabajo_final/tmp/
 
 # Used by dotenv library to load environment variables.
 # .env
@@ -63,6 +64,8 @@ build-iPhoneSimulator/
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/
+Trabajo_final/.idea
 
 # AWS User-specific
 .idea/**/aws.xml

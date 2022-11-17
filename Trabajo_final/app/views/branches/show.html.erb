@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @branch %>
+
+<div>
+  <%= link_to "Edit this branch", edit_branch_path(@branch) %> |
+  <%= link_to "Back to branches", branches_path %>
+  <p>  <%= link_to "Cambiar horarios", branch_office_hours_path(@branch), class: "btn btn-outline-info btn-sm" %> </p>
+  <%= button_to "Destroy this branch", @branch, method: :delete %>
+</div>
