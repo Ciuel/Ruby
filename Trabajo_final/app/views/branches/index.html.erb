@@ -2,13 +2,12 @@
 
 <h1>Branches</h1>
 
-< id="branches">
+<div id="branches">
   <% @branches.each do |branch| %>
     <%= render branch %>
     <p>
       <%= link_to "Show this branch", branch %>
     </p>
-
   <% end %>
 </div>
 

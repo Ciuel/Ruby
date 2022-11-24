@@ -16,7 +16,7 @@ class BranchesTest < ApplicationSystemTestCase
 
     fill_in "Address", with: @branch.address
     fill_in "Name", with: @branch.name
-    fill_in "Tel", with: @branch.tel
+    fill_in "Telephone", with: @branch.telephone
     click_on "Create Branch"
 
     assert_text "Branch was successfully created"
@@ -29,7 +29,7 @@ class BranchesTest < ApplicationSystemTestCase
 
     fill_in "Address", with: @branch.address
     fill_in "Name", with: @branch.name
-    fill_in "Tel", with: @branch.tel
+    fill_in "Telephone", with: @branch.telephone
     click_on "Update Branch"
 
     assert_text "Branch was successfully updated"

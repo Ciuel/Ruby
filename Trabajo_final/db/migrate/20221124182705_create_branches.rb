@@ -3,10 +3,9 @@ class CreateBranches < ActiveRecord::Migration[7.0]
     create_table :branches do |t|
       t.string :name
       t.string :address
-      t.integer :tel
+      t.integer :telephone
 
       t.timestamps
     end
-    add_index :branches, :name, unique: true
   end
 end

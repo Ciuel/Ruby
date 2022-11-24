@@ -10,25 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_10_154448) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_182844) do
   create_table "branches", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.integer "tel"
+    t.integer "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_branches_on_name", unique: true
   end
 
-  create_table "office_hours", force: :cascade do |t|
-    t.string "day"
-    t.time "start"
-    t.time "end"
+  create_table "schedules", force: :cascade do |t|
     t.integer "branch_id", null: false
+    t.string "day"
+    t.time "start_time"
+    t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["branch_id"], name: "index_office_hours_on_branch_id"
+    t.index ["branch_id"], name: "index_schedules_on_branch_id"
   end
 
-  add_foreign_key "office_hours", "branches"
+  add_foreign_key "schedules", "branches"
 end

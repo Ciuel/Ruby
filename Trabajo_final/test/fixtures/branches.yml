@@ -3,9 +3,9 @@
 one:
   name: MyString
   address: MyString
-  tel: 1
+  telephone: 1
 
 two:
   name: MyString
   address: MyString
-  tel: 1
+  telephone: 1
