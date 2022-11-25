@@ -13,4 +13,8 @@
     branch.schedules.create(day: Faker::Date.between(from: '2021-01-01', to: '2021-12-31'), start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now), end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now))
   end
 end
+#Make 10 users
+10.times do
+  User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+end
 p "db seeded"
