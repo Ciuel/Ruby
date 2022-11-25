@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_182844) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_211118) do
   create_table "branches", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.integer "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_branches_on_name", unique: true
   end
 
   create_table "schedules", force: :cascade do |t|

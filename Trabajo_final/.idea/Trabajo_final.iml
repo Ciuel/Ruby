@@ -40,8 +40,10 @@
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v7.0.4, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.0.4, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.1, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="autoprefixer-rails (v10.4.7.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.14.0, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootstrap (v5.2.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.3.25, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="capybara (v3.38.0, ruby-3.0.4-p208) [gem]" level="application" />
@@ -50,12 +52,16 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.6.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.11.0, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="execjs (v2.8.1, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v3.0.0, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.5, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.0.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.12.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="importmap-rails (v1.1.5, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.5.11, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.5.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.5, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.5.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.19.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.2, ruby-3.0.4-p208) [gem]" level="application" />
@@ -64,12 +70,14 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.2, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.16.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.6.0, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nested_scaffold (v1.1.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.3.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.1.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.3.3, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.8, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.13.9, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="popper_js (v2.11.6, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.6.5, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.0, ruby-3.0.4-p208) [gem]" level="application" />
@@ -84,12 +92,16 @@
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.3.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.5, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sass-rails (v6.0.0, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sassc (v2.4.0, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.6.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.1.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.4.2, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.5.4, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.1.1, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.2.1, ruby-3.0.4-p208) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.11, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.3.0, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbo-rails (v1.3.2, ruby-3.0.4-p208) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.5, ruby-3.0.4-p208) [gem]" level="application" />
@@ -123,9 +135,20 @@
         <option value="mailer" />
         <option value="migration" />
         <option value="model" />
+        <option value="nested_scaffold:active_record" />
+        <option value="nested_scaffold:erb" />
+        <option value="nested_scaffold:haml" />
+        <option value="nested_scaffold:helper" />
+        <option value="nested_scaffold:helper:test_unit" />
+        <option value="nested_scaffold:model:test_unit" />
+        <option value="nested_scaffold:nested_scaffold" />
+        <option value="nested_scaffold:scaffold:test_unit" />
+        <option value="nested_scaffold:scaffold_controller" />
         <option value="resource" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="scss:assets" />
+        <option value="scss:scaffold" />
         <option value="stimulus" />
         <option value="system_test" />
         <option value="task" />
@@ -153,9 +176,20 @@
         <option value="mailer" />
         <option value="migration" />
         <option value="model" />
+        <option value="nested_scaffold:active_record" />
+        <option value="nested_scaffold:erb" />
+        <option value="nested_scaffold:haml" />
+        <option value="nested_scaffold:helper" />
+        <option value="nested_scaffold:helper:test_unit" />
+        <option value="nested_scaffold:model:test_unit" />
+        <option value="nested_scaffold:nested_scaffold" />
+        <option value="nested_scaffold:scaffold:test_unit" />
+        <option value="nested_scaffold:scaffold_controller" />
         <option value="resource" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="scss:assets" />
+        <option value="scss:scaffold" />
         <option value="stimulus" />
         <option value="system_test" />
         <option value="task" />

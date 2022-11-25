@@ -2078,3 +2078,1996 @@ Processing by SchedulesController#index as HTML
 Completed 200 OK in 18ms (Views: 12.5ms | ActiveRecord: 0.4ms | Allocations: 4827)
 
 
+Started GET "/branches/1/schedules/3/edit" for 127.0.0.1 at 2022-11-24 18:08:40 -0300
+Processing by SchedulesController#edit as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"3"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/edit.html.erb within layouts/application
+  Rendered schedules/_form.html.erb (Duration: 7.1ms | Allocations: 1383)
+  Rendered schedules/edit.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1543)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 3712)
+Completed 200 OK in 28ms (Views: 16.7ms | ActiveRecord: 1.1ms | Allocations: 5458)
+
+
+Started PATCH "/branches/1/schedules/3" for 127.0.0.1 at 2022-11-24 18:08:41 -0300
+Processing by SchedulesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "schedule"=>{"day"=>"Monday", "start_time"=>"00:02:00.000", "end_time"=>"14:32:00.000"}, "commit"=>"Update Schedule", "branch_id"=>"1", "id"=>"3"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+Redirected to http://127.0.0.1:3000/branches/3/schedules/3
+Completed 302 Found in 18ms (ActiveRecord: 0.4ms | Allocations: 2225)
+
+
+Started GET "/branches/3/schedules/3" for 127.0.0.1 at 2022-11-24 18:08:41 -0300
+Processing by SchedulesController#show as TURBO_STREAM
+  Parameters: {"branch_id"=>"3", "id"=>"3"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 928)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Branch with 'id'=3):
+  
+app/controllers/schedules_controller.rb:57:in `set_branch'
+Started GET "/branches/1/schedules/3/edit" for 127.0.0.1 at 2022-11-24 18:08:42 -0300
+Processing by SchedulesController#edit as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"3"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/edit.html.erb within layouts/application
+  Rendered schedules/_form.html.erb (Duration: 3.5ms | Allocations: 1383)
+  Rendered schedules/edit.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1543)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 3728)
+Completed 200 OK in 18ms (Views: 12.6ms | ActiveRecord: 0.3ms | Allocations: 5267)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-24 18:08:43 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1293)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 3661)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 0.6ms | Allocations: 4478)
+
+
+Started GET "/branches/1/schedules/4" for 127.0.0.1 at 2022-11-24 18:08:44 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"4"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 581)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 2762)
+Completed 200 OK in 24ms (Views: 12.2ms | ActiveRecord: 0.3ms | Allocations: 4355)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-24 18:08:45 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 1260)
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | Allocations: 3615)
+Completed 200 OK in 40ms (Views: 35.3ms | ActiveRecord: 0.3ms | Allocations: 4432)
+
+
+Started DELETE "/branches/1/schedules/3" for 127.0.0.1 at 2022-11-24 18:08:46 -0300
+Processing by SchedulesController#destroy as TURBO_STREAM
+  Parameters: {"branch_id"=>"1", "id"=>"3"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+  [1m[36mSchedule Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schedules" WHERE "schedules"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+Redirected to http://127.0.0.1:3000/branches/1/schedules
+Completed 302 Found in 18ms (ActiveRecord: 7.2ms | Allocations: 3150)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-24 18:08:46 -0300
+Processing by SchedulesController#index as TURBO_STREAM
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 963)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 3312)
+Completed 200 OK in 12ms (Views: 8.4ms | ActiveRecord: 0.4ms | Allocations: 4179)
+
+
+Started GET "/branches/1/schedules/new" for 127.0.0.1 at 2022-11-24 18:08:48 -0300
+Processing by SchedulesController#new as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/new.html.erb within layouts/application
+  Rendered schedules/_form.html.erb (Duration: 2.9ms | Allocations: 1225)
+  Rendered schedules/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1450)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 3619)
+Completed 200 OK in 18ms (Views: 13.9ms | ActiveRecord: 0.1ms | Allocations: 4655)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-24 18:08:50 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 963)
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 3300)
+Completed 200 OK in 34ms (Views: 29.2ms | ActiveRecord: 0.5ms | Allocations: 4117)
+
+
+Started GET "/branches/" for 127.0.0.1 at 2022-11-24 18:08:53 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 3.7ms | Allocations: 268)
+  Rendered branches/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 2042)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 4446)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.3ms | Allocations: 5566)
+
+
+Started GET "/branches/new" for 127.0.0.1 at 2022-11-24 18:08:54 -0300
+Processing by BranchesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/new.html.erb within layouts/application
+  Rendered branches/_form.html.erb (Duration: 8.3ms | Allocations: 2167)
+  Rendered branches/new.html.erb within layouts/application (Duration: 10.7ms | Allocations: 2482)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 4770)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.0ms | Allocations: 5233)
+
+
+Started POST "/branches" for 127.0.0.1 at 2022-11-24 18:09:00 -0300
+Processing by BranchesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "branch"=>{"name"=>"aaa", "address"=>"222", "telephone"=>"222"}, "commit"=>"Create Branch"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/branches_controller.rb:27:in `block in create'
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "aaa"], ["address", "222"], ["telephone", 222], ["created_at", "2022-11-24 18:09:00.212906"], ["updated_at", "2022-11-24 18:09:00.212906"]]
+  ↳ app/controllers/branches_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/branches_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/branches/2
+Completed 302 Found in 27ms (ActiveRecord: 4.0ms | Allocations: 2758)
+
+
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:09:00 -0300
+Processing by BranchesController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered branches/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 968)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 3138)
+Completed 200 OK in 18ms (Views: 13.1ms | ActiveRecord: 0.2ms | Allocations: 4076)
+
+
+Started GET "/branches" for 127.0.0.1 at 2022-11-24 18:09:02 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered branches/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1057)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 3246)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.2ms | Allocations: 3578)
+
+
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:09:04 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 628)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 2797)
+Completed 200 OK in 16ms (Views: 13.3ms | ActiveRecord: 0.1ms | Allocations: 3585)
+
+
+Started GET "/branches/2/edit" for 127.0.0.1 at 2022-11-24 18:09:06 -0300
+Processing by BranchesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/edit.html.erb within layouts/application
+  Rendered branches/_form.html.erb (Duration: 3.3ms | Allocations: 1390)
+  Rendered branches/edit.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1675)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 3844)
+Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 0.2ms | Allocations: 4686)
+
+
+Started PATCH "/branches/2" for 127.0.0.1 at 2022-11-24 18:09:10 -0300
+Processing by BranchesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "branch"=>{"name"=>"aaa", "address"=>"nnn", "telephone"=>"222"}, "commit"=>"Update Branch", "id"=>"2"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+  [1m[36mBranch Update (0.3ms)[0m  [1m[33mUPDATE "branches" SET "address" = ?, "updated_at" = ? WHERE "branches"."id" = ?[0m  [["address", "nnn"], ["updated_at", "2022-11-24 18:09:10.797413"], ["id", 2]]
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+Redirected to http://127.0.0.1:3000/branches/2
+Completed 302 Found in 20ms (ActiveRecord: 3.7ms | Allocations: 2980)
+
+
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:09:10 -0300
+Processing by BranchesController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 676)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 2845)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 0.1ms | Allocations: 3636)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/branches" for 127.0.0.1 at 2022-11-24 18:12:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20221124211118_add_unique_to_branch_name.rb
+
+
+):
+  
+activerecord (7.0.4) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.4) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:93:in `execute_if_updated'
+activerecord (7.0.4) lib/active_record/migration.rb:599:in `block in call'
+activerecord (7.0.4) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.4) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:12:36 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20221124211118_add_unique_to_branch_name.rb
+
+
+):
+  
+activerecord (7.0.4) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.4) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.4) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.4) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.4) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" ORDER BY "branches"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" ORDER BY "branches"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/branches/2/edit" for 127.0.0.1 at 2022-11-24 18:13:40 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BranchesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.4ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/edit.html.erb within layouts/application
+  Rendered branches/_form.html.erb (Duration: 9.0ms | Allocations: 1473)
+  Rendered branches/edit.html.erb within layouts/application (Duration: 9.8ms | Allocations: 1604)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 3885)
+Completed 200 OK in 30ms (Views: 21.7ms | ActiveRecord: 0.4ms | Allocations: 4738)
+
+
+Started PATCH "/branches/2" for 127.0.0.1 at 2022-11-24 18:13:44 -0300
+Processing by BranchesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "branch"=>{"name"=>"aaab", "address"=>"nnn", "telephone"=>"222"}, "commit"=>"Update Branch", "id"=>"2"}
+  [1m[36mBranch Load (1.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+  [1m[36mBranch Update (0.5ms)[0m  [1m[33mUPDATE "branches" SET "name" = ?, "updated_at" = ? WHERE "branches"."id" = ?[0m  [["name", "aaab"], ["updated_at", "2022-11-24 18:13:44.884833"], ["id", 2]]
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+Redirected to http://127.0.0.1:3000/branches/2
+Completed 302 Found in 30ms (ActiveRecord: 6.5ms | Allocations: 3063)
+
+
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:13:44 -0300
+Processing by BranchesController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered branches/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 643)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 2812)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.1ms | Allocations: 3604)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124211118"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/branches/2/edit" for 127.0.0.1 at 2022-11-24 18:14:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BranchesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/edit.html.erb within layouts/application
+  Rendered branches/_form.html.erb (Duration: 6.1ms | Allocations: 1619)
+  Rendered branches/edit.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1776)
+  Rendered layout layouts/application.html.erb (Duration: 45.5ms | Allocations: 15579)
+Completed 200 OK in 66ms (Views: 48.4ms | ActiveRecord: 1.4ms | Allocations: 21285)
+
+
+Started PATCH "/branches/2" for 127.0.0.1 at 2022-11-24 18:14:10 -0300
+Processing by BranchesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "branch"=>{"name"=>"aaa", "address"=>"nnn", "telephone"=>"222"}, "commit"=>"Update Branch", "id"=>"2"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+  [1m[36mBranch Update (1.8ms)[0m  [1m[33mUPDATE "branches" SET "name" = ?, "updated_at" = ? WHERE "branches"."id" = ?[0m  [["name", "aaa"], ["updated_at", "2022-11-24 18:14:10.752110"], ["id", 2]]
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/branches_controller.rb:40:in `block in update'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 2.3ms | Allocations: 4232)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: branches.name):
+  
+app/controllers/branches_controller.rb:40:in `block in update'
+app/controllers/branches_controller.rb:39:in `update'
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:14:16 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 31)
+  Rendered branches/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 707)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 2892)
+Completed 200 OK in 25ms (Views: 20.4ms | ActiveRecord: 0.2ms | Allocations: 3694)
+
+
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:14:16 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 610)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 2779)
+Completed 200 OK in 16ms (Views: 13.4ms | ActiveRecord: 0.1ms | Allocations: 3565)
+
+
+Started GET "/branches/2/edit" for 127.0.0.1 at 2022-11-24 18:14:17 -0300
+Processing by BranchesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/edit.html.erb within layouts/application
+  Rendered branches/_form.html.erb (Duration: 8.5ms | Allocations: 1334)
+  Rendered branches/edit.html.erb within layouts/application (Duration: 15.3ms | Allocations: 1461)
+  Rendered layout layouts/application.html.erb (Duration: 26.1ms | Allocations: 3630)
+Completed 200 OK in 34ms (Views: 27.0ms | ActiveRecord: 0.3ms | Allocations: 4416)
+
+
+Started GET "/branches/2" for 127.0.0.1 at 2022-11-24 18:14:18 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 616)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 2785)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.1ms | Allocations: 3573)
+
+
+Started GET "/branches" for 127.0.0.1 at 2022-11-24 18:14:19 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered branches/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1105)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 3294)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.2ms | Allocations: 3628)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Feest-Conn"], ["address", "Apt. 618 199 Steuber Via, Malkatown, ME 24847"], ["telephone", 0], ["created_at", "2022-11-24 18:16:59.878656"], ["updated_at", "2022-11-24 18:16:59.878656"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-10-31"], ["start_time", "2000-01-01 23:02:03.456086"], ["end_time", "2000-01-01 15:49:20.322805"], ["created_at", "2022-11-24 18:17:00.015335"], ["updated_at", "2022-11-24 18:17:00.015335"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-12-18"], ["start_time", "2000-01-01 01:05:56.602226"], ["end_time", "2000-01-01 06:03:25.896293"], ["created_at", "2022-11-24 18:17:00.053787"], ["updated_at", "2022-11-24 18:17:00.053787"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-06-02"], ["start_time", "2000-01-01 18:37:00.487135"], ["end_time", "2000-01-01 11:05:28.427755"], ["created_at", "2022-11-24 18:17:00.084648"], ["updated_at", "2022-11-24 18:17:00.084648"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-02-07"], ["start_time", "2000-01-01 10:42:57.380739"], ["end_time", "2000-01-01 01:31:00.817894"], ["created_at", "2022-11-24 18:17:00.102230"], ["updated_at", "2022-11-24 18:17:00.102230"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-04-10"], ["start_time", "2000-01-01 06:13:44.432964"], ["end_time", "2000-01-01 04:14:03.619797"], ["created_at", "2022-11-24 18:17:00.117508"], ["updated_at", "2022-11-24 18:17:00.117508"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rempel-Champlin"], ["address", "65815 Romaine Extensions, West Clintonburgh, NV 51376-2429"], ["telephone", 0], ["created_at", "2022-11-24 18:17:00.136958"], ["updated_at", "2022-11-24 18:17:00.136958"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (3.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-12-25"], ["start_time", "2000-01-01 05:49:17.363080"], ["end_time", "2000-01-01 16:30:26.310276"], ["created_at", "2022-11-24 18:17:00.154106"], ["updated_at", "2022-11-24 18:17:00.154106"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-04-19"], ["start_time", "2000-01-01 06:26:20.847740"], ["end_time", "2000-01-01 05:48:20.488147"], ["created_at", "2022-11-24 18:17:00.175589"], ["updated_at", "2022-11-24 18:17:00.175589"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-07-28"], ["start_time", "2000-01-01 21:13:34.170911"], ["end_time", "2000-01-01 23:16:13.106852"], ["created_at", "2022-11-24 18:17:00.188400"], ["updated_at", "2022-11-24 18:17:00.188400"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-12-09"], ["start_time", "2000-01-01 14:30:21.542830"], ["end_time", "2000-01-01 02:16:41.450737"], ["created_at", "2022-11-24 18:17:00.207982"], ["updated_at", "2022-11-24 18:17:00.207982"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-12-31"], ["start_time", "2000-01-01 20:23:41.632144"], ["end_time", "2000-01-01 14:37:46.710443"], ["created_at", "2022-11-24 18:17:00.225362"], ["updated_at", "2022-11-24 18:17:00.225362"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "McGlynn-Bailey"], ["address", "8124 Treasa Route, South Joseph, MO 08202-0363"], ["telephone", 142], ["created_at", "2022-11-24 18:17:00.240656"], ["updated_at", "2022-11-24 18:17:00.240656"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-08-14"], ["start_time", "2000-01-01 10:00:52.766115"], ["end_time", "2000-01-01 04:46:21.919584"], ["created_at", "2022-11-24 18:17:00.253671"], ["updated_at", "2022-11-24 18:17:00.253671"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.1ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-03-22"], ["start_time", "2000-01-01 20:59:18.570831"], ["end_time", "2000-01-01 03:10:06.041590"], ["created_at", "2022-11-24 18:17:00.267594"], ["updated_at", "2022-11-24 18:17:00.267594"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-12-15"], ["start_time", "2000-01-01 00:30:39.735433"], ["end_time", "2000-01-01 22:24:07.418215"], ["created_at", "2022-11-24 18:17:00.280734"], ["updated_at", "2022-11-24 18:17:00.280734"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-12-26"], ["start_time", "2000-01-01 05:49:02.158897"], ["end_time", "2000-01-01 06:18:27.185690"], ["created_at", "2022-11-24 18:17:00.292060"], ["updated_at", "2022-11-24 18:17:00.292060"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-08-10"], ["start_time", "2000-01-01 23:25:45.049481"], ["end_time", "2000-01-01 05:44:01.306428"], ["created_at", "2022-11-24 18:17:00.304804"], ["updated_at", "2022-11-24 18:17:00.304804"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (2.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rau-Johns"], ["address", "71733 Quinn Mountain, West Earl, AK 53853-6135"], ["telephone", 0], ["created_at", "2022-11-24 18:17:00.320764"], ["updated_at", "2022-11-24 18:17:00.320764"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-07-05"], ["start_time", "2000-01-01 23:33:35.095055"], ["end_time", "2000-01-01 00:58:12.540307"], ["created_at", "2022-11-24 18:17:00.336120"], ["updated_at", "2022-11-24 18:17:00.336120"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-01-24"], ["start_time", "2000-01-01 09:08:27.593982"], ["end_time", "2000-01-01 03:51:37.756634"], ["created_at", "2022-11-24 18:17:00.348556"], ["updated_at", "2022-11-24 18:17:00.348556"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-09-22"], ["start_time", "2000-01-01 00:12:56.636204"], ["end_time", "2000-01-01 12:01:20.306497"], ["created_at", "2022-11-24 18:17:00.363413"], ["updated_at", "2022-11-24 18:17:00.363413"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-03-17"], ["start_time", "2000-01-01 04:51:41.038808"], ["end_time", "2000-01-01 18:15:42.541065"], ["created_at", "2022-11-24 18:17:00.375538"], ["updated_at", "2022-11-24 18:17:00.375538"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (3.1ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-10-09"], ["start_time", "2000-01-01 22:09:32.534539"], ["end_time", "2000-01-01 08:33:17.196626"], ["created_at", "2022-11-24 18:17:00.386834"], ["updated_at", "2022-11-24 18:17:00.386834"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hayes, Kling and Breitenberg"], ["address", "Apt. 886 7083 Braun Spring, Johnnyshire, OR 07916-7128"], ["telephone", 1], ["created_at", "2022-11-24 18:17:00.409344"], ["updated_at", "2022-11-24 18:17:00.409344"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.0ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-06-19"], ["start_time", "2000-01-01 20:30:04.325632"], ["end_time", "2000-01-01 12:34:22.977787"], ["created_at", "2022-11-24 18:17:00.422254"], ["updated_at", "2022-11-24 18:17:00.422254"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-09-18"], ["start_time", "2000-01-01 09:20:55.886318"], ["end_time", "2000-01-01 17:15:26.423163"], ["created_at", "2022-11-24 18:17:00.436188"], ["updated_at", "2022-11-24 18:17:00.436188"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-07-11"], ["start_time", "2000-01-01 06:09:16.614806"], ["end_time", "2000-01-01 22:20:38.357114"], ["created_at", "2022-11-24 18:17:00.448678"], ["updated_at", "2022-11-24 18:17:00.448678"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-08-21"], ["start_time", "2000-01-01 16:57:50.470537"], ["end_time", "2000-01-01 21:26:10.737538"], ["created_at", "2022-11-24 18:17:00.464524"], ["updated_at", "2022-11-24 18:17:00.464524"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-01-20"], ["start_time", "2000-01-01 09:18:32.791802"], ["end_time", "2000-01-01 19:43:36.316358"], ["created_at", "2022-11-24 18:17:00.475283"], ["updated_at", "2022-11-24 18:17:00.475283"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Berge, Leffler and Lemke"], ["address", "215 Dominique Manor, O'Keefeburgh, NJ 50916"], ["telephone", 0], ["created_at", "2022-11-24 18:17:00.490999"], ["updated_at", "2022-11-24 18:17:00.490999"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-06-18"], ["start_time", "2000-01-01 20:49:03.483376"], ["end_time", "2000-01-01 21:13:17.018683"], ["created_at", "2022-11-24 18:17:00.503882"], ["updated_at", "2022-11-24 18:17:00.503882"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.1ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-12-21"], ["start_time", "2000-01-01 12:46:50.006026"], ["end_time", "2000-01-01 19:58:49.803765"], ["created_at", "2022-11-24 18:17:00.520627"], ["updated_at", "2022-11-24 18:17:00.520627"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-02-21"], ["start_time", "2000-01-01 01:23:23.401225"], ["end_time", "2000-01-01 06:40:03.694721"], ["created_at", "2022-11-24 18:17:00.537982"], ["updated_at", "2022-11-24 18:17:00.537982"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (2.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-01-29"], ["start_time", "2000-01-01 18:32:27.649430"], ["end_time", "2000-01-01 09:45:26.816571"], ["created_at", "2022-11-24 18:17:00.552466"], ["updated_at", "2022-11-24 18:17:00.552466"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-12-12"], ["start_time", "2000-01-01 17:58:24.532367"], ["end_time", "2000-01-01 05:37:55.780145"], ["created_at", "2022-11-24 18:17:00.566522"], ["updated_at", "2022-11-24 18:17:00.566522"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Pfeffer Group"], ["address", "Suite 734 52950 Collins Springs, North Shaunta, AK 29871"], ["telephone", 933], ["created_at", "2022-11-24 18:17:00.579181"], ["updated_at", "2022-11-24 18:17:00.579181"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-15"], ["start_time", "2000-01-01 10:34:00.599082"], ["end_time", "2000-01-01 22:50:52.692981"], ["created_at", "2022-11-24 18:17:00.594613"], ["updated_at", "2022-11-24 18:17:00.594613"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-20"], ["start_time", "2000-01-01 07:01:28.190667"], ["end_time", "2000-01-01 03:15:03.809129"], ["created_at", "2022-11-24 18:17:00.605452"], ["updated_at", "2022-11-24 18:17:00.605452"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-06-19"], ["start_time", "2000-01-01 06:53:31.825691"], ["end_time", "2000-01-01 15:45:22.510177"], ["created_at", "2022-11-24 18:17:00.616144"], ["updated_at", "2022-11-24 18:17:00.616144"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-24"], ["start_time", "2000-01-01 13:45:58.368825"], ["end_time", "2000-01-01 01:50:53.055346"], ["created_at", "2022-11-24 18:17:00.636465"], ["updated_at", "2022-11-24 18:17:00.636465"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-11-06"], ["start_time", "2000-01-01 11:52:23.429091"], ["end_time", "2000-01-01 00:30:08.204932"], ["created_at", "2022-11-24 18:17:00.656490"], ["updated_at", "2022-11-24 18:17:00.656490"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hamill LLC"], ["address", "Apt. 315 47327 Herman Corner, Leandrofort, ND 07222-0941"], ["telephone", 219], ["created_at", "2022-11-24 18:17:00.672493"], ["updated_at", "2022-11-24 18:17:00.672493"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-09-01"], ["start_time", "2000-01-01 20:48:39.557938"], ["end_time", "2000-01-01 12:02:38.139256"], ["created_at", "2022-11-24 18:17:00.686312"], ["updated_at", "2022-11-24 18:17:00.686312"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-08-19"], ["start_time", "2000-01-01 20:50:57.027367"], ["end_time", "2000-01-01 02:58:49.226256"], ["created_at", "2022-11-24 18:17:00.699775"], ["updated_at", "2022-11-24 18:17:00.699775"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-07-24"], ["start_time", "2000-01-01 09:06:06.749615"], ["end_time", "2000-01-01 10:56:12.077388"], ["created_at", "2022-11-24 18:17:00.714899"], ["updated_at", "2022-11-24 18:17:00.714899"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-05-08"], ["start_time", "2000-01-01 12:47:23.678157"], ["end_time", "2000-01-01 18:34:55.181393"], ["created_at", "2022-11-24 18:17:00.728731"], ["updated_at", "2022-11-24 18:17:00.728731"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-02-17"], ["start_time", "2000-01-01 12:28:59.465858"], ["end_time", "2000-01-01 17:32:43.982661"], ["created_at", "2022-11-24 18:17:00.739179"], ["updated_at", "2022-11-24 18:17:00.739179"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "O'Kon and Sons"], ["address", "901 Walker Plaza, Arlietown, NV 65029-5992"], ["telephone", 1], ["created_at", "2022-11-24 18:17:00.758246"], ["updated_at", "2022-11-24 18:17:00.758246"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 11], ["day", "2021-04-20"], ["start_time", "2000-01-01 17:36:30.975990"], ["end_time", "2000-01-01 19:19:30.298653"], ["created_at", "2022-11-24 18:17:00.776272"], ["updated_at", "2022-11-24 18:17:00.776272"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 11], ["day", "2021-01-22"], ["start_time", "2000-01-01 22:32:05.402697"], ["end_time", "2000-01-01 22:36:12.258521"], ["created_at", "2022-11-24 18:17:00.791608"], ["updated_at", "2022-11-24 18:17:00.791608"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 11], ["day", "2021-10-19"], ["start_time", "2000-01-01 05:01:10.811239"], ["end_time", "2000-01-01 08:22:10.867503"], ["created_at", "2022-11-24 18:17:00.820862"], ["updated_at", "2022-11-24 18:17:00.820862"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 11], ["day", "2021-03-17"], ["start_time", "2000-01-01 23:23:02.160159"], ["end_time", "2000-01-01 15:39:25.775645"], ["created_at", "2022-11-24 18:17:00.834830"], ["updated_at", "2022-11-24 18:17:00.834830"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 11], ["day", "2021-04-05"], ["start_time", "2000-01-01 18:45:46.080243"], ["end_time", "2000-01-01 08:17:52.662130"], ["created_at", "2022-11-24 18:17:00.857739"], ["updated_at", "2022-11-24 18:17:00.857739"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Kozey, Stanton and Mitchell"], ["address", "4490 Ayana Mount, New Apolonia, AR 62314"], ["telephone", 900], ["created_at", "2022-11-24 18:17:00.872809"], ["updated_at", "2022-11-24 18:17:00.872809"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 12], ["day", "2021-11-01"], ["start_time", "2000-01-01 16:58:19.087832"], ["end_time", "2000-01-01 22:54:48.660171"], ["created_at", "2022-11-24 18:17:00.889172"], ["updated_at", "2022-11-24 18:17:00.889172"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 12], ["day", "2021-12-21"], ["start_time", "2000-01-01 15:28:12.052114"], ["end_time", "2000-01-01 19:21:42.248906"], ["created_at", "2022-11-24 18:17:00.907834"], ["updated_at", "2022-11-24 18:17:00.907834"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 12], ["day", "2021-02-17"], ["start_time", "2000-01-01 05:46:31.139543"], ["end_time", "2000-01-01 09:27:09.891758"], ["created_at", "2022-11-24 18:17:00.922224"], ["updated_at", "2022-11-24 18:17:00.922224"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 12], ["day", "2021-03-04"], ["start_time", "2000-01-01 12:01:03.771631"], ["end_time", "2000-01-01 14:42:33.503682"], ["created_at", "2022-11-24 18:17:00.936032"], ["updated_at", "2022-11-24 18:17:00.936032"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 12], ["day", "2021-02-10"], ["start_time", "2000-01-01 15:05:18.339583"], ["end_time", "2000-01-01 20:48:36.386749"], ["created_at", "2022-11-24 18:17:00.949416"], ["updated_at", "2022-11-24 18:17:00.949416"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBranch Load (0.5ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+Started GET "/branches" for 127.0.0.1 at 2022-11-24 18:17:21 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.3ms | Allocations: 23)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 2350)
+  Rendered layout layouts/application.html.erb (Duration: 27.2ms | Allocations: 4539)
+Completed 200 OK in 29ms (Views: 28.4ms | ActiveRecord: 0.2ms | Allocations: 4867)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBranches (20221124182705)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "branches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "telephone" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182705"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSchedules (20221124182844)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer NOT NULL, "day" varchar, "start_time" time, "end_time" time, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_89fc3319d8"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_branch_id" ON "schedules" ("branch_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182844"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124211118"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-24 18:18:36.666934"], ["updated_at", "2022-11-24 18:18:36.666934"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Howe-Cummerata"], ["address", "57674 Gislason Gardens, Moseborough, NE 41475"], ["telephone", nil], ["created_at", "2022-11-24 18:18:40.535453"], ["updated_at", "2022-11-24 18:18:40.535453"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-01-12"], ["start_time", "2000-01-01 22:34:32.553902"], ["end_time", "2000-01-01 04:59:15.683811"], ["created_at", "2022-11-24 18:18:40.604761"], ["updated_at", "2022-11-24 18:18:40.604761"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (6.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-01-15"], ["start_time", "2000-01-01 20:33:16.102201"], ["end_time", "2000-01-01 03:27:41.272837"], ["created_at", "2022-11-24 18:18:40.626236"], ["updated_at", "2022-11-24 18:18:40.626236"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-02-19"], ["start_time", "2000-01-01 06:11:28.123993"], ["end_time", "2000-01-01 01:16:31.731281"], ["created_at", "2022-11-24 18:18:40.644825"], ["updated_at", "2022-11-24 18:18:40.644825"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-06-24"], ["start_time", "2000-01-01 10:08:27.216056"], ["end_time", "2000-01-01 11:54:28.569603"], ["created_at", "2022-11-24 18:18:40.659167"], ["updated_at", "2022-11-24 18:18:40.659167"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-06-12"], ["start_time", "2000-01-01 12:45:14.164214"], ["end_time", "2000-01-01 03:10:43.800655"], ["created_at", "2022-11-24 18:18:40.673079"], ["updated_at", "2022-11-24 18:18:40.673079"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Grady, McGlynn and Willms"], ["address", "Apt. 349 87560 Silvana Island, Schroederside, AZ 20450"], ["telephone", nil], ["created_at", "2022-11-24 18:18:40.690599"], ["updated_at", "2022-11-24 18:18:40.690599"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-10-07"], ["start_time", "2000-01-01 18:05:53.232395"], ["end_time", "2000-01-01 22:13:33.076226"], ["created_at", "2022-11-24 18:18:40.704606"], ["updated_at", "2022-11-24 18:18:40.704606"]]
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-09-15"], ["start_time", "2000-01-01 02:38:04.214219"], ["end_time", "2000-01-01 10:31:55.732675"], ["created_at", "2022-11-24 18:18:40.728191"], ["updated_at", "2022-11-24 18:18:40.728191"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-08-29"], ["start_time", "2000-01-01 04:03:59.051762"], ["end_time", "2000-01-01 13:41:46.109267"], ["created_at", "2022-11-24 18:18:40.742725"], ["updated_at", "2022-11-24 18:18:40.742725"]]
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-01-25"], ["start_time", "2000-01-01 19:02:34.028770"], ["end_time", "2000-01-01 20:06:40.361155"], ["created_at", "2022-11-24 18:18:40.757695"], ["updated_at", "2022-11-24 18:18:40.757695"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-06-28"], ["start_time", "2000-01-01 17:12:30.333559"], ["end_time", "2000-01-01 23:06:30.905208"], ["created_at", "2022-11-24 18:18:40.774852"], ["updated_at", "2022-11-24 18:18:40.774852"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Howe-Schaefer"], ["address", "3553 DuBuque Mountains, South Almaview, AK 43953"], ["telephone", nil], ["created_at", "2022-11-24 18:18:40.788648"], ["updated_at", "2022-11-24 18:18:40.788648"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-07-04"], ["start_time", "2000-01-01 11:45:42.916740"], ["end_time", "2000-01-01 20:06:04.263036"], ["created_at", "2022-11-24 18:18:40.803360"], ["updated_at", "2022-11-24 18:18:40.803360"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-05-23"], ["start_time", "2000-01-01 09:13:56.567714"], ["end_time", "2000-01-01 21:58:02.280707"], ["created_at", "2022-11-24 18:18:40.813541"], ["updated_at", "2022-11-24 18:18:40.813541"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-06-20"], ["start_time", "2000-01-01 21:50:58.563262"], ["end_time", "2000-01-01 20:14:12.973407"], ["created_at", "2022-11-24 18:18:40.829960"], ["updated_at", "2022-11-24 18:18:40.829960"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-08-29"], ["start_time", "2000-01-01 10:04:23.005628"], ["end_time", "2000-01-01 19:17:47.274012"], ["created_at", "2022-11-24 18:18:40.844585"], ["updated_at", "2022-11-24 18:18:40.844585"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-01-10"], ["start_time", "2000-01-01 20:48:36.850507"], ["end_time", "2000-01-01 00:23:28.439360"], ["created_at", "2022-11-24 18:18:40.859015"], ["updated_at", "2022-11-24 18:18:40.859015"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Strosin, Skiles and Schamberger"], ["address", "7681 Sally Spur, West Kathlenemouth, AZ 11859"], ["telephone", nil], ["created_at", "2022-11-24 18:18:40.872468"], ["updated_at", "2022-11-24 18:18:40.872468"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-10-08"], ["start_time", "2000-01-01 10:18:31.188779"], ["end_time", "2000-01-01 15:55:30.449546"], ["created_at", "2022-11-24 18:18:40.886166"], ["updated_at", "2022-11-24 18:18:40.886166"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-03-23"], ["start_time", "2000-01-01 01:29:52.667095"], ["end_time", "2000-01-01 05:15:21.153427"], ["created_at", "2022-11-24 18:18:40.898837"], ["updated_at", "2022-11-24 18:18:40.898837"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-01-17"], ["start_time", "2000-01-01 15:58:44.286325"], ["end_time", "2000-01-01 06:59:02.231996"], ["created_at", "2022-11-24 18:18:40.917755"], ["updated_at", "2022-11-24 18:18:40.917755"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-02-05"], ["start_time", "2000-01-01 10:03:37.118227"], ["end_time", "2000-01-01 15:11:53.861925"], ["created_at", "2022-11-24 18:18:40.932865"], ["updated_at", "2022-11-24 18:18:40.932865"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-11-03"], ["start_time", "2000-01-01 17:03:15.316337"], ["end_time", "2000-01-01 11:19:29.503619"], ["created_at", "2022-11-24 18:18:40.953317"], ["updated_at", "2022-11-24 18:18:40.953317"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Torp, Feeney and Zulauf"], ["address", "Apt. 630 5367 Mohr Station, Gutmannhaven, TX 29660"], ["telephone", nil], ["created_at", "2022-11-24 18:18:40.970638"], ["updated_at", "2022-11-24 18:18:40.970638"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-12-26"], ["start_time", "2000-01-01 05:07:19.429132"], ["end_time", "2000-01-01 21:54:08.390193"], ["created_at", "2022-11-24 18:18:40.983373"], ["updated_at", "2022-11-24 18:18:40.983373"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-12-25"], ["start_time", "2000-01-01 11:11:55.275435"], ["end_time", "2000-01-01 19:05:01.204687"], ["created_at", "2022-11-24 18:18:40.997769"], ["updated_at", "2022-11-24 18:18:40.997769"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-06-24"], ["start_time", "2000-01-01 17:15:20.426015"], ["end_time", "2000-01-01 04:31:34.705240"], ["created_at", "2022-11-24 18:18:41.015741"], ["updated_at", "2022-11-24 18:18:41.015741"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.1ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-06-27"], ["start_time", "2000-01-01 22:38:48.118546"], ["end_time", "2000-01-01 04:21:49.797350"], ["created_at", "2022-11-24 18:18:41.033374"], ["updated_at", "2022-11-24 18:18:41.033374"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-10-31"], ["start_time", "2000-01-01 11:27:29.249688"], ["end_time", "2000-01-01 03:51:35.585693"], ["created_at", "2022-11-24 18:18:41.048297"], ["updated_at", "2022-11-24 18:18:41.048297"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Turner, Bergnaum and Reichel"], ["address", "1251 Jack Bridge, Belvachester, VT 56151"], ["telephone", nil], ["created_at", "2022-11-24 18:18:41.067819"], ["updated_at", "2022-11-24 18:18:41.067819"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-12-01"], ["start_time", "2000-01-01 12:22:02.036347"], ["end_time", "2000-01-01 07:47:17.653134"], ["created_at", "2022-11-24 18:18:41.080922"], ["updated_at", "2022-11-24 18:18:41.080922"]]
+  [1m[36mTRANSACTION (12.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-04-01"], ["start_time", "2000-01-01 20:43:42.673223"], ["end_time", "2000-01-01 22:45:34.355525"], ["created_at", "2022-11-24 18:18:41.102012"], ["updated_at", "2022-11-24 18:18:41.102012"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-12-13"], ["start_time", "2000-01-01 16:17:01.073404"], ["end_time", "2000-01-01 01:50:30.127280"], ["created_at", "2022-11-24 18:18:41.122296"], ["updated_at", "2022-11-24 18:18:41.122296"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-12-19"], ["start_time", "2000-01-01 10:25:02.836296"], ["end_time", "2000-01-01 09:40:58.045482"], ["created_at", "2022-11-24 18:18:41.135960"], ["updated_at", "2022-11-24 18:18:41.135960"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-10-06"], ["start_time", "2000-01-01 18:48:09.918794"], ["end_time", "2000-01-01 20:33:15.838762"], ["created_at", "2022-11-24 18:18:41.153508"], ["updated_at", "2022-11-24 18:18:41.153508"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Homenick, Zemlak and Stracke"], ["address", "135 Thiel Spurs, North Bookertown, MO 51879-9158"], ["telephone", nil], ["created_at", "2022-11-24 18:18:41.177958"], ["updated_at", "2022-11-24 18:18:41.177958"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-02-22"], ["start_time", "2000-01-01 18:55:37.516408"], ["end_time", "2000-01-01 14:17:36.358485"], ["created_at", "2022-11-24 18:18:41.195733"], ["updated_at", "2022-11-24 18:18:41.195733"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-11-23"], ["start_time", "2000-01-01 14:51:35.051973"], ["end_time", "2000-01-01 03:21:40.310637"], ["created_at", "2022-11-24 18:18:41.207760"], ["updated_at", "2022-11-24 18:18:41.207760"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-07-06"], ["start_time", "2000-01-01 23:51:48.049573"], ["end_time", "2000-01-01 02:19:18.814279"], ["created_at", "2022-11-24 18:18:41.220189"], ["updated_at", "2022-11-24 18:18:41.220189"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-12-15"], ["start_time", "2000-01-01 23:37:03.728974"], ["end_time", "2000-01-01 13:16:36.315341"], ["created_at", "2022-11-24 18:18:41.233934"], ["updated_at", "2022-11-24 18:18:41.233934"]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-12-07"], ["start_time", "2000-01-01 20:53:21.949011"], ["end_time", "2000-01-01 00:22:50.914867"], ["created_at", "2022-11-24 18:18:41.252666"], ["updated_at", "2022-11-24 18:18:41.252666"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "VonRueden and Sons"], ["address", "Suite 959 396 Emilio Landing, Tobyfurt, OK 18319-2994"], ["telephone", nil], ["created_at", "2022-11-24 18:18:41.266884"], ["updated_at", "2022-11-24 18:18:41.266884"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-02-28"], ["start_time", "2000-01-01 19:22:07.302997"], ["end_time", "2000-01-01 10:15:59.882198"], ["created_at", "2022-11-24 18:18:41.284631"], ["updated_at", "2022-11-24 18:18:41.284631"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-01-18"], ["start_time", "2000-01-01 19:10:50.607385"], ["end_time", "2000-01-01 00:09:21.782117"], ["created_at", "2022-11-24 18:18:41.297590"], ["updated_at", "2022-11-24 18:18:41.297590"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-09-30"], ["start_time", "2000-01-01 23:00:15.088498"], ["end_time", "2000-01-01 00:58:31.978316"], ["created_at", "2022-11-24 18:18:41.309839"], ["updated_at", "2022-11-24 18:18:41.309839"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-07-27"], ["start_time", "2000-01-01 05:35:24.534727"], ["end_time", "2000-01-01 09:43:37.001167"], ["created_at", "2022-11-24 18:18:41.323201"], ["updated_at", "2022-11-24 18:18:41.323201"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-12-13"], ["start_time", "2000-01-01 09:46:47.014194"], ["end_time", "2000-01-01 02:05:33.035516"], ["created_at", "2022-11-24 18:18:41.336995"], ["updated_at", "2022-11-24 18:18:41.336995"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hand, Nitzsche and O'Conner"], ["address", "49758 Yuonne Station, Macejkovicview, IN 58925"], ["telephone", nil], ["created_at", "2022-11-24 18:18:41.350448"], ["updated_at", "2022-11-24 18:18:41.350448"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-02-18"], ["start_time", "2000-01-01 19:46:11.496655"], ["end_time", "2000-01-01 23:11:05.426659"], ["created_at", "2022-11-24 18:18:41.363975"], ["updated_at", "2022-11-24 18:18:41.363975"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.1ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-06"], ["start_time", "2000-01-01 15:17:51.728881"], ["end_time", "2000-01-01 02:51:24.708508"], ["created_at", "2022-11-24 18:18:41.376403"], ["updated_at", "2022-11-24 18:18:41.376403"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-12-02"], ["start_time", "2000-01-01 19:41:42.669302"], ["end_time", "2000-01-01 19:45:04.454124"], ["created_at", "2022-11-24 18:18:41.395076"], ["updated_at", "2022-11-24 18:18:41.395076"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-10-04"], ["start_time", "2000-01-01 09:54:14.229520"], ["end_time", "2000-01-01 23:44:55.821985"], ["created_at", "2022-11-24 18:18:41.410693"], ["updated_at", "2022-11-24 18:18:41.410693"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-05-16"], ["start_time", "2000-01-01 10:34:49.000561"], ["end_time", "2000-01-01 11:11:26.773514"], ["created_at", "2022-11-24 18:18:41.423741"], ["updated_at", "2022-11-24 18:18:41.423741"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Gutmann-Schuppe"], ["address", "49132 Neal Fields, Bergeshire, CA 63243"], ["telephone", nil], ["created_at", "2022-11-24 18:18:41.439872"], ["updated_at", "2022-11-24 18:18:41.439872"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-01-30"], ["start_time", "2000-01-01 01:49:04.331060"], ["end_time", "2000-01-01 20:55:01.822985"], ["created_at", "2022-11-24 18:18:41.453885"], ["updated_at", "2022-11-24 18:18:41.453885"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-03-26"], ["start_time", "2000-01-01 23:57:19.395298"], ["end_time", "2000-01-01 22:17:19.782340"], ["created_at", "2022-11-24 18:18:41.467183"], ["updated_at", "2022-11-24 18:18:41.467183"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-01-03"], ["start_time", "2000-01-01 00:06:35.442055"], ["end_time", "2000-01-01 10:33:07.434266"], ["created_at", "2022-11-24 18:18:41.481949"], ["updated_at", "2022-11-24 18:18:41.481949"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-08-28"], ["start_time", "2000-01-01 23:08:03.763962"], ["end_time", "2000-01-01 15:38:10.595541"], ["created_at", "2022-11-24 18:18:41.502060"], ["updated_at", "2022-11-24 18:18:41.502060"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-06-05"], ["start_time", "2000-01-01 14:54:24.872993"], ["end_time", "2000-01-01 09:29:46.599030"], ["created_at", "2022-11-24 18:18:41.543744"], ["updated_at", "2022-11-24 18:18:41.543744"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/branches" for 127.0.0.1 at 2022-11-24 18:19:13 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.4ms | Allocations: 45)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 20)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 20)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered branches/index.html.erb within layouts/application (Duration: 20.0ms | Allocations: 4526)
+  Rendered layout layouts/application.html.erb (Duration: 55.9ms | Allocations: 18373)
+Completed 200 OK in 66ms (Views: 58.5ms | ActiveRecord: 1.7ms | Allocations: 20963)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBranches (20221124182705)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "branches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "telephone" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182705"]]
+  [1m[36mTRANSACTION (12.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSchedules (20221124182844)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer NOT NULL, "day" varchar, "start_time" time, "end_time" time, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_89fc3319d8"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_branch_id" ON "schedules" ("branch_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182844"]]
+  [1m[36mTRANSACTION (16.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124211118"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-24 18:20:02.067928"], ["updated_at", "2022-11-24 18:20:02.067928"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Casper Group"], ["address", "486 Ritchie Key, O'Keefeport, PA 27831"], ["telephone", 1], ["created_at", "2022-11-24 18:20:05.678870"], ["updated_at", "2022-11-24 18:20:05.678870"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-02-23"], ["start_time", "2000-01-01 21:19:36.674429"], ["end_time", "2000-01-01 23:15:09.793615"], ["created_at", "2022-11-24 18:20:05.729181"], ["updated_at", "2022-11-24 18:20:05.729181"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-11-06"], ["start_time", "2000-01-01 15:00:07.647587"], ["end_time", "2000-01-01 17:43:49.257052"], ["created_at", "2022-11-24 18:20:05.740956"], ["updated_at", "2022-11-24 18:20:05.740956"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-09-16"], ["start_time", "2000-01-01 14:22:47.594671"], ["end_time", "2000-01-01 16:25:24.350619"], ["created_at", "2022-11-24 18:20:05.752755"], ["updated_at", "2022-11-24 18:20:05.752755"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-11-03"], ["start_time", "2000-01-01 17:50:54.109964"], ["end_time", "2000-01-01 22:20:05.919931"], ["created_at", "2022-11-24 18:20:05.765417"], ["updated_at", "2022-11-24 18:20:05.765417"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-10-11"], ["start_time", "2000-01-01 14:55:02.703324"], ["end_time", "2000-01-01 06:40:12.538119"], ["created_at", "2022-11-24 18:20:05.774902"], ["updated_at", "2022-11-24 18:20:05.774902"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Corkery LLC"], ["address", "5619 Schowalter Loaf, Christiansenbury, GA 02524-1057"], ["telephone", 1], ["created_at", "2022-11-24 18:20:05.792272"], ["updated_at", "2022-11-24 18:20:05.792272"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-06-03"], ["start_time", "2000-01-01 19:02:10.650046"], ["end_time", "2000-01-01 14:05:20.913467"], ["created_at", "2022-11-24 18:20:05.804781"], ["updated_at", "2022-11-24 18:20:05.804781"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-11-01"], ["start_time", "2000-01-01 16:41:50.767231"], ["end_time", "2000-01-01 22:48:03.097607"], ["created_at", "2022-11-24 18:20:05.824434"], ["updated_at", "2022-11-24 18:20:05.824434"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-07-01"], ["start_time", "2000-01-01 10:03:47.630528"], ["end_time", "2000-01-01 15:43:42.028084"], ["created_at", "2022-11-24 18:20:05.837702"], ["updated_at", "2022-11-24 18:20:05.837702"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-06-27"], ["start_time", "2000-01-01 06:06:50.757108"], ["end_time", "2000-01-01 23:46:33.319295"], ["created_at", "2022-11-24 18:20:05.851074"], ["updated_at", "2022-11-24 18:20:05.851074"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-07-19"], ["start_time", "2000-01-01 06:37:14.759435"], ["end_time", "2000-01-01 22:40:34.129534"], ["created_at", "2022-11-24 18:20:05.863701"], ["updated_at", "2022-11-24 18:20:05.863701"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Cartwright Group"], ["address", "Suite 524 64615 Lebsack Rapid, South Cole, LA 67646-3631"], ["telephone", 0], ["created_at", "2022-11-24 18:20:05.882900"], ["updated_at", "2022-11-24 18:20:05.882900"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-06-05"], ["start_time", "2000-01-01 16:25:08.560356"], ["end_time", "2000-01-01 22:55:17.362940"], ["created_at", "2022-11-24 18:20:05.895037"], ["updated_at", "2022-11-24 18:20:05.895037"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-11-18"], ["start_time", "2000-01-01 19:15:42.869754"], ["end_time", "2000-01-01 01:42:29.852725"], ["created_at", "2022-11-24 18:20:05.914620"], ["updated_at", "2022-11-24 18:20:05.914620"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-02-13"], ["start_time", "2000-01-01 22:27:27.442797"], ["end_time", "2000-01-01 18:42:25.252140"], ["created_at", "2022-11-24 18:20:05.933015"], ["updated_at", "2022-11-24 18:20:05.933015"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-03-21"], ["start_time", "2000-01-01 00:58:01.883488"], ["end_time", "2000-01-01 13:26:26.887630"], ["created_at", "2022-11-24 18:20:05.950308"], ["updated_at", "2022-11-24 18:20:05.950308"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-02-14"], ["start_time", "2000-01-01 17:25:18.201821"], ["end_time", "2000-01-01 21:08:28.452152"], ["created_at", "2022-11-24 18:20:05.967183"], ["updated_at", "2022-11-24 18:20:05.967183"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Langworth and Sons"], ["address", "Apt. 920 7295 Gale Vista, Windlerburgh, MN 57044"], ["telephone", 186], ["created_at", "2022-11-24 18:20:05.981848"], ["updated_at", "2022-11-24 18:20:05.981848"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-02-21"], ["start_time", "2000-01-01 18:03:18.071654"], ["end_time", "2000-01-01 21:30:07.192328"], ["created_at", "2022-11-24 18:20:05.996483"], ["updated_at", "2022-11-24 18:20:05.996483"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-08-20"], ["start_time", "2000-01-01 14:48:58.037562"], ["end_time", "2000-01-01 13:34:35.593303"], ["created_at", "2022-11-24 18:20:06.019184"], ["updated_at", "2022-11-24 18:20:06.019184"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-12-22"], ["start_time", "2000-01-01 03:21:18.377348"], ["end_time", "2000-01-01 18:24:23.790699"], ["created_at", "2022-11-24 18:20:06.032423"], ["updated_at", "2022-11-24 18:20:06.032423"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-08-16"], ["start_time", "2000-01-01 00:18:09.197607"], ["end_time", "2000-01-01 01:17:55.504964"], ["created_at", "2022-11-24 18:20:06.056349"], ["updated_at", "2022-11-24 18:20:06.056349"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-11-01"], ["start_time", "2000-01-01 08:27:20.694086"], ["end_time", "2000-01-01 09:57:18.316099"], ["created_at", "2022-11-24 18:20:06.068361"], ["updated_at", "2022-11-24 18:20:06.068361"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Feest Group"], ["address", "33226 Jacobs Fall, North Raye, WA 17190-1099"], ["telephone", 839], ["created_at", "2022-11-24 18:20:06.083336"], ["updated_at", "2022-11-24 18:20:06.083336"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-06-14"], ["start_time", "2000-01-01 18:25:30.178634"], ["end_time", "2000-01-01 17:45:56.481226"], ["created_at", "2022-11-24 18:20:06.097577"], ["updated_at", "2022-11-24 18:20:06.097577"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-01-26"], ["start_time", "2000-01-01 13:02:31.353098"], ["end_time", "2000-01-01 07:38:42.249410"], ["created_at", "2022-11-24 18:20:06.117507"], ["updated_at", "2022-11-24 18:20:06.117507"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-05-26"], ["start_time", "2000-01-01 12:06:41.920502"], ["end_time", "2000-01-01 17:52:30.028609"], ["created_at", "2022-11-24 18:20:06.131654"], ["updated_at", "2022-11-24 18:20:06.131654"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-07-21"], ["start_time", "2000-01-01 15:59:33.279120"], ["end_time", "2000-01-01 17:12:50.215131"], ["created_at", "2022-11-24 18:20:06.147786"], ["updated_at", "2022-11-24 18:20:06.147786"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-07-21"], ["start_time", "2000-01-01 16:21:10.865390"], ["end_time", "2000-01-01 23:51:17.068058"], ["created_at", "2022-11-24 18:20:06.161010"], ["updated_at", "2022-11-24 18:20:06.161010"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Parisian-Conn"], ["address", "23361 Kris Tunnel, Port Carmen, MT 00810"], ["telephone", 281], ["created_at", "2022-11-24 18:20:06.177529"], ["updated_at", "2022-11-24 18:20:06.177529"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-07-30"], ["start_time", "2000-01-01 03:38:34.504092"], ["end_time", "2000-01-01 22:16:48.555561"], ["created_at", "2022-11-24 18:20:06.190617"], ["updated_at", "2022-11-24 18:20:06.190617"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-04-04"], ["start_time", "2000-01-01 10:12:14.511972"], ["end_time", "2000-01-01 23:50:41.779346"], ["created_at", "2022-11-24 18:20:06.204064"], ["updated_at", "2022-11-24 18:20:06.204064"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-07-19"], ["start_time", "2000-01-01 00:27:09.691735"], ["end_time", "2000-01-01 12:31:42.956714"], ["created_at", "2022-11-24 18:20:06.213824"], ["updated_at", "2022-11-24 18:20:06.213824"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-04-25"], ["start_time", "2000-01-01 20:35:15.879252"], ["end_time", "2000-01-01 19:14:04.111689"], ["created_at", "2022-11-24 18:20:06.224036"], ["updated_at", "2022-11-24 18:20:06.224036"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-07-17"], ["start_time", "2000-01-01 20:19:04.169805"], ["end_time", "2000-01-01 07:40:14.772420"], ["created_at", "2022-11-24 18:20:06.237370"], ["updated_at", "2022-11-24 18:20:06.237370"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Morissette-Yundt"], ["address", "Apt. 956 72367 Davis Expressway, Arielside, OH 23010"], ["telephone", 769], ["created_at", "2022-11-24 18:20:06.252397"], ["updated_at", "2022-11-24 18:20:06.252397"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-09-29"], ["start_time", "2000-01-01 07:48:20.443181"], ["end_time", "2000-01-01 13:59:04.094972"], ["created_at", "2022-11-24 18:20:06.265302"], ["updated_at", "2022-11-24 18:20:06.265302"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-08-11"], ["start_time", "2000-01-01 23:27:35.077102"], ["end_time", "2000-01-01 15:16:36.043974"], ["created_at", "2022-11-24 18:20:06.279482"], ["updated_at", "2022-11-24 18:20:06.279482"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-10-16"], ["start_time", "2000-01-01 02:11:17.499767"], ["end_time", "2000-01-01 06:51:42.487285"], ["created_at", "2022-11-24 18:20:06.292498"], ["updated_at", "2022-11-24 18:20:06.292498"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-12-20"], ["start_time", "2000-01-01 15:15:39.236730"], ["end_time", "2000-01-01 15:30:27.319166"], ["created_at", "2022-11-24 18:20:06.319205"], ["updated_at", "2022-11-24 18:20:06.319205"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-03-17"], ["start_time", "2000-01-01 11:25:38.968085"], ["end_time", "2000-01-01 12:14:56.713338"], ["created_at", "2022-11-24 18:20:06.327803"], ["updated_at", "2022-11-24 18:20:06.327803"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Graham and Sons"], ["address", "Apt. 938 9882 Veola Creek, Antoniotown, NH 82864"], ["telephone", 0], ["created_at", "2022-11-24 18:20:06.341753"], ["updated_at", "2022-11-24 18:20:06.341753"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-06-03"], ["start_time", "2000-01-01 15:13:24.570229"], ["end_time", "2000-01-01 06:41:22.586651"], ["created_at", "2022-11-24 18:20:06.353366"], ["updated_at", "2022-11-24 18:20:06.353366"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-04-09"], ["start_time", "2000-01-01 19:51:13.726349"], ["end_time", "2000-01-01 02:45:54.346609"], ["created_at", "2022-11-24 18:20:06.371522"], ["updated_at", "2022-11-24 18:20:06.371522"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-08-24"], ["start_time", "2000-01-01 19:33:43.266996"], ["end_time", "2000-01-01 01:13:39.340236"], ["created_at", "2022-11-24 18:20:06.384822"], ["updated_at", "2022-11-24 18:20:06.384822"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-10-10"], ["start_time", "2000-01-01 01:57:00.635299"], ["end_time", "2000-01-01 13:36:11.604463"], ["created_at", "2022-11-24 18:20:06.395370"], ["updated_at", "2022-11-24 18:20:06.395370"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-01-18"], ["start_time", "2000-01-01 05:52:07.101494"], ["end_time", "2000-01-01 13:30:59.684729"], ["created_at", "2022-11-24 18:20:06.410934"], ["updated_at", "2022-11-24 18:20:06.410934"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Funk Group"], ["address", "Apt. 927 381 Schuppe Route, Jamiebury, RI 30358"], ["telephone", 680], ["created_at", "2022-11-24 18:20:06.431831"], ["updated_at", "2022-11-24 18:20:06.431831"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-01-18"], ["start_time", "2000-01-01 15:54:30.079061"], ["end_time", "2000-01-01 16:34:35.488465"], ["created_at", "2022-11-24 18:20:06.447555"], ["updated_at", "2022-11-24 18:20:06.447555"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-11-29"], ["start_time", "2000-01-01 06:34:19.964468"], ["end_time", "2000-01-01 21:51:04.679516"], ["created_at", "2022-11-24 18:20:06.459517"], ["updated_at", "2022-11-24 18:20:06.459517"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-02-26"], ["start_time", "2000-01-01 00:39:11.782462"], ["end_time", "2000-01-01 10:09:46.370381"], ["created_at", "2022-11-24 18:20:06.472375"], ["updated_at", "2022-11-24 18:20:06.472375"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-12-08"], ["start_time", "2000-01-01 18:47:51.539087"], ["end_time", "2000-01-01 14:26:05.460727"], ["created_at", "2022-11-24 18:20:06.485882"], ["updated_at", "2022-11-24 18:20:06.485882"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-08-15"], ["start_time", "2000-01-01 16:51:11.706810"], ["end_time", "2000-01-01 05:01:06.015863"], ["created_at", "2022-11-24 18:20:06.507465"], ["updated_at", "2022-11-24 18:20:06.507465"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Kirlin-Osinski"], ["address", "21267 Rogahn Wells, New Dylan, KS 35992-6033"], ["telephone", 0], ["created_at", "2022-11-24 18:20:06.522964"], ["updated_at", "2022-11-24 18:20:06.522964"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-08-06"], ["start_time", "2000-01-01 12:02:26.291830"], ["end_time", "2000-01-01 03:31:57.091412"], ["created_at", "2022-11-24 18:20:06.546188"], ["updated_at", "2022-11-24 18:20:06.546188"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-09-27"], ["start_time", "2000-01-01 01:42:23.353173"], ["end_time", "2000-01-01 22:30:00.614855"], ["created_at", "2022-11-24 18:20:06.561094"], ["updated_at", "2022-11-24 18:20:06.561094"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (3.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-08-30"], ["start_time", "2000-01-01 22:50:30.447375"], ["end_time", "2000-01-01 08:32:39.567929"], ["created_at", "2022-11-24 18:20:06.572728"], ["updated_at", "2022-11-24 18:20:06.572728"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-04-20"], ["start_time", "2000-01-01 04:55:14.495830"], ["end_time", "2000-01-01 13:24:10.610694"], ["created_at", "2022-11-24 18:20:06.588945"], ["updated_at", "2022-11-24 18:20:06.588945"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-09-26"], ["start_time", "2000-01-01 10:05:43.024291"], ["end_time", "2000-01-01 09:00:15.993221"], ["created_at", "2022-11-24 18:20:06.601060"], ["updated_at", "2022-11-24 18:20:06.601060"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/branches" for 127.0.0.1 at 2022-11-24 18:20:09 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 47)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 4486)
+  Rendered layout layouts/application.html.erb (Duration: 54.5ms | Allocations: 18225)
+Completed 200 OK in 62ms (Views: 56.4ms | ActiveRecord: 1.6ms | Allocations: 20801)
+
+
+Started GET "/branches/1" for 127.0.0.1 at 2022-11-25 13:47:09 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 639)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 2808)
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 0.5ms | Allocations: 4403)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 13:47:12 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.7ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 20.4ms | Allocations: 5965)
+  Rendered layout layouts/application.html.erb (Duration: 28.0ms | Allocations: 8564)
+Completed 200 OK in 39ms (Views: 28.9ms | ActiveRecord: 1.9ms | Allocations: 11920)
+
+
+Started DELETE "/branches/1/schedules/3" for 127.0.0.1 at 2022-11-25 13:47:19 -0300
+Processing by SchedulesController#destroy as TURBO_STREAM
+  Parameters: {"branch_id"=>"1", "id"=>"3"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+  [1m[36mSchedule Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schedules" WHERE "schedules"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+Redirected to http://127.0.0.1:3000/branches/1/schedules
+Completed 302 Found in 25ms (ActiveRecord: 14.7ms | Allocations: 3268)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 13:47:19 -0300
+Processing by SchedulesController#index as TURBO_STREAM
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 12.1ms | Allocations: 1887)
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 4239)
+Completed 200 OK in 28ms (Views: 22.9ms | ActiveRecord: 0.4ms | Allocations: 5073)
+
+
+Started GET "/branches/1" for 127.0.0.1 at 2022-11-25 13:47:21 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 24)
+  Rendered branches/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 641)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 2810)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.2ms | Allocations: 3600)
+
+
+Started GET "/branches" for 127.0.0.1 at 2022-11-25 13:47:21 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 2126)
+  Rendered layout layouts/application.html.erb (Duration: 31.7ms | Allocations: 4317)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.3ms | Allocations: 4649)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-25 13:47:29 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | Allocations: 396)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 1440)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-25 14:03:16 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.8ms | Allocations: 387)
+Completed 200 OK in 5ms (Views: 4.3ms | Allocations: 1380)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 14:03:20 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2508)
+  Rendered layout layouts/application.html.erb (Duration: 88.0ms | Allocations: 23913)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 0.9ms | Allocations: 25716)
+
+
+  
+LoadError (cannot load such file -- sassc):
+  
+app/views/layouts/application.html.erb:9
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 14:04:37 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 25.4ms | Allocations: 1887)
+  Rendered layout layouts/application.html.erb (Duration: 60.7ms | Allocations: 20659)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 0.3ms | Allocations: 21472)
+
+
+  
+LoadError (cannot load such file -- sassc):
+  
+app/views/layouts/application.html.erb:9
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 14:04:55 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 15.4ms | Allocations: 1887)
+  Rendered layout layouts/application.html.erb (Duration: 33.1ms | Allocations: 4320)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.5ms | Allocations: 5102)
+
+
+  
+LoadError (cannot load such file -- sassc):
+  
+app/views/layouts/application.html.erb:9
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 14:05:53 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (7.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (2.9ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 25.8ms | Allocations: 1887)
+  Rendered layout layouts/application.html.erb (Duration: 71.4ms | Allocations: 20655)
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 10.0ms | Allocations: 21437)
+
+
+  
+LoadError (cannot load such file -- sassc):
+  
+app/views/layouts/application.html.erb:9
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 14:06:19 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 1887)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 4372)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.4ms | Allocations: 5154)
+
+
+  
+LoadError (cannot load such file -- sassc):
+  
+app/views/layouts/application.html.erb:9
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-25 14:07:55 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 103.6ms | Allocations: 22339)
+Started GET "/branches/" for 127.0.0.1 at 2022-11-25 14:08:02 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.4ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 2.3ms | Allocations: 361)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.4ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.3ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 38.1ms | Allocations: 3729)
+  Rendered layout layouts/application.html.erb (Duration: 7021.8ms | Allocations: 255856)
+Completed 200 OK in 7174ms (Views: 7030.6ms | ActiveRecord: 4.1ms | Allocations: 291699)
+
+
+  Rendered layout layouts/application.html.erb (Duration: 1749.4ms | Allocations: 111789)
+Completed 200 OK in 1754ms (Views: 1751.3ms | ActiveRecord: 1.0ms | Allocations: 112934)
+
+
+Started GET "/branches/" for 127.0.0.1 at 2022-11-25 14:13:31 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 1.8ms | Allocations: 219)
+  Rendered branches/_branch.html.erb (Duration: 0.3ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.3ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.3ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 21.3ms | Allocations: 2846)
+  Rendered layout layouts/application.html.erb (Duration: 42.1ms | Allocations: 8957)
+Completed 200 OK in 48ms (Views: 46.0ms | ActiveRecord: 0.2ms | Allocations: 10166)
+
+
+Started GET "/branches/" for 127.0.0.1 at 2022-11-25 14:26:02 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 5.6ms | Allocations: 219)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.3ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.3ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 41.3ms | Allocations: 3029)
+  Rendered layout layouts/application.html.erb (Duration: 139.5ms | Allocations: 27199)
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 0.7ms | Allocations: 28377)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `“layouts' for #<ActionView::Base:0x0000000000d778>):
+    12: 
+    13:   <body>
+    14: 
+    15:     <%= render “layouts/navbar.html.erb” %>
+    16:     <%= yield %>
+    17:   </body>
+    18: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/" for 127.0.0.1 at 2022-11-25 14:33:01 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.7ms | Allocations: 726)
+Completed 200 OK in 23ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 6515)
+
+
+Started GET "/branches/1/office_hours" for 127.0.0.1 at 2022-11-25 14:33:07 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/branches/1/office_hours"):
+  
+Started GET "/branches/" for 127.0.0.1 at 2022-11-25 14:33:12 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.6ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.9ms | Allocations: 289)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.6ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 33.2ms | Allocations: 18735)
+  Rendered layout layouts/application.html.erb (Duration: 513.3ms | Allocations: 73990)
+Completed 500 Internal Server Error in 531ms (ActiveRecord: 1.6ms | Allocations: 77915)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `“layouts' for #<ActionView::Base:0x0000000000d700>):
+    12: 
+    13:   <body>
+    14: 
+    15:     <%= render “layouts/navbar.html.erb” %>
+    16:     <%= yield %>
+    17:   </body>
+    18: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/branches/" for 127.0.0.1 at 2022-11-25 14:33:34 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 2.1ms | Allocations: 219)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.6ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 27.8ms | Allocations: 2859)
+  Rendered layout layouts/application.html.erb (Duration: 92.9ms | Allocations: 10858)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 0.2ms | Allocations: 12011)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_navbar.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/juan/Desktop/Ruby/Trabajo_final/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actiontext-7.0.4/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actionmailbox-7.0.4/app/views"
+
+Did you mean?  layouts/action_text/contents/content
+               branches/branch
+               branches/form
+               schedules/form
+               active_storage/blobs/blob
+               action_text/attachment_galleries/attachment_gallery):
+    12: 
+    13:   <body>
+    14: 
+    15:     <%= render "layouts/navbar.html.erb" %>
+    16:     <%= yield %>
+    17:   </body>
+    18: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/branches/" for 127.0.0.1 at 2022-11-25 14:34:02 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 1.1ms | Allocations: 219)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 15.5ms | Allocations: 2852)
+  Rendered layout layouts/application.html.erb (Duration: 56.4ms | Allocations: 10806)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 0.3ms | Allocations: 11943)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/__navbar.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/juan/Desktop/Ruby/Trabajo_final/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actiontext-7.0.4/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actionmailbox-7.0.4/app/views"
+
+Did you mean?  layouts/navbar
+               layouts/action_text/contents/content
+               branches/branch
+               branches/form
+               schedules/form
+               active_storage/blobs/blob):
+    12: 
+    13:   <body>
+    14: 
+    15:     <%= render "layouts/_navbar.html.erb" %>
+    16:     <%= yield %>
+    17:   </body>
+    18: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/branches/" for 127.0.0.1 at 2022-11-25 14:34:09 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 1.0ms | Allocations: 219)
+  Rendered branches/_branch.html.erb (Duration: 1.0ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 18.9ms | Allocations: 2862)
+  Rendered layout layouts/application.html.erb (Duration: 63.9ms | Allocations: 10816)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 0.3ms | Allocations: 11960)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_navbar.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/juan/Desktop/Ruby/Trabajo_final/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actiontext-7.0.4/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actionmailbox-7.0.4/app/views"
+
+Did you mean?  layouts/navbar
+               layouts/action_text/contents/content
+               branches/branch
+               branches/form
+               schedules/form
+               active_storage/blobs/blob):
+    12: 
+    13:   <body>
+    14: 
+    15:     <%= render "layouts/navbar.html.erb" %>
+    16:     <%= yield %>
+    17:   </body>
+    18: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/" for 127.0.0.1 at 2022-11-25 15:18:09 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.0ms | Allocations: 726)
+Completed 200 OK in 21ms (Views: 7.8ms | ActiveRecord: 0.0ms | Allocations: 6515)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-25 15:19:39 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/juan/.local/share/gem/ruby/3.0.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.3ms | Allocations: 388)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 1414)
+
+
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:20:46 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 932)
+  Rendered layout layouts/application.html.erb (Duration: 283.6ms | Allocations: 54359)
+Completed 500 Internal Server Error in 372ms (ActiveRecord: 11.9ms | Allocations: 99292)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_navbar.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/juan/Desktop/Ruby/Trabajo_final/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actiontext-7.0.4/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actionmailbox-7.0.4/app/views"
+
+Did you mean?  layouts/navbar
+               layouts/action_text/contents/content
+               branches/branch
+               branches/form
+               schedules/form
+               active_storage/blobs/blob):
+    12: 
+    13:   <body>
+    14: 
+    15:     <%= render "layouts/navbar.html.erb" %>
+    16:     <%= yield %>
+    17:   </body>
+    18: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:21:12 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 620)
+  Rendered layout layouts/application.html.erb (Duration: 36.0ms | Allocations: 8633)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 0.3ms | Allocations: 11138)
+
+
+  
+ActionView::Template::Error (Missing partial schedules/_navbar.html.erb, application/_navbar.html.erb with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/juan/Desktop/Ruby/Trabajo_final/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actiontext-7.0.4/app/views"
+  * "/home/juan/.local/share/gem/ruby/3.0.0/gems/actionmailbox-7.0.4/app/views"
+
+Did you mean?  schedules/form
+               branches/branch
+               branches/form
+               action_text/attachment_galleries/attachment_gallery
+               action_text/contents/content
+               action_text/attachables/missing_attachable):
+    12: 
+    13:   <body>
+    14: 
+    15:     <%= render "navbar.html.erb" %>
+    16:     <%= yield %>
+    17:   </body>
+    18: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:23:40 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 19.9ms | Allocations: 621)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 105)
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 6992)
+Completed 200 OK in 42ms (Views: 36.9ms | ActiveRecord: 0.2ms | Allocations: 9521)
+
+
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:27:45 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 755)
+  Rendered layouts/_navbar.html.erb (Duration: 23.3ms | Allocations: 4610)
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 11589)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.2ms | Allocations: 14091)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root_path' for #<ActionView::Base:0x0000000000ddb8>
+Did you mean?  font_path):
+    1: 
+    2: <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    3:   <%= link_to 'Banco de Ruby', root_path, class:"navbar-brand" %>
+    4: 
+    5:   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    6:     <span class="navbar-toggler-icon"></span>
+  
+app/views/layouts/_navbar.html.erb:3
+app/views/layouts/application.html.erb:15
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:29:53 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 738)
+  Rendered layouts/_navbar.html.erb (Duration: 25.1ms | Allocations: 4557)
+  Rendered layout layouts/application.html.erb (Duration: 37.7ms | Allocations: 11531)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 0.2ms | Allocations: 14011)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root_path' for #<ActionView::Base:0x0000000000e128>
+Did you mean?  font_path):
+    1: 
+    2: <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    3:   <%= link_to 'RubyBank', root_path, class:"navbar-brand" %>
+    4: 
+    5:   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    6:     <span class="navbar-toggler-icon"></span>
+  
+app/views/layouts/_navbar.html.erb:3
+app/views/layouts/application.html.erb:15
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:30:01 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 344)
+  Rendered layouts/_navbar.html.erb (Duration: 26.9ms | Allocations: 4253)
+  Rendered layout layouts/application.html.erb (Duration: 44.3ms | Allocations: 10350)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.3ms | Allocations: 12011)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root_path' for #<ActionView::Base:0x0000000000e3f8>
+Did you mean?  font_path):
+    1: 
+    2: <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    3:   <%= link_to 'RubyBank', root_path, class:"navbar-brand" %>
+    4: 
+    5:   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    6:     <span class="navbar-toggler-icon"></span>
+  
+app/views/layouts/_navbar.html.erb:3
+app/views/layouts/application.html.erb:15
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:34:36 -0300
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+config/routes.rb:6:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:34:53 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 757)
+  Rendered layouts/_navbar.html.erb (Duration: 26.2ms | Allocations: 4588)
+  Rendered layout layouts/application.html.erb (Duration: 71.1ms | Allocations: 26471)
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 1.6ms | Allocations: 38022)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `users_path' for #<ActionView::Base:0x00000000013880>):
+    15:         <%= link_to "Sucursales", branches_path, class:"nav-link" %>
+    16:       </li>
+    17:       <li class="nav-item">
+    18:         <%= link_to "Usuarios", users_path, class:"nav-link" %>
+    19:       </li>
+    20:       <li class="nav-item">
+    21:         <%= link_to "Turnos", appointments_path, class:"nav-link" %>
+  
+app/views/layouts/_navbar.html.erb:18
+app/views/layouts/application.html.erb:15
+Started GET "/branches/1/schedules/1" for 127.0.0.1 at 2022-11-25 15:35:12 -0300
+Processing by SchedulesController#show as HTML
+  Parameters: {"branch_id"=>"1", "id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  Rendered schedules/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 738)
+  Rendered layouts/_navbar.html.erb (Duration: 1.4ms | Allocations: 318)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 7293)
+Completed 200 OK in 36ms (Views: 25.1ms | ActiveRecord: 0.2ms | Allocations: 9798)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-25 15:35:14 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 378)
+  Rendered layouts/_navbar.html.erb (Duration: 0.3ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 6518)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.0ms | Allocations: 7580)
+
+
+Started GET "/root_path" for 127.0.0.1 at 2022-11-25 15:35:16 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/root_path"):
+  
+Started GET "/root_path" for 127.0.0.1 at 2022-11-25 15:35:26 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/root_path"):
+  
+Started GET "/root_path" for 127.0.0.1 at 2022-11-25 15:35:30 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/root_path"):
+  
+Started GET "/" for 127.0.0.1 at 2022-11-25 15:35:44 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 376)
+  Rendered layouts/_navbar.html.erb (Duration: 1.7ms | Allocations: 361)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 7005)
+Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 0.0ms | Allocations: 8103)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-25 15:35:52 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 406)
+  Rendered layouts/_navbar.html.erb (Duration: 1.4ms | Allocations: 299)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 6959)
+Completed 200 OK in 19ms (Views: 18.8ms | ActiveRecord: 0.0ms | Allocations: 8107)
+
+
+Started GET "/branches" for 127.0.0.1 at 2022-11-25 15:35:58 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 1.0ms | Allocations: 281)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 3277)
+  Rendered layouts/_navbar.html.erb (Duration: 0.3ms | Allocations: 89)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 9329)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.2ms | Allocations: 10449)
+
+
+Started GET "/branches/1" for 127.0.0.1 at 2022-11-25 15:35:59 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:63:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered branches/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 915)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 6727)
+Completed 200 OK in 20ms (Views: 14.0ms | ActiveRecord: 0.1ms | Allocations: 7676)
+
+
