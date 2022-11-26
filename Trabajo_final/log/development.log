@@ -5536,3 +5536,1295 @@ FOREIGN KEY ("branch_id")
   [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "olivia.bayer@casper.biz"], ["LIMIT", 1]]
   [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "olivia.bayer@casper.biz"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-25 17:54:44.799265"], ["updated_at", "2022-11-25 17:54:44.799265"]]
   [1m[36mTRANSACTION (8.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBranches (20221124182705)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "branches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "telephone" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182705"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSchedules (20221124182844)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer NOT NULL, "day" varchar, "start_time" time, "end_time" time, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_89fc3319d8"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_branch_id" ON "schedules" ("branch_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182844"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124211118"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20221125194805)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime(6), "last_sign_in_at" datetime(6), "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bda81e12f5"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_users_on_branch_id" ON "users" ("branch_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221125194805"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-26 14:50:56.979057"], ["updated_at", "2022-11-26 14:50:56.979057"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (2.0ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Gottlieb and Sons"], ["address", "Apt. 164 51421 Lupe Radial, Kuphalville, PA 54215"], ["telephone", 0], ["created_at", "2022-11-26 14:51:00.142963"], ["updated_at", "2022-11-26 14:51:00.142963"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-02-17"], ["start_time", "2000-01-01 00:55:25.436325"], ["end_time", "2000-01-01 17:04:54.972789"], ["created_at", "2022-11-26 14:51:00.197568"], ["updated_at", "2022-11-26 14:51:00.197568"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-02-08"], ["start_time", "2000-01-01 19:26:22.471642"], ["end_time", "2000-01-01 14:45:52.293876"], ["created_at", "2022-11-26 14:51:00.207663"], ["updated_at", "2022-11-26 14:51:00.207663"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-06-05"], ["start_time", "2000-01-01 21:04:09.518803"], ["end_time", "2000-01-01 18:42:10.197282"], ["created_at", "2022-11-26 14:51:00.217467"], ["updated_at", "2022-11-26 14:51:00.217467"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-07-17"], ["start_time", "2000-01-01 08:42:47.310346"], ["end_time", "2000-01-01 01:46:57.068486"], ["created_at", "2022-11-26 14:51:00.226876"], ["updated_at", "2022-11-26 14:51:00.226876"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-08-11"], ["start_time", "2000-01-01 13:22:14.259859"], ["end_time", "2000-01-01 13:43:41.114858"], ["created_at", "2022-11-26 14:51:00.236880"], ["updated_at", "2022-11-26 14:51:00.236880"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Schimmel-Stiedemann"], ["address", "Apt. 790 1261 Streich Common, Fayshire, RI 57273"], ["telephone", 634], ["created_at", "2022-11-26 14:51:00.246350"], ["updated_at", "2022-11-26 14:51:00.246350"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-08-16"], ["start_time", "2000-01-01 10:27:26.378497"], ["end_time", "2000-01-01 21:27:37.759254"], ["created_at", "2022-11-26 14:51:00.255358"], ["updated_at", "2022-11-26 14:51:00.255358"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-08-12"], ["start_time", "2000-01-01 03:13:19.956957"], ["end_time", "2000-01-01 11:19:01.081608"], ["created_at", "2022-11-26 14:51:00.269138"], ["updated_at", "2022-11-26 14:51:00.269138"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-04-13"], ["start_time", "2000-01-01 18:31:29.192961"], ["end_time", "2000-01-01 21:06:59.922222"], ["created_at", "2022-11-26 14:51:00.291975"], ["updated_at", "2022-11-26 14:51:00.291975"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-06-15"], ["start_time", "2000-01-01 02:49:02.418013"], ["end_time", "2000-01-01 13:49:02.448410"], ["created_at", "2022-11-26 14:51:00.302238"], ["updated_at", "2022-11-26 14:51:00.302238"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-09-01"], ["start_time", "2000-01-01 09:26:45.245346"], ["end_time", "2000-01-01 04:49:19.739749"], ["created_at", "2022-11-26 14:51:00.312161"], ["updated_at", "2022-11-26 14:51:00.312161"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Grimes, Nienow and Sporer"], ["address", "Suite 405 5596 Genie Falls, South Arnoldo, AK 15775-6879"], ["telephone", 1], ["created_at", "2022-11-26 14:51:00.323316"], ["updated_at", "2022-11-26 14:51:00.323316"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-06-28"], ["start_time", "2000-01-01 00:39:23.434866"], ["end_time", "2000-01-01 01:12:08.290703"], ["created_at", "2022-11-26 14:51:00.332969"], ["updated_at", "2022-11-26 14:51:00.332969"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-10-28"], ["start_time", "2000-01-01 10:43:09.058954"], ["end_time", "2000-01-01 09:19:43.677786"], ["created_at", "2022-11-26 14:51:00.342589"], ["updated_at", "2022-11-26 14:51:00.342589"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-04-28"], ["start_time", "2000-01-01 20:07:53.950572"], ["end_time", "2000-01-01 18:45:13.321776"], ["created_at", "2022-11-26 14:51:00.354920"], ["updated_at", "2022-11-26 14:51:00.354920"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-08-15"], ["start_time", "2000-01-01 23:15:41.183318"], ["end_time", "2000-01-01 03:03:22.283861"], ["created_at", "2022-11-26 14:51:00.371603"], ["updated_at", "2022-11-26 14:51:00.371603"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-05-19"], ["start_time", "2000-01-01 21:59:43.869583"], ["end_time", "2000-01-01 05:48:21.831622"], ["created_at", "2022-11-26 14:51:00.381016"], ["updated_at", "2022-11-26 14:51:00.381016"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Dooley-Leffler"], ["address", "7820 Kenna Parkways, Breitenbergchester, KS 18195-9771"], ["telephone", 748], ["created_at", "2022-11-26 14:51:00.391007"], ["updated_at", "2022-11-26 14:51:00.391007"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-12-29"], ["start_time", "2000-01-01 01:31:55.529725"], ["end_time", "2000-01-01 08:25:05.640772"], ["created_at", "2022-11-26 14:51:00.401178"], ["updated_at", "2022-11-26 14:51:00.401178"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-08-14"], ["start_time", "2000-01-01 05:58:23.064346"], ["end_time", "2000-01-01 21:34:01.424102"], ["created_at", "2022-11-26 14:51:00.411483"], ["updated_at", "2022-11-26 14:51:00.411483"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-08-02"], ["start_time", "2000-01-01 09:03:11.431429"], ["end_time", "2000-01-01 06:43:02.283523"], ["created_at", "2022-11-26 14:51:00.421883"], ["updated_at", "2022-11-26 14:51:00.421883"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-05-22"], ["start_time", "2000-01-01 08:31:25.117310"], ["end_time", "2000-01-01 17:18:43.150843"], ["created_at", "2022-11-26 14:51:00.432181"], ["updated_at", "2022-11-26 14:51:00.432181"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-03-10"], ["start_time", "2000-01-01 02:40:15.263575"], ["end_time", "2000-01-01 15:39:22.776961"], ["created_at", "2022-11-26 14:51:00.441890"], ["updated_at", "2022-11-26 14:51:00.441890"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Swaniawski, Fisher and Hansen"], ["address", "Apt. 855 7960 Jacobson Shoals, Genniefort, AR 18856-4805"], ["telephone", 1], ["created_at", "2022-11-26 14:51:00.452914"], ["updated_at", "2022-11-26 14:51:00.452914"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-03-08"], ["start_time", "2000-01-01 05:47:16.209153"], ["end_time", "2000-01-01 17:12:08.000943"], ["created_at", "2022-11-26 14:51:00.462762"], ["updated_at", "2022-11-26 14:51:00.462762"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-05-14"], ["start_time", "2000-01-01 22:08:36.648659"], ["end_time", "2000-01-01 12:22:09.177646"], ["created_at", "2022-11-26 14:51:00.473508"], ["updated_at", "2022-11-26 14:51:00.473508"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-03-25"], ["start_time", "2000-01-01 16:07:09.022324"], ["end_time", "2000-01-01 05:32:21.361932"], ["created_at", "2022-11-26 14:51:00.483024"], ["updated_at", "2022-11-26 14:51:00.483024"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-11-03"], ["start_time", "2000-01-01 09:45:18.511381"], ["end_time", "2000-01-01 10:43:10.952462"], ["created_at", "2022-11-26 14:51:00.493252"], ["updated_at", "2022-11-26 14:51:00.493252"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-04-29"], ["start_time", "2000-01-01 16:45:21.548154"], ["end_time", "2000-01-01 17:58:20.435992"], ["created_at", "2022-11-26 14:51:00.505955"], ["updated_at", "2022-11-26 14:51:00.505955"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Abshire, Vandervort and Lakin"], ["address", "59787 Kunde Forge, North Luise, NE 85341"], ["telephone", 0], ["created_at", "2022-11-26 14:51:00.517054"], ["updated_at", "2022-11-26 14:51:00.517054"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-05-01"], ["start_time", "2000-01-01 20:19:37.186117"], ["end_time", "2000-01-01 03:02:13.703820"], ["created_at", "2022-11-26 14:51:00.525940"], ["updated_at", "2022-11-26 14:51:00.525940"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-05-15"], ["start_time", "2000-01-01 21:50:09.029129"], ["end_time", "2000-01-01 21:52:22.313369"], ["created_at", "2022-11-26 14:51:00.535942"], ["updated_at", "2022-11-26 14:51:00.535942"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-03-28"], ["start_time", "2000-01-01 14:07:54.385775"], ["end_time", "2000-01-01 13:37:36.396818"], ["created_at", "2022-11-26 14:51:00.545781"], ["updated_at", "2022-11-26 14:51:00.545781"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-01-07"], ["start_time", "2000-01-01 20:23:09.301778"], ["end_time", "2000-01-01 13:34:14.139025"], ["created_at", "2022-11-26 14:51:00.555977"], ["updated_at", "2022-11-26 14:51:00.555977"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-01-21"], ["start_time", "2000-01-01 04:12:01.127401"], ["end_time", "2000-01-01 17:14:10.445932"], ["created_at", "2022-11-26 14:51:00.565986"], ["updated_at", "2022-11-26 14:51:00.565986"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Adams LLC"], ["address", "955 Lebsack Landing, Freddyborough, KY 01797"], ["telephone", 118], ["created_at", "2022-11-26 14:51:00.581895"], ["updated_at", "2022-11-26 14:51:00.581895"]]
+  [1m[36mTRANSACTION (11.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-06-12"], ["start_time", "2000-01-01 18:11:13.811647"], ["end_time", "2000-01-01 04:01:36.424553"], ["created_at", "2022-11-26 14:51:00.603291"], ["updated_at", "2022-11-26 14:51:00.603291"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-08-19"], ["start_time", "2000-01-01 10:20:33.131309"], ["end_time", "2000-01-01 22:50:51.629218"], ["created_at", "2022-11-26 14:51:00.613276"], ["updated_at", "2022-11-26 14:51:00.613276"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-04-16"], ["start_time", "2000-01-01 17:13:54.705424"], ["end_time", "2000-01-01 11:04:33.727980"], ["created_at", "2022-11-26 14:51:00.622847"], ["updated_at", "2022-11-26 14:51:00.622847"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-02-16"], ["start_time", "2000-01-01 20:14:15.363063"], ["end_time", "2000-01-01 14:13:20.945813"], ["created_at", "2022-11-26 14:51:00.633743"], ["updated_at", "2022-11-26 14:51:00.633743"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-01-17"], ["start_time", "2000-01-01 12:47:18.356944"], ["end_time", "2000-01-01 13:02:41.480535"], ["created_at", "2022-11-26 14:51:00.643763"], ["updated_at", "2022-11-26 14:51:00.643763"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Schowalter-Zieme"], ["address", "Suite 659 34883 Kandis Course, Louisshire, FL 96596"], ["telephone", 0], ["created_at", "2022-11-26 14:51:00.672925"], ["updated_at", "2022-11-26 14:51:00.672925"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-02-04"], ["start_time", "2000-01-01 22:34:05.452715"], ["end_time", "2000-01-01 14:16:25.724385"], ["created_at", "2022-11-26 14:51:00.683131"], ["updated_at", "2022-11-26 14:51:00.683131"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-11-02"], ["start_time", "2000-01-01 20:56:57.492624"], ["end_time", "2000-01-01 13:30:43.380781"], ["created_at", "2022-11-26 14:51:00.692921"], ["updated_at", "2022-11-26 14:51:00.692921"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-01-12"], ["start_time", "2000-01-01 12:38:44.656852"], ["end_time", "2000-01-01 00:03:07.663727"], ["created_at", "2022-11-26 14:51:00.703576"], ["updated_at", "2022-11-26 14:51:00.703576"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-05-19"], ["start_time", "2000-01-01 03:16:44.293952"], ["end_time", "2000-01-01 18:34:22.064618"], ["created_at", "2022-11-26 14:51:00.713656"], ["updated_at", "2022-11-26 14:51:00.713656"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-06-26"], ["start_time", "2000-01-01 05:36:43.894442"], ["end_time", "2000-01-01 03:26:02.948060"], ["created_at", "2022-11-26 14:51:00.723313"], ["updated_at", "2022-11-26 14:51:00.723313"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Stanton-McDermott"], ["address", "Apt. 909 290 Devin Garden, Erdmanton, MS 23368"], ["telephone", 849], ["created_at", "2022-11-26 14:51:00.734486"], ["updated_at", "2022-11-26 14:51:00.734486"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-03-21"], ["start_time", "2000-01-01 18:20:38.714446"], ["end_time", "2000-01-01 18:06:27.814071"], ["created_at", "2022-11-26 14:51:00.745626"], ["updated_at", "2022-11-26 14:51:00.745626"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-30"], ["start_time", "2000-01-01 12:48:21.192440"], ["end_time", "2000-01-01 03:49:05.216825"], ["created_at", "2022-11-26 14:51:00.756327"], ["updated_at", "2022-11-26 14:51:00.756327"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-12-03"], ["start_time", "2000-01-01 23:37:45.679870"], ["end_time", "2000-01-01 14:35:57.021427"], ["created_at", "2022-11-26 14:51:00.766134"], ["updated_at", "2022-11-26 14:51:00.766134"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-02-17"], ["start_time", "2000-01-01 20:01:56.694260"], ["end_time", "2000-01-01 06:33:14.190427"], ["created_at", "2022-11-26 14:51:00.782030"], ["updated_at", "2022-11-26 14:51:00.782030"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-02-27"], ["start_time", "2000-01-01 01:29:32.506926"], ["end_time", "2000-01-01 07:41:33.033254"], ["created_at", "2022-11-26 14:51:00.803915"], ["updated_at", "2022-11-26 14:51:00.803915"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Harber, Torp and Gleichner"], ["address", "Suite 440 8459 Hayden Lake, New Kaylee, SD 43731-4607"], ["telephone", 1], ["created_at", "2022-11-26 14:51:00.815378"], ["updated_at", "2022-11-26 14:51:00.815378"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-04-21"], ["start_time", "2000-01-01 02:40:17.493850"], ["end_time", "2000-01-01 19:55:19.688801"], ["created_at", "2022-11-26 14:51:00.830182"], ["updated_at", "2022-11-26 14:51:00.830182"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-04-07"], ["start_time", "2000-01-01 18:07:20.473390"], ["end_time", "2000-01-01 02:18:47.487788"], ["created_at", "2022-11-26 14:51:00.843904"], ["updated_at", "2022-11-26 14:51:00.843904"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-08-17"], ["start_time", "2000-01-01 10:52:50.716007"], ["end_time", "2000-01-01 06:59:14.974370"], ["created_at", "2022-11-26 14:51:00.855872"], ["updated_at", "2022-11-26 14:51:00.855872"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-04-08"], ["start_time", "2000-01-01 09:53:04.404134"], ["end_time", "2000-01-01 11:27:53.852438"], ["created_at", "2022-11-26 14:51:00.868823"], ["updated_at", "2022-11-26 14:51:00.868823"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-11-16"], ["start_time", "2000-01-01 22:38:56.173340"], ["end_time", "2000-01-01 00:58:53.853292"], ["created_at", "2022-11-26 14:51:00.879257"], ["updated_at", "2022-11-26 14:51:00.879257"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "elvis@mraz.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "elvis@mraz.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:01.191672"], ["updated_at", "2022-11-26 14:51:01.191672"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "beulah.kuhn@walsh.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "beulah.kuhn@walsh.org"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:01.439965"], ["updated_at", "2022-11-26 14:51:01.439965"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "burt@dickens.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "burt@dickens.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:01.700759"], ["updated_at", "2022-11-26 14:51:01.700759"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "evan@leffler.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "evan@leffler.co"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:01.971254"], ["updated_at", "2022-11-26 14:51:01.971254"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bernard.von@olson-schaefer.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "bernard.von@olson-schaefer.biz"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:02.195066"], ["updated_at", "2022-11-26 14:51:02.195066"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "laine_emard@senger-gleason.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "laine_emard@senger-gleason.info"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:02.426707"], ["updated_at", "2022-11-26 14:51:02.426707"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "velda@osinski.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "velda@osinski.io"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:02.648581"], ["updated_at", "2022-11-26 14:51:02.648581"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brendon.schmidt@hilll-conn.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "brendon.schmidt@hilll-conn.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:02.862893"], ["updated_at", "2022-11-26 14:51:02.862893"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "blake@raynor-boyle.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "blake@raynor-boyle.co"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:03.107165"], ["updated_at", "2022-11-26 14:51:03.107165"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "terrilyn@schuster-cremin.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "terrilyn@schuster-cremin.io"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 14:51:03.362894"], ["updated_at", "2022-11-26 14:51:03.362894"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RolifyCreateRoles (20221126175430)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "roles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "resource_type" varchar, "resource_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_roles_on_resource" ON "roles" ("resource_type", "resource_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users_roles" ("user_id" integer, "role_id" integer)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_user_id" ON "users_roles" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_role_id" ON "users_roles" ("role_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_roles_on_name" ON "roles" ("name")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_roles_on_name_and_resource_type_and_resource_id" ON "roles" ("name", "resource_type", "resource_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_user_id_and_role_id" ON "users_roles" ("user_id", "role_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221126175430"]]
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."name" = ? AND "roles"."resource_type" IS NULL AND "roles"."resource_id" IS NULL ORDER BY "roles"."id" ASC LIMIT ?[0m  [["name", "administrador"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Create (2.7ms)[0m  [1m[32mINSERT INTO "roles" ("name", "resource_type", "resource_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "administrador"], ["resource_type", nil], ["resource_id", nil], ["created_at", "2022-11-26 14:56:50.495291"], ["updated_at", "2022-11-26 14:56:50.495291"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "anyemail@address.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "anyemail@address.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 15:00:40.625565"], ["updated_at", "2022-11-26 15:00:40.625565"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."name" = ? AND "roles"."resource_type" IS NULL AND "roles"."resource_id" IS NULL ORDER BY "roles"."id" ASC LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Create (0.3ms)[0m  [1m[32mINSERT INTO "roles" ("name", "resource_type", "resource_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "admin"], ["resource_type", nil], ["resource_id", nil], ["created_at", "2022-11-26 15:01:06.119458"], ["updated_at", "2022-11-26 15:01:06.119458"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRole Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."id" = ? LIMIT ?[0m  [["user_id", 11], ["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND "roles"."id" = ? LIMIT ?[0m  [["user_id", 11], ["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser::HABTM_Roles Create (0.4ms)[0m  [1m[32mINSERT INTO "users_roles" ("user_id", "role_id") VALUES (?, ?)[0m  [["user_id", 11], ["role_id", 2]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT "roles".* FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = ? AND (((roles.name = 'admin') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))[0m  [["user_id", 11]]
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-26 17:10:04 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 177.6ms | Allocations: 21709)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:18
+  Rendered layouts/_navbar.html.erb (Duration: 55.7ms | Allocations: 19883)
+  Rendered layout layouts/application.html.erb (Duration: 416.8ms | Allocations: 93264)
+Completed 200 OK in 556ms (Views: 490.3ms | ActiveRecord: 4.5ms | Allocations: 123927)
+
+
+Started DELETE "/branches/1/schedules/4" for 127.0.0.1 at 2022-11-26 17:10:08 -0300
+Processing by SchedulesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "branch_id"=>"1", "id"=>"4"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  [1m[36mSchedule Load (1.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ? AND "schedules"."id" = ? LIMIT ?[0m  [["branch_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:61:in `set_schedule'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+  [1m[36mSchedule Destroy (1.0ms)[0m  [1m[31mDELETE FROM "schedules" WHERE "schedules"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/schedules_controller.rb:49:in `destroy'
+Redirected to http://127.0.0.1:3000/branches/1/schedules
+Completed 302 Found in 28ms (ActiveRecord: 9.4ms | Allocations: 3781)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-26 17:10:08 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1966)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:18
+  Rendered layouts/_navbar.html.erb (Duration: 4.8ms | Allocations: 1119)
+  Rendered layout layouts/application.html.erb (Duration: 44.1ms | Allocations: 13723)
+Completed 200 OK in 49ms (Views: 45.0ms | ActiveRecord: 0.6ms | Allocations: 14588)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2022-11-26 17:10:30 -0300
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.5ms | Allocations: 236)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 406.0ms | Allocations: 279621)
+  Rendered layouts/_navbar.html.erb (Duration: 2.7ms | Allocations: 657)
+  Rendered layout layouts/application.html.erb (Duration: 440.8ms | Allocations: 291490)
+Completed 200 OK in 455ms (Views: 445.6ms | ActiveRecord: 0.2ms | Allocations: 294406)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2022-11-26 17:10:45 -0300
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 4.4ms | Allocations: 225)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 19.4ms | Allocations: 2142)
+  Rendered layouts/_navbar.html.erb (Duration: 3.4ms | Allocations: 655)
+  Rendered layout layouts/application.html.erb (Duration: 64.7ms | Allocations: 13654)
+Completed 200 OK in 78ms (Views: 72.0ms | ActiveRecord: 0.2ms | Allocations: 16381)
+
+
+Started GET "/branches/1/schedules" for 127.0.0.1 at 2022-11-26 17:10:54 -0300
+Processing by SchedulesController#index as HTML
+  Parameters: {"branch_id"=>"1"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:57:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 1]]
+  ↳ app/views/schedules/index.html.erb:14
+  Rendered schedules/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2476)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:18
+  Rendered layouts/_navbar.html.erb (Duration: 3.8ms | Allocations: 1176)
+  Rendered layout layouts/application.html.erb (Duration: 40.5ms | Allocations: 14418)
+Completed 200 OK in 48ms (Views: 43.8ms | ActiveRecord: 0.5ms | Allocations: 15957)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBranches (20221124182705)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "branches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "telephone" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182705"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSchedules (20221124182844)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer NOT NULL, "day" varchar, "start_time" time, "end_time" time, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_89fc3319d8"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_branch_id" ON "schedules" ("branch_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182844"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124211118"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20221125194805)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bda81e12f5"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_users_on_branch_id" ON "users" ("branch_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221125194805"]]
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RolifyCreateRoles (20221126175430)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "roles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "resource_type" varchar, "resource_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_roles_on_resource" ON "roles" ("resource_type", "resource_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users_roles" ("user_id" integer, "role_id" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_user_id" ON "users_roles" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_role_id" ON "users_roles" ("role_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_roles_on_name" ON "roles" ("name")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_roles_on_name_and_resource_type_and_resource_id" ON "roles" ("name", "resource_type", "resource_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_user_id_and_role_id" ON "users_roles" ("user_id", "role_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221126175430"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-26 17:20:07.316987"], ["updated_at", "2022-11-26 17:20:07.316987"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.9ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Kub Group"], ["address", "342 Rodriguez Circle, Kuvalisport, KS 59375"], ["telephone", 1], ["created_at", "2022-11-26 17:20:10.949965"], ["updated_at", "2022-11-26 17:20:10.949965"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.1ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-04-13"], ["start_time", "2000-01-01 00:50:09.105775"], ["end_time", "2000-01-01 13:05:22.147132"], ["created_at", "2022-11-26 17:20:10.989230"], ["updated_at", "2022-11-26 17:20:10.989230"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-08-11"], ["start_time", "2000-01-01 04:04:19.543690"], ["end_time", "2000-01-01 04:11:16.291026"], ["created_at", "2022-11-26 17:20:11.003329"], ["updated_at", "2022-11-26 17:20:11.003329"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-05-23"], ["start_time", "2000-01-01 04:13:43.923376"], ["end_time", "2000-01-01 13:34:17.255727"], ["created_at", "2022-11-26 17:20:11.021863"], ["updated_at", "2022-11-26 17:20:11.021863"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-10-23"], ["start_time", "2000-01-01 13:36:20.569009"], ["end_time", "2000-01-01 17:34:12.245381"], ["created_at", "2022-11-26 17:20:11.034131"], ["updated_at", "2022-11-26 17:20:11.034131"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-07-27"], ["start_time", "2000-01-01 19:19:31.313230"], ["end_time", "2000-01-01 08:45:22.206340"], ["created_at", "2022-11-26 17:20:11.053400"], ["updated_at", "2022-11-26 17:20:11.053400"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.9ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Jacobi-Pfeffer"], ["address", "Suite 342 95517 Adella Divide, Quigleyland, NV 69581"], ["telephone", 0], ["created_at", "2022-11-26 17:20:11.067982"], ["updated_at", "2022-11-26 17:20:11.067982"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-10-19"], ["start_time", "2000-01-01 23:05:38.520373"], ["end_time", "2000-01-01 14:44:31.223461"], ["created_at", "2022-11-26 17:20:11.081383"], ["updated_at", "2022-11-26 17:20:11.081383"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-05-01"], ["start_time", "2000-01-01 10:46:06.380450"], ["end_time", "2000-01-01 12:50:19.357195"], ["created_at", "2022-11-26 17:20:11.094455"], ["updated_at", "2022-11-26 17:20:11.094455"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-10-27"], ["start_time", "2000-01-01 08:40:14.834622"], ["end_time", "2000-01-01 22:42:30.534551"], ["created_at", "2022-11-26 17:20:11.107395"], ["updated_at", "2022-11-26 17:20:11.107395"]]
+  [1m[36mTRANSACTION (16.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-06-01"], ["start_time", "2000-01-01 20:00:47.460074"], ["end_time", "2000-01-01 00:27:20.632634"], ["created_at", "2022-11-26 17:20:11.131918"], ["updated_at", "2022-11-26 17:20:11.131918"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-03-07"], ["start_time", "2000-01-01 18:53:29.291245"], ["end_time", "2000-01-01 23:36:18.390225"], ["created_at", "2022-11-26 17:20:11.143810"], ["updated_at", "2022-11-26 17:20:11.143810"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.9ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mohr, Schiller and Jaskolski"], ["address", "Suite 637 597 Leonie Rapid, Boehmshire, AL 67872-1893"], ["telephone", 1], ["created_at", "2022-11-26 17:20:11.157395"], ["updated_at", "2022-11-26 17:20:11.157395"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-12-27"], ["start_time", "2000-01-01 13:28:50.321177"], ["end_time", "2000-01-01 20:59:21.648025"], ["created_at", "2022-11-26 17:20:11.169166"], ["updated_at", "2022-11-26 17:20:11.169166"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-11-11"], ["start_time", "2000-01-01 03:05:02.925318"], ["end_time", "2000-01-01 08:18:53.675095"], ["created_at", "2022-11-26 17:20:11.181235"], ["updated_at", "2022-11-26 17:20:11.181235"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-05-08"], ["start_time", "2000-01-01 15:02:57.492204"], ["end_time", "2000-01-01 10:25:32.777032"], ["created_at", "2022-11-26 17:20:11.191855"], ["updated_at", "2022-11-26 17:20:11.191855"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-02-02"], ["start_time", "2000-01-01 15:13:14.754256"], ["end_time", "2000-01-01 03:02:49.020368"], ["created_at", "2022-11-26 17:20:11.203321"], ["updated_at", "2022-11-26 17:20:11.203321"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-01-25"], ["start_time", "2000-01-01 08:58:29.686885"], ["end_time", "2000-01-01 23:01:17.572664"], ["created_at", "2022-11-26 17:20:11.215553"], ["updated_at", "2022-11-26 17:20:11.215553"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Kulas-Kohler"], ["address", "Apt. 865 5323 Smitham Crest, Nicolashaven, KY 75241"], ["telephone", 0], ["created_at", "2022-11-26 17:20:11.232328"], ["updated_at", "2022-11-26 17:20:11.232328"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-03-02"], ["start_time", "2000-01-01 22:53:02.283661"], ["end_time", "2000-01-01 14:38:01.807603"], ["created_at", "2022-11-26 17:20:11.245242"], ["updated_at", "2022-11-26 17:20:11.245242"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-02-03"], ["start_time", "2000-01-01 21:28:33.757550"], ["end_time", "2000-01-01 07:34:15.630268"], ["created_at", "2022-11-26 17:20:11.259339"], ["updated_at", "2022-11-26 17:20:11.259339"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-06-16"], ["start_time", "2000-01-01 13:02:54.794893"], ["end_time", "2000-01-01 11:02:45.898085"], ["created_at", "2022-11-26 17:20:11.270108"], ["updated_at", "2022-11-26 17:20:11.270108"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-03-02"], ["start_time", "2000-01-01 07:51:24.469025"], ["end_time", "2000-01-01 17:49:15.784426"], ["created_at", "2022-11-26 17:20:11.282460"], ["updated_at", "2022-11-26 17:20:11.282460"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-06-26"], ["start_time", "2000-01-01 00:46:02.665981"], ["end_time", "2000-01-01 12:14:03.945297"], ["created_at", "2022-11-26 17:20:11.296338"], ["updated_at", "2022-11-26 17:20:11.296338"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "O'Hara-Towne"], ["address", "Apt. 530 6785 Tandy Parks, Wilmaland, OK 47016-9787"], ["telephone", 0], ["created_at", "2022-11-26 17:20:11.308368"], ["updated_at", "2022-11-26 17:20:11.308368"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-09-15"], ["start_time", "2000-01-01 00:42:49.413495"], ["end_time", "2000-01-01 20:30:44.481870"], ["created_at", "2022-11-26 17:20:11.320465"], ["updated_at", "2022-11-26 17:20:11.320465"]]
+  [1m[36mTRANSACTION (15.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-10-03"], ["start_time", "2000-01-01 00:19:50.461461"], ["end_time", "2000-01-01 20:11:10.453614"], ["created_at", "2022-11-26 17:20:11.343850"], ["updated_at", "2022-11-26 17:20:11.343850"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-09-11"], ["start_time", "2000-01-01 00:41:52.229413"], ["end_time", "2000-01-01 09:09:41.002798"], ["created_at", "2022-11-26 17:20:11.358472"], ["updated_at", "2022-11-26 17:20:11.358472"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-07-27"], ["start_time", "2000-01-01 22:44:10.201197"], ["end_time", "2000-01-01 22:49:10.656005"], ["created_at", "2022-11-26 17:20:11.378088"], ["updated_at", "2022-11-26 17:20:11.378088"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-02-03"], ["start_time", "2000-01-01 05:26:31.635242"], ["end_time", "2000-01-01 00:18:57.742866"], ["created_at", "2022-11-26 17:20:11.394441"], ["updated_at", "2022-11-26 17:20:11.394441"]]
+  [1m[36mTRANSACTION (17.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Volkman Group"], ["address", "Apt. 373 769 Dietrich Streets, Kellyport, ND 87918-7165"], ["telephone", 0], ["created_at", "2022-11-26 17:20:11.421705"], ["updated_at", "2022-11-26 17:20:11.421705"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-04-19"], ["start_time", "2000-01-01 15:28:42.714313"], ["end_time", "2000-01-01 12:08:26.110492"], ["created_at", "2022-11-26 17:20:11.436484"], ["updated_at", "2022-11-26 17:20:11.436484"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-11-13"], ["start_time", "2000-01-01 16:43:20.609370"], ["end_time", "2000-01-01 17:55:06.862116"], ["created_at", "2022-11-26 17:20:11.457382"], ["updated_at", "2022-11-26 17:20:11.457382"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-10-16"], ["start_time", "2000-01-01 14:28:18.864154"], ["end_time", "2000-01-01 08:39:07.261306"], ["created_at", "2022-11-26 17:20:11.472827"], ["updated_at", "2022-11-26 17:20:11.472827"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-11-08"], ["start_time", "2000-01-01 20:04:41.182518"], ["end_time", "2000-01-01 12:51:27.044723"], ["created_at", "2022-11-26 17:20:11.484276"], ["updated_at", "2022-11-26 17:20:11.484276"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-09-10"], ["start_time", "2000-01-01 15:40:42.324809"], ["end_time", "2000-01-01 04:42:41.522265"], ["created_at", "2022-11-26 17:20:11.495886"], ["updated_at", "2022-11-26 17:20:11.495886"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Block-Mann"], ["address", "2577 Christeen Shoal, Marcohaven, NY 86291"], ["telephone", 597], ["created_at", "2022-11-26 17:20:11.507719"], ["updated_at", "2022-11-26 17:20:11.507719"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-03-29"], ["start_time", "2000-01-01 12:12:39.326440"], ["end_time", "2000-01-01 09:47:22.802272"], ["created_at", "2022-11-26 17:20:11.522897"], ["updated_at", "2022-11-26 17:20:11.522897"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-02-24"], ["start_time", "2000-01-01 07:17:21.102926"], ["end_time", "2000-01-01 15:47:22.926937"], ["created_at", "2022-11-26 17:20:11.536409"], ["updated_at", "2022-11-26 17:20:11.536409"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-01-28"], ["start_time", "2000-01-01 23:08:11.881022"], ["end_time", "2000-01-01 22:19:49.911795"], ["created_at", "2022-11-26 17:20:11.548463"], ["updated_at", "2022-11-26 17:20:11.548463"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-12-03"], ["start_time", "2000-01-01 01:01:05.816527"], ["end_time", "2000-01-01 03:32:19.378385"], ["created_at", "2022-11-26 17:20:11.565904"], ["updated_at", "2022-11-26 17:20:11.565904"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-06-05"], ["start_time", "2000-01-01 07:36:13.734553"], ["end_time", "2000-01-01 01:57:48.986727"], ["created_at", "2022-11-26 17:20:11.578237"], ["updated_at", "2022-11-26 17:20:11.578237"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "O'Hara-Abbott"], ["address", "Apt. 339 28290 Leon Glens, North Christenaburgh, WA 14042-6965"], ["telephone", 0], ["created_at", "2022-11-26 17:20:11.594954"], ["updated_at", "2022-11-26 17:20:11.594954"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-02-28"], ["start_time", "2000-01-01 18:07:49.453276"], ["end_time", "2000-01-01 10:57:29.556625"], ["created_at", "2022-11-26 17:20:11.608705"], ["updated_at", "2022-11-26 17:20:11.608705"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-07-07"], ["start_time", "2000-01-01 02:01:28.840537"], ["end_time", "2000-01-01 23:10:54.903515"], ["created_at", "2022-11-26 17:20:11.628250"], ["updated_at", "2022-11-26 17:20:11.628250"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-06-14"], ["start_time", "2000-01-01 04:01:27.233308"], ["end_time", "2000-01-01 17:54:47.080832"], ["created_at", "2022-11-26 17:20:11.639659"], ["updated_at", "2022-11-26 17:20:11.639659"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-01-05"], ["start_time", "2000-01-01 06:29:26.608192"], ["end_time", "2000-01-01 07:32:50.441055"], ["created_at", "2022-11-26 17:20:11.653103"], ["updated_at", "2022-11-26 17:20:11.653103"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-03-27"], ["start_time", "2000-01-01 19:32:37.675510"], ["end_time", "2000-01-01 12:39:09.009514"], ["created_at", "2022-11-26 17:20:11.667166"], ["updated_at", "2022-11-26 17:20:11.667166"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Dach-Williamson"], ["address", "Suite 455 5803 Darrel Manors, East Emory, VA 53500"], ["telephone", 1], ["created_at", "2022-11-26 17:20:11.707287"], ["updated_at", "2022-11-26 17:20:11.707287"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-01-11"], ["start_time", "2000-01-01 01:24:35.698380"], ["end_time", "2000-01-01 21:29:52.503544"], ["created_at", "2022-11-26 17:20:11.728523"], ["updated_at", "2022-11-26 17:20:11.728523"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-03"], ["start_time", "2000-01-01 22:26:14.064351"], ["end_time", "2000-01-01 11:41:21.828530"], ["created_at", "2022-11-26 17:20:11.740373"], ["updated_at", "2022-11-26 17:20:11.740373"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-08-16"], ["start_time", "2000-01-01 09:03:57.812434"], ["end_time", "2000-01-01 00:33:56.932438"], ["created_at", "2022-11-26 17:20:11.754622"], ["updated_at", "2022-11-26 17:20:11.754622"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-04"], ["start_time", "2000-01-01 22:44:37.184169"], ["end_time", "2000-01-01 18:12:01.582445"], ["created_at", "2022-11-26 17:20:11.774538"], ["updated_at", "2022-11-26 17:20:11.774538"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-03"], ["start_time", "2000-01-01 09:57:48.399235"], ["end_time", "2000-01-01 02:41:44.620232"], ["created_at", "2022-11-26 17:20:11.791937"], ["updated_at", "2022-11-26 17:20:11.791937"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Heaney-Nitzsche"], ["address", "Apt. 424 722 Debbie Key, Kevinton, RI 97320-4626"], ["telephone", 344], ["created_at", "2022-11-26 17:20:11.805277"], ["updated_at", "2022-11-26 17:20:11.805277"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-12-23"], ["start_time", "2000-01-01 09:15:11.607995"], ["end_time", "2000-01-01 13:57:28.258042"], ["created_at", "2022-11-26 17:20:11.832417"], ["updated_at", "2022-11-26 17:20:11.832417"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-10-19"], ["start_time", "2000-01-01 23:25:25.637060"], ["end_time", "2000-01-01 22:40:48.082946"], ["created_at", "2022-11-26 17:20:11.848296"], ["updated_at", "2022-11-26 17:20:11.848296"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-02-03"], ["start_time", "2000-01-01 09:01:41.588641"], ["end_time", "2000-01-01 10:40:20.388284"], ["created_at", "2022-11-26 17:20:11.862651"], ["updated_at", "2022-11-26 17:20:11.862651"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-05-18"], ["start_time", "2000-01-01 02:47:08.416004"], ["end_time", "2000-01-01 23:05:32.520103"], ["created_at", "2022-11-26 17:20:11.874703"], ["updated_at", "2022-11-26 17:20:11.874703"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-10-30"], ["start_time", "2000-01-01 19:54:23.309853"], ["end_time", "2000-01-01 15:04:52.821344"], ["created_at", "2022-11-26 17:20:11.896790"], ["updated_at", "2022-11-26 17:20:11.896790"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "cory_hegmann@senger-thompson.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "cory_hegmann@senger-thompson.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:12.212541"], ["updated_at", "2022-11-26 17:20:12.212541"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "roy@okuneva.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "roy@okuneva.biz"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:12.448506"], ["updated_at", "2022-11-26 17:20:12.448506"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joaquin_stoltenberg@trantow.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "joaquin_stoltenberg@trantow.info"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:12.699432"], ["updated_at", "2022-11-26 17:20:12.699432"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "susanna_zboncak@muller.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "susanna_zboncak@muller.name"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:12.996534"], ["updated_at", "2022-11-26 17:20:12.996534"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abe@schoen.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "abe@schoen.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:13.244590"], ["updated_at", "2022-11-26 17:20:13.244590"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "man@moen.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "man@moen.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:13.480534"], ["updated_at", "2022-11-26 17:20:13.480534"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "gilbert.wiza@heller.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "gilbert.wiza@heller.name"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:13.748627"], ["updated_at", "2022-11-26 17:20:13.748627"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "suzan@wunsch.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "suzan@wunsch.info"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:14.040421"], ["updated_at", "2022-11-26 17:20:14.040421"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "casey_kautzer@pfeffer.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "casey_kautzer@pfeffer.biz"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:14.326277"], ["updated_at", "2022-11-26 17:20:14.326277"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "petra@volkman.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "petra@volkman.org"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-11-26 17:20:14.593441"], ["updated_at", "2022-11-26 17:20:14.593441"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/branches" for 127.0.0.1 at 2022-11-26 17:32:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.4ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 1.4ms | Allocations: 282)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/index.html.erb within layouts/application (Duration: 27.2ms | Allocations: 4837)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:18
+  Rendered layouts/_navbar.html.erb (Duration: 8.6ms | Allocations: 1808)
+  Rendered layout layouts/application.html.erb (Duration: 73.4ms | Allocations: 28246)
+Completed 200 OK in 81ms (Views: 75.2ms | ActiveRecord: 0.7ms | Allocations: 30761)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-26 17:32:34 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 395)
+  Rendered layouts/_navbar.html.erb (Duration: 1.0ms | Allocations: 272)
+  Rendered layout layouts/application.html.erb (Duration: 34.7ms | Allocations: 11239)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 0.0ms | Allocations: 12322)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-11-26 17:33:48 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.0ms | Allocations: 901)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.7ms | Allocations: 3522)
+  Rendered layouts/_navbar.html.erb (Duration: 2.0ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 37.1ms | Allocations: 14860)
+Completed 200 OK in 51ms (Views: 40.5ms | ActiveRecord: 0.0ms | Allocations: 20207)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2022-11-26 17:33:54 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.4ms | Allocations: 225)
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 227)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.6ms | Allocations: 2241)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 202)
+  Rendered layout layouts/application.html.erb (Duration: 33.9ms | Allocations: 12976)
+Completed 200 OK in 40ms (Views: 37.2ms | ActiveRecord: 0.0ms | Allocations: 14515)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-26 17:34:04 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "test@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:34:04.875439"], ["updated_at", "2022-11-26 17:34:04.875439"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 285ms (ActiveRecord: 1.7ms | Allocations: 8996)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: table users has no column named sign_in_count):
+  
+sqlite3-1.5.4-x86_64 (linux) lib/sqlite3/database.rb:152:in `initialize'
+sqlite3-1.5.4-x86_64 (linux) lib/sqlite3/database.rb:152:in `new'
+sqlite3-1.5.4-x86_64 (linux) lib/sqlite3/database.rb:152:in `prepare'
+activerecord (7.0.4) lib/active_record/connection_adapters/sqlite3/database_statements.rb:50:in `block (2 levels) in exec_query'
+activesupport (7.0.4) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (7.0.4) lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+activerecord (7.0.4) lib/active_record/connection_adapters/sqlite3/database_statements.rb:47:in `block in exec_query'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:765:in `block in log'
+activesupport (7.0.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:756:in `log'
+activerecord (7.0.4) lib/active_record/connection_adapters/sqlite3/database_statements.rb:46:in `exec_query'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract/database_statements.rb:132:in `exec_insert'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract/database_statements.rb:167:in `insert'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract/query_cache.rb:22:in `insert'
+activerecord (7.0.4) lib/active_record/persistence.rb:496:in `_insert_record'
+activerecord (7.0.4) lib/active_record/persistence.rb:1096:in `_create_record'
+activerecord (7.0.4) lib/active_record/counter_cache.rb:166:in `_create_record'
+activerecord (7.0.4) lib/active_record/locking/optimistic.rb:79:in `_create_record'
+activerecord (7.0.4) lib/active_record/attribute_methods/dirty.rb:222:in `_create_record'
+activerecord (7.0.4) lib/active_record/callbacks.rb:461:in `block in _create_record'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/callbacks.rb:929:in `_run_create_callbacks'
+activerecord (7.0.4) lib/active_record/callbacks.rb:461:in `_create_record'
+activerecord (7.0.4) lib/active_record/timestamp.rb:108:in `_create_record'
+activerecord (7.0.4) lib/active_record/persistence.rb:1067:in `create_or_update'
+activerecord (7.0.4) lib/active_record/callbacks.rb:457:in `block in create_or_update'
+activesupport (7.0.4) lib/active_support/callbacks.rb:107:in `run_callbacks'
+activesupport (7.0.4) lib/active_support/callbacks.rb:929:in `_run_save_callbacks'
+activerecord (7.0.4) lib/active_record/callbacks.rb:457:in `create_or_update'
+activerecord (7.0.4) lib/active_record/timestamp.rb:126:in `create_or_update'
+activerecord (7.0.4) lib/active_record/persistence.rb:615:in `save'
+activerecord (7.0.4) lib/active_record/validations.rb:47:in `save'
+activerecord (7.0.4) lib/active_record/transactions.rb:298:in `block in save'
+activerecord (7.0.4) lib/active_record/transactions.rb:354:in `block in with_transaction_returning_status'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (7.0.4) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+activerecord (7.0.4) lib/active_record/connection_adapters/abstract/database_statements.rb:316:in `transaction'
+activerecord (7.0.4) lib/active_record/transactions.rb:350:in `with_transaction_returning_status'
+activerecord (7.0.4) lib/active_record/transactions.rb:298:in `save'
+activerecord (7.0.4) lib/active_record/suppressor.rb:50:in `save'
+devise (4.8.1) app/controllers/devise/registrations_controller.rb:19:in `create'
+actionpack (7.0.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.4) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/rendering.rb:53:in `process_action'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.4) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.4) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.4) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.4) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.4) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (7.0.4) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/cookies.rb:696:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/__web_console/repl_sessions/67dd04f9d13f85a929bb15e66953c6a4/trace" for 127.0.0.1 at 2022-11-26 17:34:07 -0300
+Started POST "/__web_console/repl_sessions/67dd04f9d13f85a929bb15e66953c6a4/trace" for 127.0.0.1 at 2022-11-26 17:34:10 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBranches (20221124182705)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "branches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "telephone" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182705"]]
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSchedules (20221124182844)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer NOT NULL, "day" varchar, "start_time" time, "end_time" time, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_89fc3319d8"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_branch_id" ON "schedules" ("branch_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182844"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124211118"]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20221125194805)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime(6), "last_sign_in_at" datetime(6), "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bda81e12f5"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_users_on_branch_id" ON "users" ("branch_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221125194805"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RolifyCreateRoles (20221126175430)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "roles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "resource_type" varchar, "resource_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_roles_on_resource" ON "roles" ("resource_type", "resource_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users_roles" ("user_id" integer, "role_id" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_user_id" ON "users_roles" ("user_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_role_id" ON "users_roles" ("role_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_roles_on_name" ON "roles" ("name")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_roles_on_name_and_resource_type_and_resource_id" ON "roles" ("name", "resource_type", "resource_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_users_roles_on_user_id_and_role_id" ON "users_roles" ("user_id", "role_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221126175430"]]
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-26 17:34:58.543808"], ["updated_at", "2022-11-26 17:34:58.543808"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mante-Rosenbaum"], ["address", "Apt. 537 1644 Pacocha Plains, New Dianamouth, NE 34405"], ["telephone", 0], ["created_at", "2022-11-26 17:35:02.304180"], ["updated_at", "2022-11-26 17:35:02.304180"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-05-07"], ["start_time", "2000-01-01 11:17:34.436285"], ["end_time", "2000-01-01 02:04:31.602937"], ["created_at", "2022-11-26 17:35:02.355228"], ["updated_at", "2022-11-26 17:35:02.355228"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-02-15"], ["start_time", "2000-01-01 19:34:36.738019"], ["end_time", "2000-01-01 08:28:50.049410"], ["created_at", "2022-11-26 17:35:02.371215"], ["updated_at", "2022-11-26 17:35:02.371215"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-06-06"], ["start_time", "2000-01-01 22:46:40.273504"], ["end_time", "2000-01-01 13:02:33.883120"], ["created_at", "2022-11-26 17:35:02.387660"], ["updated_at", "2022-11-26 17:35:02.387660"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-05-24"], ["start_time", "2000-01-01 17:49:32.480633"], ["end_time", "2000-01-01 15:19:30.890383"], ["created_at", "2022-11-26 17:35:02.400577"], ["updated_at", "2022-11-26 17:35:02.400577"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "2021-01-21"], ["start_time", "2000-01-01 09:35:36.699214"], ["end_time", "2000-01-01 21:29:40.633541"], ["created_at", "2022-11-26 17:35:02.417317"], ["updated_at", "2022-11-26 17:35:02.417317"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.9ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Brown, Rath and Turcotte"], ["address", "Suite 465 42359 Parthenia Spring, Hintzhaven, AL 04999"], ["telephone", 179], ["created_at", "2022-11-26 17:35:02.437237"], ["updated_at", "2022-11-26 17:35:02.437237"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-06-24"], ["start_time", "2000-01-01 03:56:30.524279"], ["end_time", "2000-01-01 09:08:13.697629"], ["created_at", "2022-11-26 17:35:02.455983"], ["updated_at", "2022-11-26 17:35:02.455983"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-06-27"], ["start_time", "2000-01-01 05:18:46.729616"], ["end_time", "2000-01-01 23:01:27.034876"], ["created_at", "2022-11-26 17:35:02.473748"], ["updated_at", "2022-11-26 17:35:02.473748"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-08-23"], ["start_time", "2000-01-01 04:48:30.011134"], ["end_time", "2000-01-01 16:57:06.168273"], ["created_at", "2022-11-26 17:35:02.491917"], ["updated_at", "2022-11-26 17:35:02.491917"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-12-09"], ["start_time", "2000-01-01 16:22:31.133531"], ["end_time", "2000-01-01 07:04:01.231454"], ["created_at", "2022-11-26 17:35:02.504527"], ["updated_at", "2022-11-26 17:35:02.504527"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "2021-04-07"], ["start_time", "2000-01-01 12:57:14.454255"], ["end_time", "2000-01-01 15:46:18.448532"], ["created_at", "2022-11-26 17:35:02.517160"], ["updated_at", "2022-11-26 17:35:02.517160"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Marquardt Group"], ["address", "47985 Gilda Corners, Mandaside, WY 38384-2148"], ["telephone", 0], ["created_at", "2022-11-26 17:35:02.531721"], ["updated_at", "2022-11-26 17:35:02.531721"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-06-05"], ["start_time", "2000-01-01 20:11:31.879105"], ["end_time", "2000-01-01 10:41:07.342196"], ["created_at", "2022-11-26 17:35:02.544138"], ["updated_at", "2022-11-26 17:35:02.544138"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-12-28"], ["start_time", "2000-01-01 19:26:53.122863"], ["end_time", "2000-01-01 01:19:17.995540"], ["created_at", "2022-11-26 17:35:02.557099"], ["updated_at", "2022-11-26 17:35:02.557099"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-06-14"], ["start_time", "2000-01-01 01:23:26.110029"], ["end_time", "2000-01-01 23:30:21.703890"], ["created_at", "2022-11-26 17:35:02.572000"], ["updated_at", "2022-11-26 17:35:02.572000"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-01-23"], ["start_time", "2000-01-01 23:20:42.561889"], ["end_time", "2000-01-01 11:16:23.077683"], ["created_at", "2022-11-26 17:35:02.586246"], ["updated_at", "2022-11-26 17:35:02.586246"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "2021-05-14"], ["start_time", "2000-01-01 21:16:28.773160"], ["end_time", "2000-01-01 18:52:23.964248"], ["created_at", "2022-11-26 17:35:02.601038"], ["updated_at", "2022-11-26 17:35:02.601038"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Abshire Group"], ["address", "Suite 699 422 Stroman Gateway, Emmerichtown, MO 93523"], ["telephone", 0], ["created_at", "2022-11-26 17:35:02.615345"], ["updated_at", "2022-11-26 17:35:02.615345"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-09-09"], ["start_time", "2000-01-01 03:37:08.782082"], ["end_time", "2000-01-01 05:38:31.241298"], ["created_at", "2022-11-26 17:35:02.628129"], ["updated_at", "2022-11-26 17:35:02.628129"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-06-27"], ["start_time", "2000-01-01 22:59:33.591166"], ["end_time", "2000-01-01 04:00:00.691053"], ["created_at", "2022-11-26 17:35:02.644219"], ["updated_at", "2022-11-26 17:35:02.644219"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-07-31"], ["start_time", "2000-01-01 00:33:55.502815"], ["end_time", "2000-01-01 07:57:40.926550"], ["created_at", "2022-11-26 17:35:02.659156"], ["updated_at", "2022-11-26 17:35:02.659156"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-03-06"], ["start_time", "2000-01-01 04:39:23.676218"], ["end_time", "2000-01-01 06:15:43.351369"], ["created_at", "2022-11-26 17:35:02.672498"], ["updated_at", "2022-11-26 17:35:02.672498"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "2021-04-07"], ["start_time", "2000-01-01 11:55:40.724023"], ["end_time", "2000-01-01 15:06:52.925997"], ["created_at", "2022-11-26 17:35:02.685777"], ["updated_at", "2022-11-26 17:35:02.685777"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Wisozk, Adams and Hills"], ["address", "837 Monique Way, South Benton, WV 84929-5985"], ["telephone", 0], ["created_at", "2022-11-26 17:35:02.700959"], ["updated_at", "2022-11-26 17:35:02.700959"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-08-14"], ["start_time", "2000-01-01 20:06:45.964076"], ["end_time", "2000-01-01 12:21:19.223373"], ["created_at", "2022-11-26 17:35:02.714407"], ["updated_at", "2022-11-26 17:35:02.714407"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.1ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-01-19"], ["start_time", "2000-01-01 14:18:36.365507"], ["end_time", "2000-01-01 14:26:43.941852"], ["created_at", "2022-11-26 17:35:02.727894"], ["updated_at", "2022-11-26 17:35:02.727894"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-05-13"], ["start_time", "2000-01-01 02:07:10.095876"], ["end_time", "2000-01-01 04:44:32.563609"], ["created_at", "2022-11-26 17:35:02.747227"], ["updated_at", "2022-11-26 17:35:02.747227"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-01-05"], ["start_time", "2000-01-01 09:19:33.486613"], ["end_time", "2000-01-01 05:57:22.638914"], ["created_at", "2022-11-26 17:35:02.763146"], ["updated_at", "2022-11-26 17:35:02.763146"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "2021-07-19"], ["start_time", "2000-01-01 22:27:48.063359"], ["end_time", "2000-01-01 07:50:04.105051"], ["created_at", "2022-11-26 17:35:02.788803"], ["updated_at", "2022-11-26 17:35:02.788803"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "MacGyver-Rutherford"], ["address", "Apt. 949 26838 Gulgowski Key, Yokomouth, CO 80176-7254"], ["telephone", 1], ["created_at", "2022-11-26 17:35:02.805464"], ["updated_at", "2022-11-26 17:35:02.805464"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-01-21"], ["start_time", "2000-01-01 23:03:03.831146"], ["end_time", "2000-01-01 10:12:37.106248"], ["created_at", "2022-11-26 17:35:02.818412"], ["updated_at", "2022-11-26 17:35:02.818412"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-01-10"], ["start_time", "2000-01-01 21:14:07.276059"], ["end_time", "2000-01-01 12:41:43.249096"], ["created_at", "2022-11-26 17:35:02.831237"], ["updated_at", "2022-11-26 17:35:02.831237"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-11-20"], ["start_time", "2000-01-01 08:41:18.820218"], ["end_time", "2000-01-01 05:05:01.530794"], ["created_at", "2022-11-26 17:35:02.848099"], ["updated_at", "2022-11-26 17:35:02.848099"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-03-06"], ["start_time", "2000-01-01 02:15:40.801934"], ["end_time", "2000-01-01 06:28:49.919494"], ["created_at", "2022-11-26 17:35:02.868208"], ["updated_at", "2022-11-26 17:35:02.868208"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "2021-10-03"], ["start_time", "2000-01-01 11:56:55.414936"], ["end_time", "2000-01-01 10:51:15.570493"], ["created_at", "2022-11-26 17:35:02.880961"], ["updated_at", "2022-11-26 17:35:02.880961"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Wiegand, Lubowitz and Russel"], ["address", "Suite 600 8597 Spinka Plain, Cartwrightville, CT 61045"], ["telephone", 1], ["created_at", "2022-11-26 17:35:02.894973"], ["updated_at", "2022-11-26 17:35:02.894973"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-01-08"], ["start_time", "2000-01-01 06:27:39.676713"], ["end_time", "2000-01-01 20:31:25.639907"], ["created_at", "2022-11-26 17:35:02.907881"], ["updated_at", "2022-11-26 17:35:02.907881"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-11-01"], ["start_time", "2000-01-01 23:29:12.823907"], ["end_time", "2000-01-01 04:30:29.405939"], ["created_at", "2022-11-26 17:35:02.923448"], ["updated_at", "2022-11-26 17:35:02.923448"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.0ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-11-25"], ["start_time", "2000-01-01 13:01:13.504286"], ["end_time", "2000-01-01 23:20:19.396472"], ["created_at", "2022-11-26 17:35:02.940311"], ["updated_at", "2022-11-26 17:35:02.940311"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-03-08"], ["start_time", "2000-01-01 15:34:14.295539"], ["end_time", "2000-01-01 22:28:54.343380"], ["created_at", "2022-11-26 17:35:02.960229"], ["updated_at", "2022-11-26 17:35:02.960229"]]
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.7ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "2021-11-24"], ["start_time", "2000-01-01 08:53:10.560581"], ["end_time", "2000-01-01 15:54:47.333273"], ["created_at", "2022-11-26 17:35:02.983349"], ["updated_at", "2022-11-26 17:35:02.983349"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.5ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Jacobi-Tromp"], ["address", "Suite 378 573 Mimi View, Kerlukeport, CA 54820-6268"], ["telephone", 732], ["created_at", "2022-11-26 17:35:02.998880"], ["updated_at", "2022-11-26 17:35:02.998880"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-05-01"], ["start_time", "2000-01-01 19:44:04.648969"], ["end_time", "2000-01-01 02:45:32.959926"], ["created_at", "2022-11-26 17:35:03.017159"], ["updated_at", "2022-11-26 17:35:03.017159"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-08-11"], ["start_time", "2000-01-01 05:01:45.104634"], ["end_time", "2000-01-01 16:29:31.693187"], ["created_at", "2022-11-26 17:35:03.030156"], ["updated_at", "2022-11-26 17:35:03.030156"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-07-21"], ["start_time", "2000-01-01 20:02:46.685126"], ["end_time", "2000-01-01 23:53:03.246474"], ["created_at", "2022-11-26 17:35:03.044938"], ["updated_at", "2022-11-26 17:35:03.044938"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-06-26"], ["start_time", "2000-01-01 05:46:31.662363"], ["end_time", "2000-01-01 18:47:54.125986"], ["created_at", "2022-11-26 17:35:03.059260"], ["updated_at", "2022-11-26 17:35:03.059260"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "2021-06-26"], ["start_time", "2000-01-01 17:22:36.336857"], ["end_time", "2000-01-01 05:46:26.930928"], ["created_at", "2022-11-26 17:35:03.078008"], ["updated_at", "2022-11-26 17:35:03.078008"]]
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.6ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Bartell LLC"], ["address", "581 Rutherford Isle, South Carrieshire, CA 14527"], ["telephone", 688], ["created_at", "2022-11-26 17:35:03.131922"], ["updated_at", "2022-11-26 17:35:03.131922"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.6ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-11-04"], ["start_time", "2000-01-01 21:26:24.933184"], ["end_time", "2000-01-01 20:40:26.782387"], ["created_at", "2022-11-26 17:35:03.152121"], ["updated_at", "2022-11-26 17:35:03.152121"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-11-14"], ["start_time", "2000-01-01 21:29:38.269874"], ["end_time", "2000-01-01 16:58:00.935993"], ["created_at", "2022-11-26 17:35:03.173756"], ["updated_at", "2022-11-26 17:35:03.173756"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-08-03"], ["start_time", "2000-01-01 17:31:18.262273"], ["end_time", "2000-01-01 22:18:57.494690"], ["created_at", "2022-11-26 17:35:03.190800"], ["updated_at", "2022-11-26 17:35:03.190800"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-12-24"], ["start_time", "2000-01-01 06:31:44.907631"], ["end_time", "2000-01-01 18:57:17.244600"], ["created_at", "2022-11-26 17:35:03.204327"], ["updated_at", "2022-11-26 17:35:03.204327"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "2021-09-03"], ["start_time", "2000-01-01 18:22:09.732957"], ["end_time", "2000-01-01 17:39:38.101450"], ["created_at", "2022-11-26 17:35:03.220192"], ["updated_at", "2022-11-26 17:35:03.220192"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (1.4ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rippin-Wiegand"], ["address", "Apt. 621 743 Susan Glens, Willenemouth, LA 83733"], ["telephone", 1], ["created_at", "2022-11-26 17:35:03.249162"], ["updated_at", "2022-11-26 17:35:03.249162"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-09-03"], ["start_time", "2000-01-01 21:28:25.277317"], ["end_time", "2000-01-01 02:10:35.719841"], ["created_at", "2022-11-26 17:35:03.268965"], ["updated_at", "2022-11-26 17:35:03.268965"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-04-05"], ["start_time", "2000-01-01 06:45:23.687190"], ["end_time", "2000-01-01 07:30:06.110161"], ["created_at", "2022-11-26 17:35:03.284183"], ["updated_at", "2022-11-26 17:35:03.284183"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-08-24"], ["start_time", "2000-01-01 01:41:22.542274"], ["end_time", "2000-01-01 04:05:23.797856"], ["created_at", "2022-11-26 17:35:03.300607"], ["updated_at", "2022-11-26 17:35:03.300607"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-06-23"], ["start_time", "2000-01-01 16:46:17.550284"], ["end_time", "2000-01-01 10:28:29.684917"], ["created_at", "2022-11-26 17:35:03.312039"], ["updated_at", "2022-11-26 17:35:03.312039"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mSchedule Create (1.9ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "2021-05-29"], ["start_time", "2000-01-01 15:13:48.064384"], ["end_time", "2000-01-01 06:39:03.742225"], ["created_at", "2022-11-26 17:35:03.323873"], ["updated_at", "2022-11-26 17:35:03.323873"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tracy.flatley@ledner-bins.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "tracy.flatley@ledner-bins.io"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:03.615263"], ["updated_at", "2022-11-26 17:35:03.615263"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "barry.jones@dooley-langosh.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "barry.jones@dooley-langosh.io"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:03.874594"], ["updated_at", "2022-11-26 17:35:03.874594"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "milo_johnston@smith.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "milo_johnston@smith.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:04.185159"], ["updated_at", "2022-11-26 17:35:04.185159"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ardis@sauer.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "ardis@sauer.io"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:04.437179"], ["updated_at", "2022-11-26 17:35:04.437179"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "trudie@zulauf-kris.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "trudie@zulauf-kris.name"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:04.676153"], ["updated_at", "2022-11-26 17:35:04.676153"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "noe@altenwerth.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "noe@altenwerth.org"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:04.914095"], ["updated_at", "2022-11-26 17:35:04.914095"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linnie.robel@gleason.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "linnie.robel@gleason.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:05.181491"], ["updated_at", "2022-11-26 17:35:05.181491"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "claudia.tromp@gislason-zieme.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "claudia.tromp@gislason-zieme.co"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:05.444442"], ["updated_at", "2022-11-26 17:35:05.444442"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mark_ruecker@kuhic.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "mark_ruecker@kuhic.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:05.698577"], ["updated_at", "2022-11-26 17:35:05.698577"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "geoffrey.sporer@gleichner-trantow.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "geoffrey.sporer@gleichner-trantow.biz"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:05.944285"], ["updated_at", "2022-11-26 17:35:05.944285"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/users" for 127.0.0.1 at 2022-11-26 17:35:08 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "test@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:35:08.741482"], ["updated_at", "2022-11-26 17:35:08.741482"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 286ms (ActiveRecord: 12.0ms | Allocations: 11679)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-26 17:35:08 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 436)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:18
+  Rendered layouts/_navbar.html.erb (Duration: 8.3ms | Allocations: 1950)
+  Rendered layout layouts/application.html.erb (Duration: 77.9ms | Allocations: 24593)
+Completed 200 OK in 85ms (Views: 82.8ms | ActiveRecord: 0.5ms | Allocations: 25751)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2022-11-26 17:35:11 -0300
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 225)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2069)
+  Rendered layouts/_navbar.html.erb (Duration: 0.9ms | Allocations: 360)
+  Rendered layout layouts/application.html.erb (Duration: 31.8ms | Allocations: 12845)
+Completed 200 OK in 39ms (Views: 33.6ms | ActiveRecord: 0.2ms | Allocations: 14688)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2022-11-26 17:35:49 -0300
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.8ms | Allocations: 225)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 8.4ms | Allocations: 2173)
+  Rendered layouts/_navbar.html.erb (Duration: 3.8ms | Allocations: 655)
+  Rendered layout layouts/application.html.erb (Duration: 42.3ms | Allocations: 13685)
+Completed 200 OK in 64ms (Views: 46.8ms | ActiveRecord: 0.2ms | Allocations: 16203)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2022-11-26 17:41:38 -0300
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 79ms (ActiveRecord: 1.3ms | Allocations: 7079)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-26 17:41:39 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 398)
+  Rendered layouts/_navbar.html.erb (Duration: 2.8ms | Allocations: 585)
+  Rendered layout layouts/application.html.erb (Duration: 128.4ms | Allocations: 22888)
+Completed 200 OK in 139ms (Views: 137.4ms | ActiveRecord: 0.0ms | Allocations: 24125)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-11-26 17:41:50 -0300
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.9ms | Allocations: 591)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 17.4ms | Allocations: 2342)
+  Rendered layouts/_navbar.html.erb (Duration: 1.2ms | Allocations: 202)
+  Rendered layout layouts/application.html.erb (Duration: 48.9ms | Allocations: 13099)
+Completed 200 OK in 58ms (Views: 55.7ms | ActiveRecord: 0.0ms | Allocations: 14775)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2022-11-26 17:41:52 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.5ms | Allocations: 225)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 105)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2119)
+  Rendered layouts/_navbar.html.erb (Duration: 0.9ms | Allocations: 202)
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 12854)
+Completed 200 OK in 46ms (Views: 43.3ms | ActiveRecord: 0.0ms | Allocations: 14377)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-26 17:42:06 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test1.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test1.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "test@test1.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-26 17:42:06.688513"], ["updated_at", "2022-11-26 17:42:06.688513"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 282ms (ActiveRecord: 5.6ms | Allocations: 6687)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-26 17:42:06 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 223)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:18
+  Rendered layouts/_navbar.html.erb (Duration: 5.2ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 11724)
+Completed 200 OK in 38ms (Views: 37.4ms | ActiveRecord: 0.2ms | Allocations: 12043)
+
+
+Started GET "/branches" for 127.0.0.1 at 2022-11-26 17:44:41 -0300
+  
+ArgumentError (Mapping omniauth_callbacks on a resource that is not omniauthable
+Please add `devise :omniauthable` to the `User` model):
+  
+config/routes.rb:3:in `block (2 levels) in <main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/branches" for 127.0.0.1 at 2022-11-26 17:45:24 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 2.0ms | Allocations: 232)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/index.html.erb within layouts/application (Duration: 16.9ms | Allocations: 5098)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:18
+  Rendered layouts/_navbar.html.erb (Duration: 19.1ms | Allocations: 5396)
+  Rendered layout layouts/application.html.erb (Duration: 76.1ms | Allocations: 32126)
+Completed 200 OK in 82ms (Views: 78.4ms | ActiveRecord: 3.0ms | Allocations: 34629)
+
+
