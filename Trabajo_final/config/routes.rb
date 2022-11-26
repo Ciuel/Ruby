@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  Rails.application.routes.draw do
+  resources :users
     devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations',
       passwords: 'users/passwords',
       confirmations: 'users/confirmations',
       unlocks: 'users/unlocks',
-    }
-  end
+    }, :path_prefix => 'devise'
 
 
   resources :branches do

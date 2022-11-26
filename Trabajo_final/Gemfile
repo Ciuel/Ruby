@@ -64,7 +64,6 @@ group :development do
   gem 'sass-rails'
   gem 'devise'
   gem 'cancancan'
-  gem 'rolify'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
