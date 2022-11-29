@@ -16,11 +16,11 @@ end
 
 #Make 10 example branches with its respective schedules
 10.times do
-  branch = Branch.create(name: Faker::Company.name, address: Faker::Address.full_address, telephone: Faker::PhoneNumber.phone_number)
+  branch = Branch.create!(name: Faker::Company.name, address: Faker::Address.full_address, telephone: Faker::PhoneNumber.phone_number)
   #Make a set containing all weekdays in spanish
-  days = Set.new(["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"])
+  days = Set.new(%w[Lunes Martes Miercoles Jueves Viernes Sabado Domingo])
   5.times do
-    Schedule.create(branch_id: branch.id, day: days.pop, start_time: Time.parse("#{rand(8..12)}:00"), end_time: Time.parse("#{rand(13..17)}:00"))
+    Schedule.create!(branch_id: branch.id, day: days.pop, start_time: Time.parse("#{rand(8..12)}:00"), end_time: Time.parse("#{rand(13..17)}:00"))
 
   end
 end
@@ -28,13 +28,11 @@ end
 10.times do
   role = rand(0..2)
   if role == 1
-    User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role:1, branch_id: rand(1..10))
+    User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role:1, branch_id: rand(1..10))
   else
-    User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: [0,2].sample)
+    User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: [0,2].sample)
   end
 end
 #create admin user
-User.create(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1)
-
-
+u = User.create!(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1)
 p "db seeded"

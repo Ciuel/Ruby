@@ -5,6 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     create_table :users do |t|
       ## Custom model
       t.references :branch, null: true, foreign_key: true
+      t.integer  :role, default: 0, null: false
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
