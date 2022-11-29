@@ -24987,3 +24987,1358 @@ Processing by BranchesController#create as HTML
 Completed 422 Unprocessable Entity in 40ms (Views: 31.2ms | ActiveRecord: 0.3ms | Allocations: 15641)
 
 
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:21:15 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 3.2ms | Allocations: 2029)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 9.3ms | Allocations: 3341)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 3.5ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 26.3ms | Allocations: 8238)
+  Rendered layouts/_navbar.html.erb (Duration: 1.2ms | Allocations: 452)
+  Rendered layout layouts/application.html.erb (Duration: 69.0ms | Allocations: 30203)
+Completed 200 OK in 89ms (Views: 70.2ms | ActiveRecord: 1.4ms | Allocations: 39741)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2022-11-29 16:21:16 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 423)
+  Rendered layouts/_navbar.html.erb (Duration: 1.0ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 11155)
+Completed 200 OK in 53ms (Views: 41.7ms | ActiveRecord: 0.5ms | Allocations: 13935)
+
+
+Started GET "/users/2/edit" for 127.0.0.1 at 2022-11-29 16:21:18 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.8ms | Allocations: 821)
+  Rendered users/edit.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1185)
+  Rendered layouts/_navbar.html.erb (Duration: 1.0ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 11952)
+Completed 200 OK in 49ms (Views: 30.4ms | ActiveRecord: 0.3ms | Allocations: 14085)
+
+
+Started GET "/devise/users/2/edit" for 127.0.0.1 at 2022-11-29 16:22:04 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/devise/users/2/edit"):
+  
+Started GET "/devise/users/edit" for 127.0.0.1 at 2022-11-29 16:23:42 -0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.2ms | Allocations: 228)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2355)
+  Rendered layouts/_navbar.html.erb (Duration: 1.9ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 14027)
+Completed 200 OK in 49ms (Views: 43.5ms | ActiveRecord: 0.2ms | Allocations: 17124)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:26:55 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 4.8ms | Allocations: 2186)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 7.9ms | Allocations: 3696)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.7ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 23.5ms | Allocations: 9064)
+  Rendered layouts/_navbar.html.erb (Duration: 0.8ms | Allocations: 452)
+  Rendered layout layouts/application.html.erb (Duration: 93.6ms | Allocations: 31119)
+Completed 200 OK in 119ms (Views: 94.3ms | ActiveRecord: 4.2ms | Allocations: 41510)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:26:58 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 2.2ms | Allocations: 751)
+  Rendered users/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1062)
+  Rendered layouts/_navbar.html.erb (Duration: 2.4ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 29.5ms | Allocations: 11843)
+Completed 200 OK in 36ms (Views: 30.4ms | ActiveRecord: 0.2ms | Allocations: 13655)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:26:59 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.2ms | Allocations: 1912)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:69:in `user_params'
+app/controllers/users_controller.rb:25:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:31:26 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 15.2ms | Allocations: 5297)
+  Rendered users/new.html.erb within layouts/application (Duration: 18.5ms | Allocations: 5594)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 5675)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.2ms | Allocations: 8121)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<ActionView::Base:0x00000000052120>):
+    12:   <% end %>
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :email %><br />
+    16:     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    17:   </div>
+    18: 
+  
+app/views/users/_form.html.erb:15
+app/views/users/_form.html.erb:1
+app/views/users/new.html.erb:3
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:31:37 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 5.0ms | Allocations: 1721)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2055)
+  Rendered layouts/_navbar.html.erb (Duration: 1.6ms | Allocations: 806)
+  Rendered layout layouts/application.html.erb (Duration: 33.3ms | Allocations: 13763)
+Completed 200 OK in 42ms (Views: 35.4ms | ActiveRecord: 0.2ms | Allocations: 16423)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:33:30 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 33.7ms | Allocations: 17492)
+  Rendered users/new.html.erb within layouts/application (Duration: 35.7ms | Allocations: 17839)
+  Rendered layouts/_navbar.html.erb (Duration: 2.5ms | Allocations: 811)
+  Rendered layout layouts/application.html.erb (Duration: 69.7ms | Allocations: 29577)
+Completed 200 OK in 79ms (Views: 72.0ms | ActiveRecord: 0.2ms | Allocations: 32215)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:33:41 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 8.6ms | Allocations: 3511)
+  Rendered users/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 3607)
+  Rendered layouts/_navbar.html.erb (Duration: 0.9ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 37.4ms | Allocations: 14414)
+Completed 422 Unprocessable Entity in 47ms (Views: 38.4ms | ActiveRecord: 0.1ms | Allocations: 17171)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:33:50 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "test@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:33:50.710650"], ["updated_at", "2022-11-29 16:33:50.710650"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/12
+Completed 302 Found in 256ms (ActiveRecord: 4.2ms | Allocations: 6000)
+
+
+Started GET "/users/12" for 127.0.0.1 at 2022-11-29 16:33:50 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 3.9ms | Allocations: 171)
+  Rendered users/show.html.erb within layouts/application (Duration: 8.6ms | Allocations: 830)
+  Rendered layouts/_navbar.html.erb (Duration: 1.7ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | Allocations: 11551)
+Completed 200 OK in 42ms (Views: 32.1ms | ActiveRecord: 0.7ms | Allocations: 14328)
+
+
+Started GET "/users/12" for 127.0.0.1 at 2022-11-29 16:35:42 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 1.0ms | Allocations: 178)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 965)
+  Rendered layouts/_navbar.html.erb (Duration: 2.5ms | Allocations: 806)
+  Rendered layout layouts/application.html.erb (Duration: 54.6ms | Allocations: 12607)
+Completed 200 OK in 66ms (Views: 56.6ms | ActiveRecord: 0.4ms | Allocations: 15506)
+
+
+Started DELETE "/users/12" for 127.0.0.1 at 2022-11-29 16:35:43 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"12"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 25ms (ActiveRecord: 11.0ms | Allocations: 3734)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:35:43 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 3.2ms | Allocations: 703)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 1.7ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 3476)
+  Rendered layouts/_navbar.html.erb (Duration: 1.1ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | Allocations: 14250)
+Completed 200 OK in 45ms (Views: 39.0ms | ActiveRecord: 0.5ms | Allocations: 15947)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:35:46 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.4ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 13.3ms | Allocations: 3439)
+  Rendered users/new.html.erb within layouts/application (Duration: 14.6ms | Allocations: 3726)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 45.8ms | Allocations: 14464)
+Completed 200 OK in 54ms (Views: 46.2ms | ActiveRecord: 0.5ms | Allocations: 16141)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin2.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "admin@admin2.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:37:35.904829"], ["updated_at", "2022-11-29 16:37:35.904829"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:37:54 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 1.0ms | Allocations: 178)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 3.0ms | Allocations: 745)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 3.5ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 18.8ms | Allocations: 4054)
+  Rendered layouts/_navbar.html.erb (Duration: 2.3ms | Allocations: 818)
+  Rendered layout layouts/application.html.erb (Duration: 45.6ms | Allocations: 15736)
+Completed 200 OK in 54ms (Views: 48.1ms | ActiveRecord: 0.9ms | Allocations: 18171)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:39:30 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 22.1ms | Allocations: 6931)
+  Rendered users/new.html.erb within layouts/application (Duration: 23.9ms | Allocations: 7290)
+  Rendered layouts/_navbar.html.erb (Duration: 1.6ms | Allocations: 440)
+  Rendered layout layouts/application.html.erb (Duration: 63.4ms | Allocations: 29359)
+Completed 200 OK in 97ms (Views: 64.4ms | ActiveRecord: 2.4ms | Allocations: 39706)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:39:41 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f1277c70>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 12.7ms | Allocations: 3836)
+  Rendered users/new.html.erb within layouts/application (Duration: 13.4ms | Allocations: 3932)
+  Rendered layouts/_navbar.html.erb (Duration: 1.1ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 14739)
+Completed 422 Unprocessable Entity in 287ms (Views: 46.8ms | ActiveRecord: 1.5ms | Allocations: 19821)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:39:51 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f1838c40>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "test@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:39:51.950486"], ["updated_at", "2022-11-29 16:39:51.950486"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/14
+Completed 302 Found in 249ms (ActiveRecord: 4.4ms | Allocations: 4689)
+
+
+Started GET "/users/14" for 127.0.0.1 at 2022-11-29 16:39:51 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 1.1ms | Allocations: 682)
+  Rendered users/show.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1356)
+  Rendered layouts/_navbar.html.erb (Duration: 2.4ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 12077)
+Completed 200 OK in 47ms (Views: 37.0ms | ActiveRecord: 0.5ms | Allocations: 14884)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:40:27 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57d0140148>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 20.7ms | Allocations: 7443)
+  Rendered users/new.html.erb within layouts/application (Duration: 21.5ms | Allocations: 7559)
+  Rendered layouts/_navbar.html.erb (Duration: 0.8ms | Allocations: 439)
+  Rendered layout layouts/application.html.erb (Duration: 62.5ms | Allocations: 29624)
+Completed 422 Unprocessable Entity in 327ms (Views: 63.9ms | ActiveRecord: 3.2ms | Allocations: 43076)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:40:37 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test2.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f02e2e40>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test2.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test2.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "test@test2.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:40:37.546325"], ["updated_at", "2022-11-29 16:40:37.546325"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/15
+Completed 302 Found in 264ms (ActiveRecord: 4.7ms | Allocations: 4905)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2022-11-29 16:40:37 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 1.1ms | Allocations: 684)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1176)
+  Rendered layouts/_navbar.html.erb (Duration: 1.0ms | Allocations: 412)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 11965)
+Completed 200 OK in 41ms (Views: 31.1ms | ActiveRecord: 0.4ms | Allocations: 14707)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:40:46 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f0893470>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test3.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 14.2ms | Allocations: 3486)
+  Rendered users/new.html.erb within layouts/application (Duration: 14.4ms | Allocations: 3582)
+  Rendered layouts/_navbar.html.erb (Duration: 1.5ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 14393)
+Completed 422 Unprocessable Entity in 277ms (Views: 39.4ms | ActiveRecord: 0.7ms | Allocations: 18740)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:40:56 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"7"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f0d2bd20>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"7"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test3.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "test@test3.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:40:57.176722"], ["updated_at", "2022-11-29 16:40:57.176722"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/16
+Completed 302 Found in 241ms (ActiveRecord: 4.4ms | Allocations: 4603)
+
+
+Started GET "/users/16" for 127.0.0.1 at 2022-11-29 16:40:57 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 415)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 23.7ms | Allocations: 11176)
+Completed 200 OK in 32ms (Views: 24.4ms | ActiveRecord: 0.4ms | Allocations: 13275)
+
+
+Started DELETE "/users/16" for 127.0.0.1 at 2022-11-29 16:41:44 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"16"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 62ms (ActiveRecord: 8.6ms | Allocations: 12326)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:41:45 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 4.5ms | Allocations: 2066)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 11.2ms | Allocations: 3696)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 3.9ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 31.9ms | Allocations: 9022)
+  Rendered layouts/_navbar.html.erb (Duration: 1.9ms | Allocations: 452)
+  Rendered layout layouts/application.html.erb (Duration: 77.3ms | Allocations: 31111)
+Completed 200 OK in 85ms (Views: 78.6ms | ActiveRecord: 1.8ms | Allocations: 33296)
+
+
+Started GET "/users/15" for 127.0.0.1 at 2022-11-29 16:41:48 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 422)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 11147)
+Completed 200 OK in 32ms (Views: 25.7ms | ActiveRecord: 0.4ms | Allocations: 13338)
+
+
+Started DELETE "/users/15" for 127.0.0.1 at 2022-11-29 16:41:49 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 18ms (ActiveRecord: 5.7ms | Allocations: 3526)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:41:49 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 1.7ms | Allocations: 685)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.4ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 3496)
+  Rendered layouts/_navbar.html.erb (Duration: 1.0ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 14283)
+Completed 200 OK in 41ms (Views: 35.9ms | ActiveRecord: 0.6ms | Allocations: 15904)
+
+
+Started GET "/users/14" for 127.0.0.1 at 2022-11-29 16:41:52 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 413)
+  Rendered layouts/_navbar.html.erb (Duration: 2.9ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 11133)
+Completed 200 OK in 37ms (Views: 30.0ms | ActiveRecord: 0.3ms | Allocations: 13233)
+
+
+Started DELETE "/users/14" for 127.0.0.1 at 2022-11-29 16:41:53 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 21ms (ActiveRecord: 6.3ms | Allocations: 3481)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:41:53 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.2ms | Allocations: 685)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.1ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 3365)
+  Rendered layouts/_navbar.html.erb (Duration: 1.0ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 39.9ms | Allocations: 14113)
+Completed 200 OK in 47ms (Views: 40.7ms | ActiveRecord: 0.6ms | Allocations: 15751)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:41:55 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 9.7ms | Allocations: 2894)
+  Rendered users/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2983)
+  Rendered layouts/_navbar.html.erb (Duration: 1.5ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 13725)
+Completed 200 OK in 40ms (Views: 32.4ms | ActiveRecord: 0.5ms | Allocations: 15365)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:42:05 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"1"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f11252f0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"1"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.4ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 11.7ms | Allocations: 3727)
+  Rendered users/new.html.erb within layouts/application (Duration: 12.3ms | Allocations: 3823)
+  Rendered layouts/_navbar.html.erb (Duration: 1.8ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | Allocations: 14668)
+Completed 422 Unprocessable Entity in 283ms (Views: 38.8ms | ActiveRecord: 0.8ms | Allocations: 19500)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:42:16 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@admin2.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f1943c20>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@admin2.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin2.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 11.2ms | Allocations: 3715)
+  Rendered users/new.html.erb within layouts/application (Duration: 11.6ms | Allocations: 3811)
+  Rendered layouts/_navbar.html.erb (Duration: 0.8ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 14617)
+Completed 422 Unprocessable Entity in 284ms (Views: 34.0ms | ActiveRecord: 0.9ms | Allocations: 18946)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:42:31 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@admin4.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"8"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f1e8dd70>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@admin4.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"8"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin4.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "admin@admin4.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:42:31.603512"], ["updated_at", "2022-11-29 16:42:31.603512"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/17
+Completed 302 Found in 258ms (ActiveRecord: 5.3ms | Allocations: 4684)
+
+
+Started GET "/users/17" for 127.0.0.1 at 2022-11-29 16:42:31 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 415)
+  Rendered layouts/_navbar.html.erb (Duration: 1.2ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 11181)
+Completed 200 OK in 36ms (Views: 28.5ms | ActiveRecord: 0.3ms | Allocations: 13284)
+
+
+Started DELETE "/users/17" for 127.0.0.1 at 2022-11-29 16:43:03 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 37ms (ActiveRecord: 7.2ms | Allocations: 12370)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:43:04 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 4.6ms | Allocations: 2073)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 28)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 8.1ms | Allocations: 3696)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 4.4ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 26.9ms | Allocations: 8769)
+  Rendered layouts/_navbar.html.erb (Duration: 0.9ms | Allocations: 452)
+  Rendered layout layouts/application.html.erb (Duration: 73.0ms | Allocations: 30898)
+Completed 200 OK in 81ms (Views: 74.0ms | ActiveRecord: 1.6ms | Allocations: 33104)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:43:07 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 5.7ms | Allocations: 2894)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2983)
+  Rendered layouts/_navbar.html.erb (Duration: 0.9ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 32.0ms | Allocations: 13729)
+Completed 200 OK in 43ms (Views: 32.7ms | ActiveRecord: 0.5ms | Allocations: 15483)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:43:15 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"2"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f10f1978>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"2"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "test@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:43:16.035183"], ["updated_at", "2022-11-29 16:43:16.035183"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/18
+Completed 302 Found in 231ms (ActiveRecord: 4.1ms | Allocations: 5212)
+
+
+Started GET "/users/18" for 127.0.0.1 at 2022-11-29 16:43:16 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 421)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 11163)
+Completed 200 OK in 34ms (Views: 26.9ms | ActiveRecord: 0.3ms | Allocations: 13256)
+
+
+Started DELETE "/users/18" for 127.0.0.1 at 2022-11-29 16:48:18 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"18"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 18ms (ActiveRecord: 4.6ms | Allocations: 3471)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:48:18 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 1.9ms | Allocations: 685)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.5ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 3365)
+  Rendered layouts/_navbar.html.erb (Duration: 1.3ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 51.4ms | Allocations: 14126)
+Completed 200 OK in 58ms (Views: 51.8ms | ActiveRecord: 0.6ms | Allocations: 15753)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:48:21 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 8.4ms | Allocations: 2679)
+  Rendered users/new.html.erb within layouts/application (Duration: 8.8ms | Allocations: 2766)
+  Rendered layouts/_navbar.html.erb (Duration: 1.1ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 34.9ms | Allocations: 13553)
+Completed 200 OK in 40ms (Views: 35.5ms | ActiveRecord: 0.4ms | Allocations: 15169)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:49:07 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f02a8a10>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 273ms (ActiveRecord: 2.3ms | Allocations: 10297)
+
+
+  
+ArgumentError ('personnel' is not a valid role):
+  
+app/controllers/users_controller.rb:25:in `create'
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:49:18 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f01d0ac0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"personnel", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 237ms (ActiveRecord: 0.3ms | Allocations: 2154)
+
+
+  
+ArgumentError ('personnel' is not a valid role):
+  
+app/controllers/users_controller.rb:25:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 16:49:23 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 17.9ms | Allocations: 6990)
+  Rendered users/new.html.erb within layouts/application (Duration: 22.5ms | Allocations: 7328)
+  Rendered layouts/_navbar.html.erb (Duration: 1.7ms | Allocations: 821)
+  Rendered layout layouts/application.html.erb (Duration: 73.1ms | Allocations: 30148)
+Completed 200 OK in 85ms (Views: 77.1ms | ActiveRecord: 1.4ms | Allocations: 32571)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:49:34 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"staff", "branch_id"=>""}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f00166a8>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"staff", "branch_id"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@testagain3.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.6ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 8.2ms | Allocations: 3455)
+  Rendered users/new.html.erb within layouts/application (Duration: 8.6ms | Allocations: 3551)
+  Rendered layouts/_navbar.html.erb (Duration: 1.3ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 35.2ms | Allocations: 14358)
+Completed 422 Unprocessable Entity in 282ms (Views: 35.9ms | ActiveRecord: 1.6ms | Allocations: 19880)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 16:49:48 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"client", "branch_id"=>"7"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f0378c60>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain3.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"client", "branch_id"=>"7"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@testagain3.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 0], ["email", "test@testagain3.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 16:49:49.147720"], ["updated_at", "2022-11-29 16:49:49.147720"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/19
+Completed 302 Found in 239ms (ActiveRecord: 4.1ms | Allocations: 4728)
+
+
+Started GET "/users/19" for 127.0.0.1 at 2022-11-29 16:49:49 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 1.5ms | Allocations: 178)
+  Rendered users/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 887)
+  Rendered layouts/_navbar.html.erb (Duration: 1.6ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 11608)
+Completed 200 OK in 44ms (Views: 34.6ms | ActiveRecord: 0.5ms | Allocations: 14399)
+
+
+Started DELETE "/users/19" for 127.0.0.1 at 2022-11-29 16:49:51 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 19]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 20ms (ActiveRecord: 4.9ms | Allocations: 3517)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 16:49:51 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 4.0ms | Allocations: 1727)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.0ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 16.9ms | Allocations: 4695)
+  Rendered layouts/_navbar.html.erb (Duration: 2.3ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 41.9ms | Allocations: 15438)
+Completed 200 OK in 51ms (Views: 42.2ms | ActiveRecord: 1.1ms | Allocations: 17144)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 17:04:18 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain5.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"client", "branch_id"=>"6"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f0f92c58>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain5.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"client", "branch_id"=>"6"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@testagain5.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 0], ["email", "test@testagain5.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 17:04:19.145683"], ["updated_at", "2022-11-29 17:04:19.145683"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/20
+Completed 302 Found in 242ms (ActiveRecord: 5.3ms | Allocations: 4844)
+
+
+Started GET "/users/20" for 127.0.0.1 at 2022-11-29 17:04:19 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 415)
+  Rendered layouts/_navbar.html.erb (Duration: 1.7ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 25.2ms | Allocations: 11136)
+Completed 200 OK in 32ms (Views: 26.0ms | ActiveRecord: 0.3ms | Allocations: 13287)
+
+
+Started DELETE "/users/20" for 127.0.0.1 at 2022-11-29 17:04:21 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"20"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (1.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 24ms (ActiveRecord: 8.2ms | Allocations: 3487)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 17:04:21 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  [1m[36mBranch Load (0.4ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.9ms | Allocations: 714)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.4ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 16.1ms | Allocations: 3459)
+  Rendered layouts/_navbar.html.erb (Duration: 0.9ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 46.3ms | Allocations: 14202)
+Completed 200 OK in 56ms (Views: 46.6ms | ActiveRecord: 1.1ms | Allocations: 15840)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 17:04:24 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.5ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 14.8ms | Allocations: 2708)
+  Rendered users/new.html.erb within layouts/application (Duration: 15.6ms | Allocations: 2795)
+  Rendered layouts/_navbar.html.erb (Duration: 1.0ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 44.6ms | Allocations: 13533)
+Completed 200 OK in 52ms (Views: 45.0ms | ActiveRecord: 0.7ms | Allocations: 15151)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 17:05:46 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain5.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"3"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57d005e1d0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain5.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"3"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57d005e1d0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@testagain5.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"3"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@testagain5.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["role", 1], ["email", "test@testagain5.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 17:05:46.704779"], ["updated_at", "2022-11-29 17:05:46.704779"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/21
+Completed 302 Found in 269ms (ActiveRecord: 6.2ms | Allocations: 15656)
+
+
+Started GET "/users/21" for 127.0.0.1 at 2022-11-29 17:05:46 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 42)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 626)
+  Rendered layouts/_navbar.html.erb (Duration: 0.7ms | Allocations: 433)
+  Rendered layout layouts/application.html.erb (Duration: 43.0ms | Allocations: 22656)
+Completed 200 OK in 53ms (Views: 45.1ms | ActiveRecord: 0.4ms | Allocations: 26002)
+
+
+Started DELETE "/users/21" for 127.0.0.1 at 2022-11-29 17:05:50 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"21"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 21]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 24ms (ActiveRecord: 7.4ms | Allocations: 3745)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 17:05:50 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 12.9ms | Allocations: 3704)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 3.1ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 23.1ms | Allocations: 6455)
+  Rendered layouts/_navbar.html.erb (Duration: 1.7ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 56.0ms | Allocations: 17198)
+Completed 200 OK in 61ms (Views: 55.4ms | ActiveRecord: 1.6ms | Allocations: 18832)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 17:05:56 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 6.3ms | Allocations: 2894)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2983)
+  Rendered layouts/_navbar.html.erb (Duration: 2.1ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 13721)
+Completed 200 OK in 40ms (Views: 33.9ms | ActiveRecord: 0.4ms | Allocations: 15356)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 17:06:21 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"perso@personal.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"staff", "branch_id"=>"2"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f10a9790>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"perso@personal.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"staff", "branch_id"=>"2"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :branch_id. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f57f10a9790>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"perso@personal.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"staff", "branch_id"=>"2"}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "perso@personal.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 12.0ms | Allocations: 3429)
+  Rendered users/new.html.erb within layouts/application (Duration: 12.6ms | Allocations: 3525)
+  Rendered layouts/_navbar.html.erb (Duration: 1.1ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 36.9ms | Allocations: 14331)
+Completed 422 Unprocessable Entity in 307ms (Views: 37.9ms | ActiveRecord: 1.4ms | Allocations: 18906)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 17:06:45 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"perso@personal.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"staff", "branch_id"=>"7"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "perso@personal.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "role", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["role", 2], ["email", "perso@personal.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 17:06:45.839432"], ["updated_at", "2022-11-29 17:06:45.839432"]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+Redirected to http://127.0.0.1:3000/users/22
+Completed 302 Found in 307ms (ActiveRecord: 7.4ms | Allocations: 19082)
+
+
+Started GET "/users/22" for 127.0.0.1 at 2022-11-29 17:06:45 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.5ms | Allocations: 836)
+  Rendered users/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1416)
+  Rendered layouts/_navbar.html.erb (Duration: 1.1ms | Allocations: 432)
+  Rendered layout layouts/application.html.erb (Duration: 49.3ms | Allocations: 23444)
+Completed 200 OK in 59ms (Views: 50.9ms | ActiveRecord: 0.6ms | Allocations: 26747)
+
+
+Started DELETE "/users/22" for 127.0.0.1 at 2022-11-29 17:06:52 -0300
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:64:in `set_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 22]]
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 21ms (ActiveRecord: 6.2ms | Allocations: 3670)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-11-29 17:06:52 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 19)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 2.6ms | Allocations: 685)
+  Rendered users/_user.html.erb (Duration: 0.3ms | Allocations: 18)
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/users/_user.html.erb:4
+  Rendered users/_user.html.erb (Duration: 5.1ms | Allocations: 688)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered users/index.html.erb within layouts/application (Duration: 24.9ms | Allocations: 3435)
+  Rendered layouts/_navbar.html.erb (Duration: 0.8ms | Allocations: 402)
+  Rendered layout layouts/application.html.erb (Duration: 47.5ms | Allocations: 14215)
+Completed 200 OK in 55ms (Views: 48.0ms | ActiveRecord: 0.8ms | Allocations: 15854)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-11-29 17:06:55 -0300
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (1.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 13.0ms | Allocations: 2894)
+  Rendered users/new.html.erb within layouts/application (Duration: 13.5ms | Allocations: 2983)
+  Rendered layouts/_navbar.html.erb (Duration: 2.2ms | Allocations: 400)
+  Rendered layout layouts/application.html.erb (Duration: 42.6ms | Allocations: 13729)
+Completed 200 OK in 53ms (Views: 42.8ms | ActiveRecord: 1.2ms | Allocations: 15355)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-29 17:07:06 -0300
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@admin6.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin", "branch_id"=>"1"}, "commit"=>"Create User"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin6.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:28:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/users/_form.html.erb:39
+  Rendered users/_form.html.erb (Duration: 11.6ms | Allocations: 3490)
+  Rendered users/new.html.erb within layouts/application (Duration: 12.1ms | Allocations: 3586)
+  Rendered layouts/_navbar.html.erb (Duration: 2.3ms | Allocations: 416)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 14392)
+Completed 422 Unprocessable Entity in 311ms (Views: 41.6ms | ActiveRecord: 0.9ms | Allocations: 19624)
+
+

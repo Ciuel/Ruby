@@ -20,7 +20,7 @@
     </div>
   <% else %>
     <ul class="navbar-nav mr-auto">
-      <% if current_user.admin? || current_user.personnel?%>
+      <% if current_user.admin? || current_user.staff?%>
         <li class="nav-item">
           <%= link_to 'Usuarios', users_path, class: "nav-link" %>
         </li>

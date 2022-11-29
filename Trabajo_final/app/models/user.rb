@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  enum role: [:client, :admin, :personnel]
+  enum role: [:client, :admin, :staff]
+  validates :branch, presence: true, if: :staff?
+  validates :branch, absence: true, if: :admin?
+  validates :branch, absence: true, if: :client?
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

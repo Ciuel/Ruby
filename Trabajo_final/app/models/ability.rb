@@ -28,6 +28,41 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
-    # make admin can manage users
+    #A continuación se detalla qué operaciones puede realizar cada rol:
+    #
+    #     Administrador puede:
+    #         Visualizar los datos de su perfil de usuario.
+    #         Modificar su contraseña.
+    #         Gestionar todas las sucursales.
+    #         Gestionar los horarios de atención de todas las sucursales.
+    #         Gestionar todos los usuarios.
+    #     Personal bancario puede:
+    #         Visualizar los datos de su perfil de usuario.
+    #         Modificar su contraseña.
+    #         Visualizar la información de cualquier sucursal.
+    #         Consultar y atender turnos de su sucursal (no puede acceder a ningún tipo de operación de los turnos de otras sucursales distintas de la propia). Al atender un turno, le deberá cargar al mismo un comentario que indique el resultado de la atención (requerido), y se cambiará el estado del turno a atendido, guardando la información que indique qué usuario Personal bancario fue el que atendió el turno.
+    #         Visualizar la información de los usuarios con rol Cliente (no puede acceder a ningún tipo de operación de los usuarios con rol Administrador o Personal bancario).
+    #     Cliente puede:
+    #         Visualizar los datos de su perfil de usuario.
+    #         Modificar su contraseña.
+    #         Solicitar un turno para ser atendido en una sucursal (seleccionando la sucursal, el día y el horario de atención, y un motivo de la solicitud). Al solicitar un turno, el mismo deberá quedar en estado pendiente.
+    #         Modificar un turno propio con estado pendiente.
+    #         Cancelar un turno propio con estado pendiente, lo cual puede o bien cambiar el estado del mismo a cancelado, o bien eliminarlo por completo del sistema. Cualquiera sea el mecanismo de cancelación que elijas, el turno cancelado no deberá aparecer más en ninguna parte del sistema.
+    #         Visualizar sus propios turnos (pasados y futuros), en los cuales podrá ver la información referente a la atención (qué usuario atendió el turno y el comentario de resultado que ingresó) en los turnos que hayan sido atendidos.
+    #
+    # Los usuarios con rol Administrador y Personal bancario solo deberán poder ser creados por un usuario con rol Administrador, desde la interfaz de gestión de usuarios; en cambio los usuarios con rol Cliente podrán registrarse desde la interfaz pública del sistema.
+
+    if user.present?
+      if user.admin?
+        can :manage, :all
+      elsif user.staff?
+        can :read, Branch
+        can :manage, Turn, branch_id: user.branch_id
+        can :read, User, role: 0
+      elsif user.client?
+        can :manage, Turn, user_id: user.id
+      end
+    end
+
   end
 end
