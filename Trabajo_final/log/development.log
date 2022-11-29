@@ -15389,3 +15389,54 @@ Processing by BranchesController#index as HTML
 Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 0.3ms | Allocations: 12877)
 
 
+Started GET "/branches/4" for 127.0.0.1 at 2022-11-29 09:40:12 -0300
+Processing by BranchesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:68:in `set_branch'
+  Rendering layout layouts/application.html.erb
+  Rendering branches/show.html.erb within layouts/application
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 48)
+  Rendered branches/show.html.erb within layouts/application (Duration: 11.7ms | Allocations: 912)
+  Rendered layouts/_navbar.html.erb (Duration: 0.4ms | Allocations: 203)
+  Rendered layout layouts/application.html.erb (Duration: 53.4ms | Allocations: 22932)
+Completed 200 OK in 71ms (Views: 55.4ms | ActiveRecord: 1.7ms | Allocations: 28546)
+
+
+Started DELETE "/branches/4" for 127.0.0.1 at 2022-11-29 09:40:13 -0300
+Processing by BranchesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/branches_controller.rb:68:in `set_branch'
+  [1m[36mSchedule Delete All (4.6ms)[0m  [1m[31mDELETE FROM "schedules" WHERE "schedules"."branch_id" = ?[0m  [["branch_id", 4]]
+  ↳ app/controllers/branches_controller.rb:52:in `destroy'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."branch_id" = ?[0m  [["branch_id", 4]]
+  ↳ app/controllers/branches_controller.rb:54:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/branches_controller.rb:57:in `destroy'
+  [1m[36mBranch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "branches" WHERE "branches"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/branches_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/branches_controller.rb:57:in `destroy'
+Redirected to http://127.0.0.1:3000/branches
+Completed 302 Found in 52ms (ActiveRecord: 14.5ms | Allocations: 7415)
+
+
+Started GET "/branches" for 127.0.0.1 at 2022-11-29 09:40:13 -0300
+Processing by BranchesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering branches/index.html.erb within layouts/application
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches"[0m
+  ↳ app/views/branches/index.html.erb:6
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/_branch.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered branches/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1736)
+  Rendered layouts/_navbar.html.erb (Duration: 0.5ms | Allocations: 175)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 12362)
+Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.2ms | Allocations: 12738)
+
+

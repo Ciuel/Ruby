@@ -50,7 +50,10 @@ class BranchesController < ApplicationController
   # DELETE /branches/1 or /branches/1.json
   def destroy
     @branch.schedules.clear.destroy_all
-    User.where(branch_id: @branch.id).destroy_all
+    # for each user with this branch, set branch to nil
+    User.where(branch_id: params[:id]).each do |user|
+      user.update(branch_id: nil)
+    end
     @branch.destroy
 
     respond_to do |format|
