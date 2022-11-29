@@ -17298,3 +17298,387 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 30ms (Views: 29.7ms | ActiveRecord: 0.1ms | Allocations: 12028)
 
 
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBranches (20221124182705)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "branches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "telephone" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182705"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSchedules (20221124182844)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer NOT NULL, "day" varchar, "start_time" time, "end_time" time, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_89fc3319d8"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_schedules_on_branch_id" ON "schedules" ("branch_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124182844"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUniqueToBranchName (20221124211118)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_branches_on_name" ON "branches" ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221124211118"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20221125194805)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "branch_id" integer, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime(6), "last_sign_in_at" datetime(6), "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bda81e12f5"
+FOREIGN KEY ("branch_id")
+  REFERENCES "branches" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_users_on_branch_id" ON "users" ("branch_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221125194805"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-29 09:50:33.176105"], ["updated_at", "2022-11-29 09:50:33.176105"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Toy, Wiegand and King"], ["address", "142 McClure Shoal, North Gene, ME 30314"], ["telephone", 296], ["created_at", "2022-11-29 09:50:35.887999"], ["updated_at", "2022-11-29 09:50:35.887999"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "Domingo"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:35.929703"], ["updated_at", "2022-11-29 09:50:35.929703"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "Sabado"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 13:00:00"], ["created_at", "2022-11-29 09:50:35.946924"], ["updated_at", "2022-11-29 09:50:35.946924"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "Viernes"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 13:00:00"], ["created_at", "2022-11-29 09:50:35.962413"], ["updated_at", "2022-11-29 09:50:35.962413"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "Jueves"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:35.977166"], ["updated_at", "2022-11-29 09:50:35.977166"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 1], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 1], ["day", "Miercoles"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:35.992821"], ["updated_at", "2022-11-29 09:50:35.992821"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Homenick-Thiel"], ["address", "90950 Gerri Corners, Lake Royal, TN 22584"], ["telephone", 1], ["created_at", "2022-11-29 09:50:36.003077"], ["updated_at", "2022-11-29 09:50:36.003077"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "Domingo"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.028546"], ["updated_at", "2022-11-29 09:50:36.028546"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "Sabado"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 13:00:00"], ["created_at", "2022-11-29 09:50:36.044605"], ["updated_at", "2022-11-29 09:50:36.044605"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "Viernes"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.059362"], ["updated_at", "2022-11-29 09:50:36.059362"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "Jueves"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.075854"], ["updated_at", "2022-11-29 09:50:36.075854"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 2], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 2], ["day", "Miercoles"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.091903"], ["updated_at", "2022-11-29 09:50:36.091903"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.7ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Moore-Skiles"], ["address", "72718 Verena Mount, Arlinefort, ME 53994"], ["telephone", 1], ["created_at", "2022-11-29 09:50:36.103185"], ["updated_at", "2022-11-29 09:50:36.103185"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "Domingo"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:36.129453"], ["updated_at", "2022-11-29 09:50:36.129453"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.8ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "Sabado"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.144826"], ["updated_at", "2022-11-29 09:50:36.144826"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "Viernes"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 13:00:00"], ["created_at", "2022-11-29 09:50:36.166979"], ["updated_at", "2022-11-29 09:50:36.166979"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.3ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "Jueves"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.188340"], ["updated_at", "2022-11-29 09:50:36.188340"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["day", "Miercoles"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.205248"], ["updated_at", "2022-11-29 09:50:36.205248"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Schuster-Borer"], ["address", "Suite 907 47813 Sterling Rapids, South Glynda, ND 91991"], ["telephone", 0], ["created_at", "2022-11-29 09:50:36.213860"], ["updated_at", "2022-11-29 09:50:36.213860"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "Domingo"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 13:00:00"], ["created_at", "2022-11-29 09:50:36.229049"], ["updated_at", "2022-11-29 09:50:36.229049"]]
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "Sabado"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:36.253173"], ["updated_at", "2022-11-29 09:50:36.253173"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (7.0ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "Viernes"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 13:00:00"], ["created_at", "2022-11-29 09:50:36.293889"], ["updated_at", "2022-11-29 09:50:36.293889"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "Jueves"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 13:00:00"], ["created_at", "2022-11-29 09:50:36.307864"], ["updated_at", "2022-11-29 09:50:36.307864"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 4], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["day", "Miercoles"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.321789"], ["updated_at", "2022-11-29 09:50:36.321789"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Considine, Skiles and Medhurst"], ["address", "Suite 158 811 Rodriguez Estate, New Shannonfurt, KS 41953"], ["telephone", 0], ["created_at", "2022-11-29 09:50:36.331946"], ["updated_at", "2022-11-29 09:50:36.331946"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "Domingo"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.347600"], ["updated_at", "2022-11-29 09:50:36.347600"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "Sabado"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.362354"], ["updated_at", "2022-11-29 09:50:36.362354"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "Viernes"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.376043"], ["updated_at", "2022-11-29 09:50:36.376043"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "Jueves"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.393566"], ["updated_at", "2022-11-29 09:50:36.393566"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 5], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["day", "Miercoles"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.406984"], ["updated_at", "2022-11-29 09:50:36.406984"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Pouros, Weber and Kuhlman"], ["address", "4812 Metz Estate, Darrenport, NV 68118"], ["telephone", 625], ["created_at", "2022-11-29 09:50:36.417007"], ["updated_at", "2022-11-29 09:50:36.417007"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "Domingo"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.435528"], ["updated_at", "2022-11-29 09:50:36.435528"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "Sabado"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.449960"], ["updated_at", "2022-11-29 09:50:36.449960"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "Viernes"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.464596"], ["updated_at", "2022-11-29 09:50:36.464596"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "Jueves"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.492611"], ["updated_at", "2022-11-29 09:50:36.492611"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 6], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 6], ["day", "Miercoles"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:36.507719"], ["updated_at", "2022-11-29 09:50:36.507719"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Robel-Spencer"], ["address", "82403 Ladawn Shoals, Jodyport, AK 49512-3702"], ["telephone", 502], ["created_at", "2022-11-29 09:50:36.518974"], ["updated_at", "2022-11-29 09:50:36.518974"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.2ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "Domingo"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.536328"], ["updated_at", "2022-11-29 09:50:36.536328"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "Sabado"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.553611"], ["updated_at", "2022-11-29 09:50:36.553611"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "Viernes"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:36.569102"], ["updated_at", "2022-11-29 09:50:36.569102"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "Jueves"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.584497"], ["updated_at", "2022-11-29 09:50:36.584497"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 7], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 7], ["day", "Miercoles"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.598712"], ["updated_at", "2022-11-29 09:50:36.598712"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rohan-Walter"], ["address", "7764 Swaniawski Via, Port Kenton, MT 50585-5703"], ["telephone", 1], ["created_at", "2022-11-29 09:50:36.608326"], ["updated_at", "2022-11-29 09:50:36.608326"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "Domingo"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.623380"], ["updated_at", "2022-11-29 09:50:36.623380"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "Sabado"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.638153"], ["updated_at", "2022-11-29 09:50:36.638153"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "Viernes"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.673195"], ["updated_at", "2022-11-29 09:50:36.673195"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "Jueves"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.689216"], ["updated_at", "2022-11-29 09:50:36.689216"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 8], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 8], ["day", "Miercoles"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.704485"], ["updated_at", "2022-11-29 09:50:36.704485"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.3ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Lesch, Cronin and Koch"], ["address", "901 Elmira Center, East Marshall, IL 73579-7985"], ["telephone", 0], ["created_at", "2022-11-29 09:50:36.714688"], ["updated_at", "2022-11-29 09:50:36.714688"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "Domingo"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.730253"], ["updated_at", "2022-11-29 09:50:36.730253"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "Sabado"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:36.751458"], ["updated_at", "2022-11-29 09:50:36.751458"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "Viernes"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.766308"], ["updated_at", "2022-11-29 09:50:36.766308"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.4ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "Jueves"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.779909"], ["updated_at", "2022-11-29 09:50:36.779909"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 9], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 9], ["day", "Miercoles"], ["start_time", "2000-01-01 12:00:00"], ["end_time", "2000-01-01 16:00:00"], ["created_at", "2022-11-29 09:50:36.794893"], ["updated_at", "2022-11-29 09:50:36.794893"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Create (0.2ms)[0m  [1m[32mINSERT INTO "branches" ("name", "address", "telephone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Franecki Inc"], ["address", "Apt. 792 35740 Stanton Alley, Kleinborough, AZ 00388-8250"], ["telephone", 392], ["created_at", "2022-11-29 09:50:36.805034"], ["updated_at", "2022-11-29 09:50:36.805034"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Domingo"], ["branch_id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "Domingo"], ["start_time", "2000-01-01 11:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.820095"], ["updated_at", "2022-11-29 09:50:36.820095"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Sabado"], ["branch_id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "Sabado"], ["start_time", "2000-01-01 09:00:00"], ["end_time", "2000-01-01 17:00:00"], ["created_at", "2022-11-29 09:50:36.834537"], ["updated_at", "2022-11-29 09:50:36.834537"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Viernes"], ["branch_id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "Viernes"], ["start_time", "2000-01-01 10:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.849286"], ["updated_at", "2022-11-29 09:50:36.849286"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Jueves"], ["branch_id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "Jueves"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 14:00:00"], ["created_at", "2022-11-29 09:50:36.863720"], ["updated_at", "2022-11-29 09:50:36.863720"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBranch Load (0.1ms)[0m  [1m[34mSELECT "branches".* FROM "branches" WHERE "branches"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."day" = ? AND "schedules"."branch_id" = ? LIMIT ?[0m  [["day", "Miercoles"], ["branch_id", 10], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("branch_id", "day", "start_time", "end_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["branch_id", 10], ["day", "Miercoles"], ["start_time", "2000-01-01 08:00:00"], ["end_time", "2000-01-01 15:00:00"], ["created_at", "2022-11-29 09:50:36.878799"], ["updated_at", "2022-11-29 09:50:36.878799"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "delila.sauer@heathcote.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "delila.sauer@heathcote.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:37.113084"], ["updated_at", "2022-11-29 09:50:37.113084"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jasper.romaguera@harvey.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", 3], ["email", "jasper.romaguera@harvey.co"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:37.347179"], ["updated_at", "2022-11-29 09:50:37.347179"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bill@crooks.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["email", "bill@crooks.info"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:37.561928"], ["updated_at", "2022-11-29 09:50:37.561928"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lacresha.rolfson@stokes-larkin.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "lacresha.rolfson@stokes-larkin.info"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:37.796564"], ["updated_at", "2022-11-29 09:50:37.796564"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sophia.predovic@klein.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "sophia.predovic@klein.net"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:38.009164"], ["updated_at", "2022-11-29 09:50:38.009164"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "chung@schneider-adams.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "chung@schneider-adams.org"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:38.219291"], ["updated_at", "2022-11-29 09:50:38.219291"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "nickolas.rippin@kuhn-okon.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "nickolas.rippin@kuhn-okon.biz"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:38.442522"], ["updated_at", "2022-11-29 09:50:38.442522"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "renita@cummerata.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", 4], ["email", "renita@cummerata.info"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:38.651896"], ["updated_at", "2022-11-29 09:50:38.651896"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joseph.schmidt@lemke-kohler.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "joseph.schmidt@lemke-kohler.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:38.872425"], ["updated_at", "2022-11-29 09:50:38.872425"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brad_grimes@ratke.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", 5], ["email", "brad_grimes@ratke.io"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:39.094261"], ["updated_at", "2022-11-29 09:50:39.094261"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("branch_id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["branch_id", nil], ["email", "admin@admin.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2022-11-29 09:50:39.304784"], ["updated_at", "2022-11-29 09:50:39.304784"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2022-11-29 09:51:01 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 287)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:8
+  Rendered layouts/_navbar.html.erb (Duration: 20.4ms | Allocations: 6788)
+  Rendered layout layouts/application.html.erb (Duration: 257.0ms | Allocations: 28712)
+Completed 200 OK in 277ms (Views: 266.0ms | ActiveRecord: 1.3ms | Allocations: 29598)
+
+

@@ -26,10 +26,15 @@ end
 end
 #Make 10 users and assign them random roles
 10.times do
-  User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: rand(0..2), branch_id: rand(1..10))
+  role = rand(0..2)
+  if role == 1
+    User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role:1, branch_id: rand(1..10))
+  else
+    User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: [0,2].sample)
+  end
 end
 #create admin user
 User.create(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1)
-p User.where(email: 'admin@admin.com').first
+
 
 p "db seeded"
