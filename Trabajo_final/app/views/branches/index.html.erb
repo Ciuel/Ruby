@@ -1,14 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Branches</h1>
 
-<div id="branches">
-  <% @branches.each do |branch| %>
-    <%= render branch %>
-    <p>
-      <%= link_to "Show this branch", branch %>
-    </p>
-  <% end %>
+<h1 class="text-center">Sucursales</h1>
+<br>
+<div class="d-flex justify-content-center">
+  <%= link_to "New branch", new_branch_path, class: "btn btn-secondary" %>
 </div>
+<br>
+<div class="d-flex justify-content-center">
+  <div id="branches" class="d-flex flex-column " style="width: 40rem">
+    <% @branches.each do |branch| %>
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= branch.name %></h5>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <%= link_to "Administrar", branch, class: "btn btn-secondary align-self-center" %>
+          </div>
+        </div>
 
-<%= link_to "New branch", new_branch_path %>
+      </div>
+    <% end %>
+  </div>
+</div>
