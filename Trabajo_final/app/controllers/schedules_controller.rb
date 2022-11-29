@@ -33,13 +33,13 @@ class SchedulesController < ApplicationController
 
   # PUT branches/1/schedules/1
   def update
+    p @schedule
+    p "="*50
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to branch_schedule_url(@schedule), notice: "Schedule was successfully updated." }
-        format.json { render :show, status: :ok, location: @schedule }
+        format.html { redirect_to branch_schedules_url(@branch), notice: "Schedule was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,6 +58,10 @@ class SchedulesController < ApplicationController
     end
 
     def set_schedule
+      p "-----------------------------------"
+      puts @branch.id
+      puts @branch.schedules.ids
+
       @schedule = @branch.schedules.find(params[:id])
     end
 

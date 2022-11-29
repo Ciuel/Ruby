@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Branch</th>
     <th>Day</th>
     <th>Start time</th>
     <th>End time</th>
@@ -13,10 +12,9 @@
 
 <% @schedules.each do |schedule| %>
   <tr>
-    <td><%= schedule.branch.name %></td>
     <td><%= schedule.day %></td>
-    <td><%= schedule.start_time %></td>
-    <td><%= schedule.end_time %></td>
+    <td><%= schedule.start_time.to_s(:time) %></td>
+    <td><%= schedule.end_time.to_s(:time)  %></td>
     <td><%= link_to 'Show', [schedule.branch, schedule] %></td>
     <td><%= link_to 'Edit', edit_branch_schedule_path(schedule.branch, schedule) %></td>
     <td><%= link_to 'Destroy', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %></td>
@@ -28,3 +26,5 @@
 <br />
 
 <%= link_to 'New Schedule', new_branch_schedule_path(params[:branch_id]) %>
+<%= link_to 'Back', branch_path(params[:branch_id])%>
+

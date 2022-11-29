@@ -6,11 +6,22 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+class Set
+  def pop
+    temp = self.to_a.pop
+    self.delete(temp)
+    temp
+  end
+end
+
 #Make 10 example branches with its respective schedules
 10.times do
   branch = Branch.create(name: Faker::Company.name, address: Faker::Address.full_address, telephone: Faker::PhoneNumber.phone_number)
+  #Make a set containing all weekdays in spanish
+  days = Set.new(["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"])
   5.times do
-    branch.schedules.create(day: Faker::Date.between(from: '2021-01-01', to: '2021-12-31'), start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now), end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now))
+    Schedule.create(branch_id: branch.id, day: days.pop, start_time: Time.parse("#{rand(8..12)}:00"), end_time: Time.parse("#{rand(13..17)}:00"))
+
   end
 end
 #Make 10 users and assign them random roles

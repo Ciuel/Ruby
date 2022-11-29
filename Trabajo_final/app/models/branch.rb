@@ -1,3 +1,4 @@
 class Branch < ApplicationRecord
-  has_many :schedules
+  #has many schedules delete cascade
+  has_many :schedules, dependent: :destroy
 end

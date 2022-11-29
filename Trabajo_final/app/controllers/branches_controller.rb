@@ -49,6 +49,8 @@ class BranchesController < ApplicationController
 
   # DELETE /branches/1 or /branches/1.json
   def destroy
+    @branch.schedules.clear.destroy_all
+    User.where(branch_id: @branch.id).destroy_all
     @branch.destroy
 
     respond_to do |format|
