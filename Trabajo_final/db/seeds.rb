@@ -29,6 +29,7 @@ end
   User.create(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: rand(0..2), branch_id: rand(1..10))
 end
 #create admin user
-User.create(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1, branch_id: 1)
+User.create(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1)
+p User.where(email: 'admin@admin.com').first
 
 p "db seeded"
