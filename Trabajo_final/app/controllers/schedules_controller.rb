@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_branch
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]

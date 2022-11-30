@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.accessible_by(current_ability)
   end
 
   # GET /users/1 or /users/1.json
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params.compact_blank)
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else

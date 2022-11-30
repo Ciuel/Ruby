@@ -51,18 +51,14 @@ class Ability
     #         Visualizar sus propios turnos (pasados y futuros), en los cuales podrá ver la información referente a la atención (qué usuario atendió el turno y el comentario de resultado que ingresó) en los turnos que hayan sido atendidos.
     #
     # Los usuarios con rol Administrador y Personal bancario solo deberán poder ser creados por un usuario con rol Administrador, desde la interfaz de gestión de usuarios; en cambio los usuarios con rol Cliente podrán registrarse desde la interfaz pública del sistema.
-
+    # methods :index, :show, :create, :update, :destroy
     if user.present?
       if user.admin?
-        can :manage, :all
+        can [:index, :show, :create, :update, :destroy], :all
       elsif user.staff?
-        can :read, Branch
-        can :manage, Turn, branch_id: user.branch_id
-        can :read, User, role: 0
-      elsif user.client?
-        can :manage, Turn, user_id: user.id
+        can [:index, :show], Branch
+        can [:index, :show], User, role: 'client'
       end
     end
-
   end
 end
