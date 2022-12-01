@@ -58,7 +58,11 @@ class Ability
       elsif user.staff?
         can [:index, :show], Branch
         can [:index, :show], User, role: 'client'
+        can [:update], Appointment, state: "pending"
       end
+    elsif user.client?
+      can [:index, :show],Appointment, user_id: current_user.id
+    end
     end
   end
-end
+

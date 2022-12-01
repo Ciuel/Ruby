@@ -1,6 +1,6 @@
 class Branch < ApplicationRecord
-  #has many schedules delete cascade
   has_many :schedules, dependent: :destroy
+  has_many :appointments
   validates :name, :address, :telephone, presence: true
   def to_s
     name

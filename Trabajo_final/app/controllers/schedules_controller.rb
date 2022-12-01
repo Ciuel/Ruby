@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
-  load_and_authorize_resource
   before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_branch
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
@@ -58,10 +58,6 @@ class SchedulesController < ApplicationController
     end
 
     def set_schedule
-      p "-----------------------------------"
-      puts @branch.id
-      puts @branch.schedules.ids
-
       @schedule = @branch.schedules.find(params[:id])
     end
 
