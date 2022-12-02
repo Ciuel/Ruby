@@ -23,15 +23,16 @@
     <strong>Status:</strong>
     <%= appointment.status %>
   </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= appointment.comment %>
-  </p>
-
-  <p>
-    <strong>Staff:</strong>
-    <%= appointment.staff_id %>
-  </p>
-
+  <% if !appointment.comment.blank? %>
+    <p>
+      <strong>Comment:</strong>
+      <%= appointment.comment %>
+    </p>
+  <% end %>
+  <% if appointment.comment %>
+    <p>
+      <strong>Staff:</strong>
+      <%= appointment.staff_id %>
+    </p>
+  <% end %>
 </div>

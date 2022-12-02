@@ -5,8 +5,9 @@
 <div id="appointments">
   <% @appointments.each do |appointment| %>
     <%= render appointment %>
+    <%= appointment.status == 0 %>
     <p>
-      <%= link_to "Show this appointment", appointment %>
+      <%= link_to "Show this appointment", branch_appointment_path(id: appointment.id) %>
     </p>
   <% end %>
 </div>

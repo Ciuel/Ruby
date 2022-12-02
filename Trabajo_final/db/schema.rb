@@ -14,11 +14,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_151833) do
   create_table "appointments", force: :cascade do |t|
     t.integer "branch_id", null: false
     t.integer "user_id", null: false
+    t.integer "staff_id"
     t.datetime "date"
     t.string "reason"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.text "comment"
-    t.integer "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["branch_id"], name: "index_appointments_on_branch_id"

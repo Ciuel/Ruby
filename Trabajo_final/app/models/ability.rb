@@ -55,14 +55,18 @@ class Ability
     if user.present?
       if user.admin?
         can [:index, :show, :create, :update, :destroy], :all
-      elsif user.staff?
+      end
+      if user.staff?
         can [:index, :show], Branch
         can [:index, :show], User, role: 'client'
-        can [:update], Appointment, state: "pending"
-      end
-    elsif user.client?
-      can [:index, :show],Appointment, user_id: current_user.id
-    end
-    end
-  end
+        can [:index, :show, update], Appointment, branch_id: user.branch_id, state: "pending",date: Date.today
 
+      end
+      if user.client?
+        can [:index], Branch
+        can [:index, :show, :create], Appointment, user_id: user.id
+      end
+    end
+
+  end
+end
