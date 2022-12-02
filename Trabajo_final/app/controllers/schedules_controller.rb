@@ -58,10 +58,6 @@ class SchedulesController < ApplicationController
     end
 
     def set_schedule
-      p "-----------------------------------"
-      puts @branch.id
-      puts @branch.schedules.ids
-
       @schedule = @branch.schedules.find(params[:id])
     end
 
