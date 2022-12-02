@@ -1,6 +1,6 @@
 class BranchesController < ApplicationController
-  load_and_authorize_resource
   before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_branch, only: %i[ show edit update destroy ]
 
   # GET /branches or /branches.json
