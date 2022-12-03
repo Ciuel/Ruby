@@ -6,7 +6,12 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments or /appointments.json
   def index
-    @appointments = Appointment.all
+    if current_user.staff?
+      @appointments = @branch.appointments.accessible_by(current_ability)
+    else
+      @appointments = Appointment.accessible_by(current_ability)
+    end
+
   end
 
   # GET /appointments/1 or /appointments/1.json
@@ -15,10 +20,10 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @appointment =  @branch.appointments.build
+    @appointment = @branch.appointments.build
   end
 
-
+  #PATCH /appointments/1/edit
 
   # GET /appointments/1/edit
   def edit
@@ -37,6 +42,14 @@ class AppointmentsController < ApplicationController
 
   # PATCH/PUT /appointments/1 or /appointments/1.json
   def update
+    if @appointment.status == "Pending"
+      if params[:status] == 'Finished'
+        @appointment.status = :Finished
+
+      elsif params[:status] == 'Canceled'
+        @appointment.status = :Canceled
+      end
+    end
     respond_to do |format|
       if @appointment.update(appointment_params)
         format.html { redirect_to branch_appointments_url(@branch), notice: "Appointment was successfully updated." }
@@ -55,18 +68,25 @@ class AppointmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def set_branch
-    @branch = Branch.find(params[:branch_id])
+    if params[:branch_id]
+      @branch = Branch.find(params[:branch_id])
+    elsif current_user.staff?
+      @branch = current_user.branch
+
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_appointment
-      @appointment = Appointment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def appointment_params
-      params.require(:appointment).permit(:branch_id, :date, :reason, :comment, :staff_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def appointment_params
+    params.require(:appointment).permit(:branch_id, :date, :reason, :comment, :staff_id)
+  end
 end

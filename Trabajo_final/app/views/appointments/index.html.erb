@@ -5,11 +5,11 @@
 <div id="appointments">
   <% @appointments.each do |appointment| %>
     <%= render appointment %>
-    <%= appointment.status == 0 %>
     <p>
-      <%= link_to "Show this appointment", branch_appointment_path(id: appointment.id) %>
+      <%= link_to "Show", branch_appointment_path(appointment.branch_id, appointment) %>
+      <% if can? :edit, Appointment %>
+        <%= link_to "Atender", edit_branch_appointment_path(appointment.branch_id, appointment) %>
+      <% end %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New appointment", new_branch_appointment_path %>

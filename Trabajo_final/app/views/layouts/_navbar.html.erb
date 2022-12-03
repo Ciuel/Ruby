@@ -33,6 +33,15 @@
           <%= link_to 'Sucursales', branches_path, class: "nav-link" %>
         </li>
       <% end %>
+      <% if can? :index, Appointment %>
+        <li class="nav-item">
+          <% if current_user.staff? %>
+            <%= link_to 'Turnos', branch_appointments_path(branch_id: current_user.branch_id), class: "nav-link" %>
+          <% else %>
+            <%= link_to 'Turnos', client_appointments_path, class: "nav-link" %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
 
 

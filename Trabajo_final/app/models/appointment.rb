@@ -5,7 +5,15 @@ class Appointment < ApplicationRecord
   belongs_to :staff, optional: true, class_name: 'User'
   validate :date_is_within_branch_hours
 
+  validates :comment, allow_nil: true, format: { with: /\A\S+\z/, message: "El comentario no puede estar vacío" }
 
+  # validate :appointment_is_unique
+  # def appointment_is_unique
+  #  if date.present?
+  #   if Appointment.where(branch_id: branch_id, staff_id: staff_id, date: date).exists?
+  #    errors.add(:date, "No hay turnos disponibles para ese horario)
+  #  end
+  # end
 
   def date_is_within_branch_hours
     if date.present?

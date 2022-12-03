@@ -30,7 +30,7 @@ end
   if role == 2
     User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role:2, branch_id: rand(1..10))
   else
-    User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: rand(0..1))
+    User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 0)
   end
 end
 #create admin user
