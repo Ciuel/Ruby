@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_11_30_151833) do
   create_table "appointments", force: :cascade do |t|
-    t.integer "branch_id", null: false
+    t.integer "branch_id"
     t.integer "user_id", null: false
     t.integer "staff_id"
     t.datetime "date"
