@@ -6,9 +6,6 @@ class Schedule < ApplicationRecord
   end
 
   belongs_to :branch
-
-  before_destroy :destroy_schedules
-  #validate presence of all attributes
   validates :day, :start_time, :end_time, presence: true
   validates :end_time, comparison: { greater_than: :start_time , message: ": El tiempo de finalización debe ser mayor al de inicio"}
   validates :day, inclusion: { in: DIAS, message: "%{value} no es un dia" }

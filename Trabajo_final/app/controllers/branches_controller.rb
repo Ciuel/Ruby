@@ -51,8 +51,7 @@ class BranchesController < ApplicationController
 
   # DELETE /branches/1 or /branches/1.json
   def destroy
-    @branch.appointments.where.not(status: 0).update_all(branch_id: nil)
-    @branch.schedules.clear.destroy_all
+    @branch.appointments.where.not(status: 0).destroy_all
     @branch.destroy
 
     respond_to do |format|
