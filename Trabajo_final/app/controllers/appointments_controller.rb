@@ -45,7 +45,7 @@ class AppointmentsController < ApplicationController
     if @appointment.status == "Pending"
       if params[:status] == 'Finished'
         @appointment.status = :Finished
-
+        @appointment.staff_id = current_user.id
       elsif params[:status] == 'Canceled'
         @appointment.status = :Canceled
       end
