@@ -51,8 +51,12 @@ class BranchesController < ApplicationController
 
   # DELETE /branches/1 or /branches/1.json
   def destroy
-    @branch.appointments.where.not(status: 0).destroy_all
+    if @branch.appointments.where(status: 0).empty?
+      @branch.appointments.where.not(status: 0).destroy_all
+    end
     @branch.destroy
+
+
 
     respond_to do |format|
       format.html { redirect_to branches_url, notice: "Branch was successfully destroyed." }

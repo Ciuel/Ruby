@@ -61,11 +61,16 @@ class AppointmentsController < ApplicationController
 
   # DELETE /appointments/1 or /appointments/1.json
   def destroy
-    @appointment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to branch_appointments_path, notice: "Appointment was successfully destroyed." }
-      format.json { head :no_content }
+    if current_user.client?
+      if @appointment.status == "Pending"
+        @appointment.status = :Canceled
+        @appointment.save
+      end
+    else
+      @appointment.destroy
+      respond_to do |format|
+        format.html { redirect_to branch_appointments_path, notice: "Appointment was successfully destroyed." }
+      end
     end
   end
 

@@ -19,9 +19,8 @@ end
   branch = Branch.create!(name: Faker::Company.name, address: Faker::Address.full_address, telephone: Faker::PhoneNumber.phone_number)
   #Make a set containing all weekdays in spanish
   days = Set.new(%w[Lunes Martes Miercoles Jueves Viernes Sabado Domingo])
-  5.times do
+  7.times do
     Schedule.create!(branch_id: branch.id, day: days.pop, start_time: Time.parse("#{rand(8..12)}:00"), end_time: Time.parse("#{rand(13..17)}:00"))
-
   end
 end
 #Make 10 users and assign them random roles
@@ -33,6 +32,18 @@ end
     User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 0)
   end
 end
-#create admin user
-u = User.create!(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1)
+
+User.create!(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1)
+#Create some appointments for every user with the role client, the appointments must be between the scheduled hours for that weekday
+User.where(role: 0).each do |user|
+  rand(0..5).times do
+    branch = Branch.where(id:rand(1..10)).first
+    schedule = branch.schedules.for_day(Date.today)
+    date = DateTime.now.change(hour: schedule.start_time.hour+1, min: schedule.start_time.min)
+    Appointment.create(branch_id: branch.id, user_id: user.id, staff_id: nil, date: date, reason: Faker::BossaNova, status: 0, comment: nil)
+  end
+end
+
+
+
 p "db seeded"

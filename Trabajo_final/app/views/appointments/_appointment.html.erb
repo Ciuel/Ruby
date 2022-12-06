@@ -1,13 +1,15 @@
 <div id="<%= dom_id appointment %>">
   <p>
     <strong>Branch:</strong>
-    <%= appointment.branch_id %>
+    <%= appointment.branch.name %>
   </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= appointment.user_id %>
-  </p>
+  <% if current_user != appointment.user_id %>
+    <p>
+      <strong>User:</strong>
+      <%= appointment.user.email %>
+    </p>
+  <% end %>
 
   <p>
     <strong>Date:</strong>
@@ -23,7 +25,7 @@
     <strong>Status:</strong>
     <%= appointment.status %>
   </p>
-  <% if !appointment.comment.blank? %>
+  <% if appointment.comment %>
     <p>
       <strong>Comment:</strong>
       <%= appointment.comment %>

@@ -6,7 +6,14 @@ class Appointment < ApplicationRecord
 
   validate :date_is_within_branch_hours
 
-  validates :comment, allow_nil: true, format: { with: /\A\S+\z/, message: "El comentario no puede estar vacío" }
+  #validate that the comment either is nil or has text but is not an empty string
+  validate :comment_is_not_empty_string
+
+  def comment_is_not_empty_string
+    if comment.present? && comment.empty?
+      errors.add(:comment, "El comentario no puede estar vacío")
+    end
+  end
 
   # validate :appointment_is_unique
   # def appointment_is_unique

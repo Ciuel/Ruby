@@ -58,13 +58,13 @@ class Ability
       end
       if user.staff?
         can [:index, :show], Branch
+        can [:index, :show], Schedule
         can [:index, :show], User, role: 'client'
-        can [:index, :show, :update], Appointment, branch_id: user.branch_id, status: [0, 2], date: Date.today..Date.today+1.day
-
+        can [:index, :show], Appointment, branch_id: user.branch_id, status: [0, 2], date: Date.today..Date.today+1.day
+        can [:update], Appointment, branch_id: user.branch_id, status: 0, date: Date.today..Date.today+1.day
       end
       if user.client?
         can [:index], Branch
-
         can [:index, :show, :create, :destroy], Appointment, user_id: user.id
       end
     end
