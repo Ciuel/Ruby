@@ -1,9 +1,16 @@
 <p style="color: green"><%= notice %></p>
+<div class="d-flex justify-content-center">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <%= render @appointment %>
+  </div>
+  <ul class="list-group list-group-flush">
 
-<%= render @appointment %>
-
-<div>
-  <%= link_to "Edit this appointment", edit_branch_appointment_path(@appointment) %> |
-  <%= link_to "Back to appointments", branch_appointments_path %>
-
+  </ul>
+  <div class="card-body">
+    <%= link_to "Editar", edit_branch_appointment_path(@appointment), class: "card-link" %> |
+    <%= link_to "Volver", branch_appointments_path, class: "card-link" %>
+  </div>
+</div>
 </div>

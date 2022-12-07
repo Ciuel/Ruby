@@ -68,6 +68,5 @@ class Ability
         can [:index, :show, :create, :destroy], Appointment, user_id: user.id
       end
     end
-
   end
 end

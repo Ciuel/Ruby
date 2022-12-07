@@ -14,8 +14,13 @@
   <% end %>
 
   <p>
-    <strong>Hora:</strong>
+    <% if current_user.id != appointment.user_id %>
+      <strong>Hora:</strong>
     <%= appointment.date.strftime("%H:%M") %>
+    <% else %>
+      <strong>Fecha y Hora:</strong>
+    <%= appointment.date.strftime("%Y-%m-%d %H:%M") %>
+    <% end %>
   </p>
 
   <p>

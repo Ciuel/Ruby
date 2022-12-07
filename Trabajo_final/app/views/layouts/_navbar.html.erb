@@ -1,57 +1,41 @@
-<nav class="navbar navbar-expand-lg bg-danger">
-  <%= link_to 'RubyBank', root_path, class: "navbar-brand" %>
 
+<nav class="navbar navbar-expand-md bg-danger">
+  <%= link_to image_tag("RubyBankLogo.png", class: "img-fluid"), root_path, class: "navbar-brand m-2", style: "width:15rem" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <% if user_signed_in? %>
 
-  <% if !user_signed_in? %>
-    <div class="d-flex justify-content-right">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse d-flex" >
+      <ul class="navbar-nav mr-auto">
+        <% if can? :index, User %>
+          <li class="nav-item">
+            <%= link_to 'Usuarios', users_path, class: "nav-link", style: "font-size: 1.5rem !important"  %>
+          </li>
+        <% end %>
+        <% if can? :index, Branch %>
+          <li class="nav-item">
+            <%= link_to 'Sucursales', branches_path, class: "nav-link", style: "font-size: 1.5rem !important" %>
+          </li>
+        <% end %>
+        <% if can? :index, Appointment %>
+          <li class="nav-item">
+            <% if current_user.staff? %>
+              <%= link_to 'Turnos', branch_appointments_path(branch_id: current_user.branch_id), class: "nav-link", style: "font-size: 1.5rem !important" %>
+            <% else %>
+              <%= link_to 'Turnos', client_appointments_path, class: "nav-link", style: "font-size: 1.5rem !important" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="d-flex ms-auto">
+        <%= link_to "Editar Perfil", edit_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0 m-2" %>
 
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0" %>
-            </li>
-          </ul>
-        </div>
+        <p class="nav-item">
+          <%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary my-2 my-sm-0 m-2" %>
+        </p>
       </div>
     </div>
-  <% else %>
-    <ul class="navbar-nav mr-auto">
-      staff: <%= current_user.staff? %>
-      admin: <%= current_user.admin? %>
-      client: <%= current_user.client? %>
-      <% if can? :index, User %>
-        <li class="nav-item">
-          <%= link_to 'Usuarios', users_path, class: "nav-link" %>
-        </li>
-      <% end %>
-      <% if can? :index, Branch %>
-        <li class="nav-item">
-          <%= link_to 'Sucursales', branches_path, class: "nav-link" %>
-        </li>
-      <% end %>
-      <% if can? :index, Appointment %>
-        <li class="nav-item">
-          <% if current_user.staff? %>
-            <%= link_to 'Turnos', branch_appointments_path(branch_id: current_user.branch_id), class: "nav-link" %>
-          <% else %>
-            <%= link_to 'Turnos', client_appointments_path, class: "nav-link" %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-
-
-    <div class="d-flex justify-content-right">
-      <%= link_to "Editar Peril", edit_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0" %>
-      <p class="nav-item">
-        <%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary my-2 my-sm-0" %>
-      </p>
-    </div>
   <% end %>
-
-
 </nav>
+

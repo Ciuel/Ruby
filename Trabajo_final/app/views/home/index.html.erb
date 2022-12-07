@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<div>
-  <H1> Welcome to RubyBank </H1>
-  <% current_user.email %>
-</div>
+
+
+  staff: <%= current_user.staff? %>
+  admin: <%= current_user.admin? %>
+  client: <%= current_user.client? %>
+
+
