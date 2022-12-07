@@ -63,14 +63,17 @@ class AppointmentsController < ApplicationController
   def destroy
     if current_user.client?
       if @appointment.status == "Pending"
+        p @appointment.status
         @appointment.status = :Canceled
-        @appointment.save
+        p @appointment.status
+        @appointment.save!
+
       end
     else
       @appointment.destroy
-      respond_to do |format|
-        format.html { redirect_to branch_appointments_path, notice: "Appointment was successfully destroyed." }
-      end
+    end
+    respond_to do |format|
+      format.html { redirect_to branch_appointments_path, notice: "Appointment was canceled." }
     end
   end
 

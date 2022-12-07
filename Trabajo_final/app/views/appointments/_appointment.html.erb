@@ -1,10 +1,12 @@
 <div id="<%= dom_id appointment %>">
-  <p>
-    <strong>Branch:</strong>
-    <%= appointment.branch.name %>
-  </p>
+  <% if !current_user.staff? %>
+    <p>
+      <strong>Branch:</strong>
+      <%= appointment.branch.name %>
+    </p>
+  <% end %>
 
-  <% if current_user != appointment.user_id %>
+  <% if current_user.id != appointment.user_id %>
     <p>
       <strong>User:</strong>
       <%= appointment.user.email %>
@@ -12,8 +14,8 @@
   <% end %>
 
   <p>
-    <strong>Date:</strong>
-    <%= appointment.date %>
+    <strong>Hora:</strong>
+    <%= appointment.date.strftime("%H:%M") %>
   </p>
 
   <p>

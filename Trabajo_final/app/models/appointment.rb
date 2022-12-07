@@ -3,17 +3,11 @@ class Appointment < ApplicationRecord
   belongs_to :branch, optional: true
   belongs_to :user
   belongs_to :staff, optional: true, class_name: 'User'
+  validates :date, presence: true
+  validates :reason, presence: true
+  validates :comment, presence: true, on: :update, if: -> { !Canceled? }
 
   validate :date_is_within_branch_hours
-
-  #validate that the comment either is nil or has text but is not an empty string
-  validate :comment_is_not_empty_string
-
-  def comment_is_not_empty_string
-    if comment.present? && comment.empty?
-      errors.add(:comment, "El comentario no puede estar vacío")
-    end
-  end
 
   # validate :appointment_is_unique
   # def appointment_is_unique

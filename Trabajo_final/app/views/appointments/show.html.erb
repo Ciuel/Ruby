@@ -5,6 +5,5 @@
 <div>
   <%= link_to "Edit this appointment", edit_branch_appointment_path(@appointment) %> |
   <%= link_to "Back to appointments", branch_appointments_path %>
-  
-  <%= link_to 'Destroy', [@appointment.branch, @appointment], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %>
+
 </div>
