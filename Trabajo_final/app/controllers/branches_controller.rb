@@ -41,25 +41,25 @@ class BranchesController < ApplicationController
     respond_to do |format|
       if @branch.update(branch_params)
         format.html { redirect_to branch_url(@branch), notice: "Branch was successfully updated." }
-        format.json { render :show, status: :ok, location: @branch }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @branch.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /branches/1 or /branches/1.json
   def destroy
+    # if there are no pending appointments for this branch, delete it, otherwise show an error message
     if @branch.appointments.where(status: 0).empty?
       @branch.appointments.where.not(status: 0).destroy_all
+      @branch.destroy
+      respond_to do |format|
+        format.html { redirect_to branches_url, notice: "Branch was successfully destroyed." }
+      end
+    else
+      redirect_to branches_url, notice: "La sucursal no puede ser borrada, hay turnos pendientes"
     end
-    @branch.destroy
 
-    respond_to do |format|
-      format.html { redirect_to branches_url, notice: "Branch was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private

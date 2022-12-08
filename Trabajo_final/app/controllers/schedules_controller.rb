@@ -2,15 +2,11 @@ class SchedulesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_branch
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_schedule, only: [:edit, :update, :destroy]
 
   # GET branches/1/schedules
   def index
     @schedules = @branch.schedules
-  end
-
-  # GET branches/1/schedules/1
-  def show
   end
 
   # GET branches/1/schedules/new

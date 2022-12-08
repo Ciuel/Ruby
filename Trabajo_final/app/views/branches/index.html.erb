@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 
-<h1 class="text-center">Sucursales</h1>
+<h1 class="text-center m-4">Sucursales</h1>
 
 <div class="d-flex justify-content-center">
   <% if can? :create, Branch %>
@@ -21,10 +21,13 @@
           <div class="col-md-4 d-flex align-items-center justify-content-center">
             <div class="d-flex flex-column">
               <% if can? :edit, Branch %>
-                <%= link_to "Administrar", branch, class: "btn btn-secondary align-self-center m-1" %>
+                <%= link_to "Administrar", branch, class: "btn btn-secondary align-self-center m-1 w-100" %>
               <% end %>
               <% if can? :create, Appointment %>
-                <%= link_to "Pedir Turno", new_branch_appointment_path(branch), class: "btn btn-secondary align-self-center m-1" %>
+                <%= link_to "Pedir Turno", new_branch_appointment_path(branch), class: "btn btn-secondary align-self-center m-1 w-100" %>
+              <% end %>
+              <% if can? :index, Schedule %>
+                <%= link_to "Horarios", branch_schedules_path(branch), class: "btn btn-secondary align-self-center m-1 w-100" %>
               <% end %>
             </div>
           </div>

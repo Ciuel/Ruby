@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   patch '/appointments/:id/finish', to: 'appointments#update', as: 'finish_appointment', :defaults => { :status => 'Finished' }
 
   resources :branches do
-    resources :schedules
+    resources :schedules, except: [:show]
     resources :appointments, except: [:show]
   end
 
