@@ -2,6 +2,6 @@
 <% if can? :destroy, Appointment %>
   <%= render "form", appointment: @appointment %>
 <% else %>
-<%= render "edit_form", appointment: @appointment %>
+  <%= render "edit_form", appointment: @appointment %>
 <% end %>
 

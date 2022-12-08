@@ -23,12 +23,6 @@
           <%= form.text_field :reason %>
         </div>
 
-        <% if can? :destroy, Appointment %>
-          <div class="field">
-            <%= form.label :comment %>
-            <%= form.text_area :comment %>
-          </div>
-        <% end %>
       </div>
 
       <div class="card bg-danger text-white">
