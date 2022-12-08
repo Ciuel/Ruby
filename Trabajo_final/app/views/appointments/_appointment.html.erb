@@ -16,10 +16,10 @@
   <p>
     <% if current_user.staff? %>
       <strong>Hora:</strong>
-    <%= appointment.date.strftime("%H:%M") %>
+      <%= appointment.date.strftime("%H:%M") %>
     <% else %>
       <strong>Fecha y Hora:</strong>
-    <%= appointment.date.strftime("%Y-%m-%d %H:%M") %>
+      <%= appointment.date.strftime("%Y-%m-%d %H:%M") %>
     <% end %>
   </p>
 

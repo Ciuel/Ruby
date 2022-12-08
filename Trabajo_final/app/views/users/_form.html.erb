@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %><br/>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -20,22 +20,22 @@
     <%= f.label :password %>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %><br/>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %><br/>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role, options_for_select([["Admin", "admin"], ["Cliente", "client"],["Personal","staff"]]) %>
+    <%= f.label :role %><br/>
+    <%= f.select :role, options_for_select([["Admin", "admin"], ["Cliente", "client"], ["Personal", "staff"]]) %>
   </div>
 
   <div class="field">
-    <%= f.label :branch %><br />
+    <%= f.label :branch %><br/>
     <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, @user.branch_id), include_blank: true %>
   </div>
 

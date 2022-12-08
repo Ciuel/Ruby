@@ -1,7 +1,14 @@
-<h1>Editing appointment</h1>
-<% if can? :destroy, Appointment %>
-  <%= render "form", appointment: @appointment %>
-<% else %>
-  <%= render "edit_form", appointment: @appointment %>
-<% end %>
+<div class="d-flex justify-content-center">
+  <div>
+
+    <% if can? :destroy, Appointment %>
+
+      <h1 class="text-center m-4">Editando Turno</h1>
+      <%= render "form", appointment: @appointment %>
+    <% else %>
+      <h1 class="text-center m-4">Atendiendo Turno</h1>
+      <%= render "edit_form", appointment: @appointment %>
+    <% end %>
+  </div>
+</div>
 

@@ -10,21 +10,21 @@
     <th></th>
   </tr>
 
-<% @schedules.each do |schedule| %>
-  <tr>
-    <td><%= schedule.day %></td>
-    <td><%= schedule.start_time.to_s(:time) %></td>
-    <td><%= schedule.end_time.to_s(:time)  %></td>
-    <td><%= link_to 'Show', [schedule.branch, schedule] %></td>
-    <td><%= link_to 'Edit', edit_branch_schedule_path(schedule.branch, schedule) %></td>
-    <td><%= link_to 'Destroy', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %></td>
+  <% @schedules.each do |schedule| %>
+    <tr>
+      <td><%= schedule.day %></td>
+      <td><%= schedule.start_time.to_s(:time) %></td>
+      <td><%= schedule.end_time.to_s(:time) %></td>
+      <td><%= link_to 'Show', [schedule.branch, schedule] %></td>
+      <td><%= link_to 'Edit', edit_branch_schedule_path(schedule.branch, schedule) %></td>
+      <td><%= link_to 'Destroy', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %></td>
 
-  </tr>
-<% end %>
+    </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Schedule', new_branch_schedule_path(params[:branch_id]) %>
-<%= link_to 'Back', branch_path(params[:branch_id])%>
+<%= link_to 'Back', branch_path(params[:branch_id]) %>
 

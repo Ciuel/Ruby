@@ -7,11 +7,10 @@ class Schedule < ApplicationRecord
 
   belongs_to :branch
   validates :day, :start_time, :end_time, presence: true
-  validates :end_time, comparison: { greater_than: :start_time , message: ": El tiempo de finalización debe ser mayor al de inicio"}
+  validates :end_time, comparison: { greater_than: :start_time, message: ": El tiempo de finalización debe ser mayor al de inicio" }
   validates :day, inclusion: { in: DIAS, message: "%{value} no es un dia" }
 
   validates :day, uniqueness: { scope: :branch_id,
                                 message: "Ya existe un horario para este dia" }
-
 
 end

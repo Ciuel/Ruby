@@ -26,9 +26,9 @@ end
 User.create!(email: 'admin@admin.com', password: '123456', password_confirmation: '123456', role: 1)
 #Make 20 users and assign them random roles
 20.times do
-  role = [0,2].sample
+  role = [0, 2].sample
   if role == 2
-    User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role:2, branch_id: rand(1..10))
+    User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 2, branch_id: rand(1..10))
   else
     User.create!(email: Faker::Internet.email, password: '123456', password_confirmation: '123456', role: 0)
   end
@@ -37,13 +37,11 @@ end
 #Create some appointments for every user with the role client, the appointments must be between the scheduled hours for that weekday
 User.where(role: 0).each do |user|
   5.times do
-    branch = Branch.where(id:rand(1..10)).first
+    branch = Branch.where(id: rand(1..10)).first
     schedule = branch.schedules.for_day(Date.today)
-    date = DateTime.now.change(hour: schedule.start_time.hour+1, min: schedule.start_time.min)
+    date = DateTime.now.change(hour: schedule.start_time.hour + 1, min: schedule.start_time.min)
     Appointment.create(branch_id: branch.id, user_id: user.id, staff_id: nil, date: date, reason: Faker::Quote.matz, status: 0, comment: nil)
   end
 end
-
-
 
 p "db seeded"

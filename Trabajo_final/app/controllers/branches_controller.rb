@@ -56,8 +56,6 @@ class BranchesController < ApplicationController
     end
     @branch.destroy
 
-
-
     respond_to do |format|
       format.html { redirect_to branches_url, notice: "Branch was successfully destroyed." }
       format.json { head :no_content }
@@ -65,13 +63,14 @@ class BranchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_branch
-      @branch = Branch.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def branch_params
-      params.require(:branch).permit(:name, :address, :telephone)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_branch
+    @branch = Branch.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def branch_params
+    params.require(:branch).permit(:name, :address, :telephone)
+  end
 end

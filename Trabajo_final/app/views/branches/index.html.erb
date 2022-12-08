@@ -3,11 +3,11 @@
 
 <h1 class="text-center">Sucursales</h1>
 
-    <div class="d-flex justify-content-center">
-      <% if can? :create, Branch %>
-        <%= link_to "Nueva Sucursal", new_branch_path, class: "btn btn-secondary m-2" %>
-      <% end %>
-    </div>
+<div class="d-flex justify-content-center">
+  <% if can? :create, Branch %>
+    <%= link_to "Nueva Sucursal", new_branch_path, class: "btn btn-secondary m-2" %>
+  <% end %>
+</div>
 <div class="d-flex justify-content-center">
   <div id="appointments" class="d-flex flex-column m-4" style="width: 40rem">
     <% @branches.each do |branch| %>
@@ -15,8 +15,7 @@
         <div class="row no-gutters">
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"><%= branch.name %></h5>
-              <h5 class="card-title"><%= branch.address %></h5>
+              <%= render branch %>
             </div>
           </div>
           <div class="col-md-4 d-flex align-items-center justify-content-center">

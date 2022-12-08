@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <section >
+  <section>
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-9 col-lg-6 col-xl-5">
@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <h1 style="margin-bottom: 10rem" class="text-light text-center">Iniciar Sesión</h1>
-          <% render "layouts/messages"%>
+          <% render "layouts/messages" %>
           <form>
             <div class="form-outline mb-3">
               <%= f.label :email, class: "form-label text-light" %>
