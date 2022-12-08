@@ -14,7 +14,7 @@
   <% end %>
 
   <p>
-    <% if current_user.id != appointment.user_id %>
+    <% if current_user.staff? %>
       <strong>Hora:</strong>
     <%= appointment.date.strftime("%H:%M") %>
     <% else %>

@@ -12,14 +12,20 @@
 </head>
 
 <style>
-  p {
-    color: black;
+  *{
+      font-size: 1.2rem;
   }
+    p {
+        color: black;
+    }
+    h5 {
+        color: black;
+    }
 </style>
-<body class="bg-dark p-3" style="color: #F7F7F7">
+<body class="bg-dark" style="color: #F7F7F7">
 <%= render "layouts/navbar" %>
 <% if user_signed_in? %>
-<% render "layouts/messages"%>
+  <% render "layouts/messages" %>
 <% end %>
 <%= yield %>
 </body>

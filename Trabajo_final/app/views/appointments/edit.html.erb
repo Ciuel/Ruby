@@ -1,6 +1,7 @@
 <h1>Editing appointment</h1>
-
+<% if can? :destroy, Appointment %>
+  <%= render "form", appointment: @appointment %>
+<% else %>
 <%= render "edit_form", appointment: @appointment %>
-
-<br>
+<% end %>
 

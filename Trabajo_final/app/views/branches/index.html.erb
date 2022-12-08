@@ -2,15 +2,16 @@
 
 
 <h1 class="text-center">Sucursales</h1>
-<br>
+
 <div class="d-flex justify-content-center">
-  <%= link_to "New branch", new_branch_path, class: "btn btn-secondary" %>
-</div>
-<br>
-<div class="d-flex justify-content-center">
-  <div id="branches" class="d-flex flex-column " style="width: 40rem">
+  <div id="appointments" class="d-flex flex-column m-4" style="width: 40rem">
+    <div class="d-flex justify-content-center">
+      <% if can? :create, Branch %>
+        <%= link_to "New branch", new_branch_path, class: "btn btn-secondary m-2" %>
+      <% end %>
+    </div>
     <% @branches.each do |branch| %>
-      <div class="card mb-3">
+      <div class="card mb-3 bg-danger text-white">
         <div class="row no-gutters">
           <div class="col-md-8">
             <div class="card-body">
@@ -18,9 +19,15 @@
               <h5 class="card-title"><%= branch.address %></h5>
             </div>
           </div>
-          <div class="col-md-4 d-flex">
-            <%= link_to "Administrar", branch, class: "btn btn-secondary align-self-center" %>
-            <%= link_to "Pedir Turno", new_branch_appointment_path(branch), class: "btn btn-secondary align-self-center" %>
+          <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <div class="d-flex flex-column">
+              <% if can? :edit, Branch %>
+                <%= link_to "Administrar", branch, class: "btn btn-secondary align-self-center m-1" %>
+              <% end %>
+              <% if can? :create, Appointment %>
+                <%= link_to "Pedir Turno", new_branch_appointment_path(branch), class: "btn btn-secondary align-self-center m-1" %>
+              <% end %>
+            </div>
           </div>
         </div>
 
