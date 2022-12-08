@@ -1,34 +1,21 @@
 <%= form_with(model: [@appointment.branch, @appointment]) do |form| %>
-  <% if appointment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
-      <ul>
-        <% appointment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", resource: appointment %>
   <div class="d-flex justify-content-center">
-    <div class="card bg-danger text-white">
+    <div class="card bg-danger text-white" style="width: 20rem">
       <div class="card-body">
         <div>
-          <%= form.label :date, style: "display: block" %>
-          <%= form.datetime_field :date %>
+          <%= form.label :Fecha, style: "display: block" %>
+          <%= form.datetime_field :date, class: "form-control" %>
         </div>
-
         <div>
-          <%= form.label :reason, style: "display: block" %>
-          <%= form.text_field :reason %>
+          <%= form.label :Razón, style: "display: block" %>
+          <%= form.text_field :reason, class: "form-control" %>
         </div>
-
       </div>
-
       <div class="card bg-danger text-white">
         <div class="list-group list-group-flush d-flex">
-          <%= form.submit class: "list-group-item bg-danger" %>
-          <%= link_to "Back to appointments", branch_appointments_path, class: "list-group-item bg-danger", style: "text-align:center" %>
+          <%= form.submit "Pedir Turno", class: "list-group-item bg-danger" %>
+          <%= link_to "Volver", :back, class: "list-group-item bg-danger", style: "text-align:center" %>
         </div>
       </div>
     </div>

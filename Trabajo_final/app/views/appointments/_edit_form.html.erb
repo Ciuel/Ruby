@@ -1,23 +1,23 @@
 <%= form_with(model: [@appointment.branch, @appointment],url:finish_appointment_path) do |form| %>
-  <% if appointment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+  <%= render "shared/error_messages", resource: appointment %>
 
-      <ul>
-        <% appointment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <div class="d-flex justify-content-center">
+    <div class="form-group">
 
   <div class="field">
     <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment,class:"form-control" %>
   </div>
 
   <div>
     <%= form.submit %>
+    <%= link_to "Volver", :back, class: "list-group-item bg-danger", style: "text-align:center" %>
   </div>
+    </div>
+  </div>
+
+
+
+
+
 <% end %>

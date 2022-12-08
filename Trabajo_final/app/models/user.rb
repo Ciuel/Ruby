@@ -8,8 +8,16 @@ class User < ApplicationRecord
   #has many appointments as staff delete cascade
   has_many :appointments, dependent: :destroy, foreign_key: :staff_id
 
-
-
+  def role
+    case self[:role]
+    when "client"
+      "Cliente"
+    when "admin"
+      "Administrador"
+    when "staff"
+      "Empleado"
+    end
+  end
 
   belongs_to :branch, optional: true
 
