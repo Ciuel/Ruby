@@ -14,10 +14,6 @@ class AppointmentsController < ApplicationController
 
   end
 
-  # GET /appointments/1 or /appointments/1.json
-  def show
-  end
-
   # GET /appointments/new
   def new
     @appointment = @branch.appointments.build

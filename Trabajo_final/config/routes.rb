@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :branches do
     resources :schedules
-    resources :appointments
+    resources :appointments, except: [:show]
   end
 
 

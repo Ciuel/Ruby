@@ -1,4 +1,5 @@
 class Appointment < ApplicationRecord
+
   enum status: [:Pending, :Canceled, :Finished]
   belongs_to :branch, optional: true
   belongs_to :user

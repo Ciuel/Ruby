@@ -65,7 +65,8 @@ class Ability
       end
       if user.client?
         can [:index], Branch
-        can [:index, :show, :create, :destroy], Appointment, user_id: user.id
+        can [:index, :show, :create], Appointment, user_id: user.id
+        can [:destroy], Appointment, user_id: user.id, status: 0
       end
     end
   end
