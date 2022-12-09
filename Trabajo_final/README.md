@@ -6,13 +6,14 @@ diseño.
 Pasos para instalar la aplicación
 
 * Instalar Ruby 3.0.4 con el manejador de paquetes apropiado ej: pacman,apt, etc.
-* Si ya está inatalado Ruby y se usa un manejador de versiones como RVM, rbenv, etc. se debe instalar la versión 3.0.4
-* Instalar la gema bundler con el comando `gem install bundler`
-* Correr el comando bundle install para instalar las dependencias del proyecto
+* Si ya está inatalado Ruby y se usa un manejador de versiones como RVM, rbenv, etc. se debe instalar la versión 3.0.4.
+* Clonar el repositorio y con una terminal ubicarse en la carpeta del proyecto.
+* Instalar la gema bundler con el comando `gem install bundler`.
+* Correr el comando bundle install para instalar las dependencias del proyecto.
 
 -Pasos para correr la aplicación
 
-* Para hacer el setup básico de la base de datos, correr el comando `rails db:create db:schema:load db:seed`
+* Para hacer el setup básico de la base de datos, correr el comando `rails db:reset`
 * En la consola usar el comando `rails s` para correr el servidor
 * Con cualquier navegador web, ir a la dirección `localhost:3000` para ver la aplicación funcionando
 
@@ -22,6 +23,11 @@ Pasos para instalar la aplicación
   estas tareas.
   Además de ser fáciles de usar y aceleran la velociada de desarrollo.
 * Se uso bootstrap para el diseño de la aplicación, ya que es una librería muy completa y fácil de usar.
-* Se usaron rutas nesteadas para la creación de los recursos,
+* Se usaron rutas anidadas para la creación de los recursos,
   ya que es una forma de organizar las rutas y los controladores de una manera más natural, siguiendo las reglas del
   dominio.
+* El empleado solo ver el listado de sus turnos en su sucursal del día actual, y no puede ver los turnos de otras sucursales,
+esto es para reducir la carga de información.
+* El administrador puede manipular todos los elementos de la aplicación sin restricciones,
+la única acción que no está explícita con un botón es pedir un turno para si mismo, pero se puede hacer desde la ruta.
+* De los turnos el administrador puede borrarlos o editarlos

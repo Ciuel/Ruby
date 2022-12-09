@@ -1,12 +1,12 @@
 class Appointment < ApplicationRecord
 
-  enum status: [:Pending, :Canceled, :Finished]
+  enum status: [:pending, :canceled, :finished]
   belongs_to :branch, optional: true
   belongs_to :user
   belongs_to :staff, optional: true, class_name: 'User'
   validates :date, presence: true
   validates :reason, presence: true
-  validates :comment, presence: true, on: :update, if: -> { !Canceled? }
+  validates :comment, presence: true, on: :update, if: -> {  !staff_id.blank? }
 
   validate :date_is_within_branch_hours
 
@@ -17,6 +17,17 @@ class Appointment < ApplicationRecord
   #    errors.add(:date, "No hay turnos disponibles para ese horario)
   #  end
   # end
+
+  def status_to_s
+    case self[:status]
+    when "pending"
+      "Pendiente"
+    when "canceled"
+      "Cancelado"
+    when "finished"
+      "Atendido"
+    end
+  end
 
   def date_is_within_branch_hours
     if date.present?

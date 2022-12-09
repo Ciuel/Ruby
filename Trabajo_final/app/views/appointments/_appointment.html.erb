@@ -1,14 +1,14 @@
 <div id="<%= dom_id appointment %>">
   <% if !current_user.staff? %>
     <p>
-      <strong>Branch:</strong>
+      <strong>Sucursal:</strong>
       <%= appointment.branch.name %>
     </p>
   <% end %>
 
   <% if current_user.id != appointment.user_id %>
     <p>
-      <strong>User:</strong>
+      <strong>Cliente:</strong>
       <%= appointment.user.email %>
     </p>
   <% end %>
@@ -24,23 +24,23 @@
   </p>
 
   <p>
-    <strong>Reason:</strong>
+    <strong>Razón:</strong>
     <%= appointment.reason %>
   </p>
 
   <p>
-    <strong>Status:</strong>
-    <%= appointment.status %>
+    <strong>Estado:</strong>
+    <%= appointment.status_to_s %>
   </p>
   <% if appointment.comment %>
     <p>
-      <strong>Comment:</strong>
+      <strong>Comentario:</strong>
       <%= appointment.comment %>
     </p>
   <% end %>
   <% if appointment.comment %>
     <p>
-      <strong>Staff:</strong>
+      <strong>Atendio:</strong>
       <%= appointment.staff.email %>
     </p>
   <% end %>

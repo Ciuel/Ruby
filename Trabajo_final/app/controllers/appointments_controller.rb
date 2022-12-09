@@ -30,7 +30,7 @@ class AppointmentsController < ApplicationController
     @appointment = @branch.appointments.build(appointment_params.merge(user_id: current_user.id))
 
     if @appointment.save
-      redirect_to([@appointment.branch, @appointment], notice: 'Appointment was successfully created.')
+      redirect_to branch_appointments_url(@branch), notice: 'Appointment was successfully created.'
     else
       render action: 'new'
     end
@@ -38,16 +38,19 @@ class AppointmentsController < ApplicationController
 
   # PATCH/PUT /appointments/1 or /appointments/1.json
   def update
-    if @appointment.status == "Pending"
-      if params[:status] == 'Finished'
-        @appointment.status = :Finished
+    if @appointment.status == "pending"
+      if params[:status] == 'finished'
+        @appointment.status = :finished
         @appointment.staff_id = current_user.id
-      elsif params[:status] == 'Canceled'
-        @appointment.status = :Canceled
+      elsif params[:status] == 'canceled'
+        @appointment.status = :canceled
       end
     end
+    if current_user.admin?
+      params = appointment_params.compact_blank
+    end
     respond_to do |format|
-      if @appointment.update(appointment_params)
+      if @appointment.update(params)
         format.html { redirect_to branch_appointments_url(@branch), notice: "Appointment was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,9 +61,9 @@ class AppointmentsController < ApplicationController
   # DELETE /appointments/1 or /appointments/1.json
   def destroy
     if current_user.client?
-      if @appointment.status == "Pending"
+      if @appointment.status == "pending"
         p @appointment.status
-        @appointment.status = :Canceled
+        @appointment.status = :canceled
         p @appointment.status
         @appointment.save!
 

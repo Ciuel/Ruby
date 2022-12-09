@@ -1,4 +1,4 @@
-<h1 class="text-center m-4">Appointments</h1>
+<h1 class="text-center m-4">Turnos</h1>
 
 <div class="d-flex justify-content-center">
   <div id="appointments" class="d-flex flex-column m-4" style="width: 40rem">
@@ -12,26 +12,22 @@
           </div>
           <div class="col-md-4 d-flex align-items-center justify-content-center">
             <div class="d-flex flex-column">
-
-
               <% if can?(:edit, Appointment) %>
-                <% if cannot?(:destroy, Appointment) %>
-                  <%= link_to "Atender", edit_branch_appointment_path(appointment.branch_id, appointment), class: "btn btn-secondary m-1" %>
-                <% else %>
-                  <%= link_to "Editar", edit_branch_appointment_path(appointment.branch_id, appointment), class: "btn btn-secondary m-1" %>
+                <% if appointment.pending? %>
+                  <% if current_user.staff? %>
+                    <%= link_to "Atender", edit_branch_appointment_path(appointment.branch_id, appointment), class: "btn btn-secondary m-1" %>
+                  <% else %>
+                    <%= link_to "Editar", edit_branch_appointment_path(appointment.branch_id, appointment), class: "btn btn-secondary m-1" %>
+                  <% end %>
                 <% end %>
               <% end %>
 
-
-              <% if can? :destroy, Appointment %>
-                <% if can?(:edit, Appointment) || appointment.Pending? %>
-                  <%= link_to 'Cancelar', [appointment.branch, appointment], class: "btn btn-secondary align-self-center m-1", method: :delete, data: { turbo_method: "delete", confirm: '¿Seguro que desea cancelar su turno?' } %>
-                <% end %>
+              <% if can?(:create, Appointment) && appointment.pending? %>
+                <%= link_to 'Cancelar', [appointment.branch, appointment], class: "btn btn-secondary align-self-center m-1", method: :delete, data: { turbo_method: "delete", confirm: '¿Seguro que desea cancelar su turno?' } %>
               <% end %>
             </div>
           </div>
         </div>
-
       </div>
     <% end %>
   </div>

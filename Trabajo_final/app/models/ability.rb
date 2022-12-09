@@ -54,14 +54,16 @@ class Ability
     # methods :index, :show, :create, :update, :destroy
     if user.present?
       if user.admin?
-        can [:index, :show, :create, :update, :destroy], :all
+        can :manage, :all
+        cannot :edit, Appointment, status: [:finished, :canceled]
+        cannot [:edit,:destroy], User, role: :admin
       end
       if user.staff?
         can [:index, :show], Branch
         can [:index, :show], Schedule
         can [:index, :show], User, role: 'client'
-        can [:index, :show], Appointment, branch_id: user.branch_id, status: [0, 2], date: Date.today..Date.today + 1.day
-        can [:update], Appointment, branch_id: user.branch_id, status: 0, date: Date.today..Date.today + 1.day
+        can [:index, :show], Appointment, branch_id: user.branch_id, status: [1, 2], date: Date.today..Date.today + 1.day
+        can [:index, :show,:update], Appointment, branch_id: user.branch_id, status: 0, date: Date.today..Date.today + 1.day
       end
       if user.client?
         can [:index], Branch
