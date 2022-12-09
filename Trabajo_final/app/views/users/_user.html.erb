@@ -1,10 +1,10 @@
-<div id="<%= dom_id user %>" style="color: black">
+<div id="<%= dom_id user %>">
   <strong>Email: </strong>
   <%= user.email %>
   <% if can? :create, User %>
     <br>
     <strong>Rol: </strong>
-    <%= user.role %>
+    <%= user.role_to_s %>
   <% end %>
   <% if user.staff? %>
     <br>

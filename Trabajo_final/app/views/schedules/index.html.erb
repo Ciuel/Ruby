@@ -6,8 +6,10 @@
       <th class="table-light">Día</th>
       <th class="table-light">Inicio</th>
       <th class="table-light">Fin</th>
-      <th class="table-light">Acciones</th>
-      <th class="table-light"></th>
+      <% if can? :destroy, Schedule %>
+        <th class="table-light">Acciones</th>
+        <th class="table-light"></th>
+      <% end %>
     </tr>
 
     <% @schedules.each do |schedule| %>
@@ -15,16 +17,21 @@
         <td class="table-light"><%= schedule.day %></td>
         <td class="table-light"><%= schedule.start_time.to_s(:time) %></td>
         <td class="table-light"><%= schedule.end_time.to_s(:time) %></td>
-        <td class="table-light" style="width: 15rem"><%= link_to 'Editar', edit_branch_schedule_path(schedule.branch, schedule) %></td>
-        <td class="table-light" style="width: 15rem"><%= link_to 'Borrar', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %></td>
+        <% if can? :destroy, Schedule %>
+          <td class="table-light" style="width: 15rem"><%= link_to 'Editar', edit_branch_schedule_path(schedule.branch, schedule) %></td>
+          <td class="table-light" style="width: 15rem"><%= link_to 'Borrar', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %></td>
+
+        <% end %>
       </tr>
     <% end %>
     <tr>
       <th class="table-light"></th>
-      <th class="table-dark"><%= link_to 'Volver', :back,class: "list-group-item list-group-item-action active"%></th>
+      <th class="table-light"><%= link_to 'Volver', branches_path, class: "btn btn-secondary m-1" %></th>
       <th class="table-light"></th>
-      <th class="table-dark"><%= link_to 'Crear Horario', new_branch_schedule_path(params[:branch_id]),class: "list-group-item list-group-item-action"  %></th>
-      <th class="table-light"></th>
+      <% if can? :create, Schedule %>
+        <th class="table-light"><%= link_to 'Crear Horario', new_branch_schedule_path(params[:branch_id]), class: "btn btn-secondary m-1" %></th>
+        <th class="table-light"></th>
+      <% end %>
 
 
     </tr>

@@ -12,23 +12,43 @@
 </head>
 
 <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield; /* Firefox */
+    }
+
     * {
         font-size: 1.2rem;
     }
 
-    p {
-        color: black;
-    }
-
-    h5 {
-        color: black;
+    h1 {
+        color: #F7F7F7;
     }
 </style>
-<body class="bg-dark" style="color: #F7F7F7">
+<body class="bg-dark">
 <%= render "layouts/navbar" %>
-<% if user_signed_in? %>
-  <% render "layouts/messages" %>
-<% end %>
+<div class="d-flex justify-content-center mt-3">
+  <div>
+    <% if user_signed_in? %>
+      <% if alert %>
+        <ul class="list-unstyled">
+          <li class="alert alert-warning"><%= alert %></li>
+        </ul>
+      <% end %>
+      <% if notice %>
+        <ul class="list-unstyled">
+          <li class="alert alert-info"><%= notice %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 <%= yield %>
 </body>
 </html>

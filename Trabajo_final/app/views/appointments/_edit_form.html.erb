@@ -2,7 +2,7 @@
   <%= render "shared/error_messages", resource: appointment %>
 
   <div class="d-flex justify-content-center">
-    <div class="card bg-danger text-white" style="width: 20rem">
+    <div class="card bg-danger " style="width: 20rem">
       <div class="card-body">
         <div>
           <%= form.label :Comentario , style: "display: block"%>
@@ -10,9 +10,9 @@
         </div>
 
       </div>
-      <div class="card bg-danger text-white">
+      <div class="card bg-danger ">
         <div class="list-group list-group-flush d-flex">
-          <%= form.submit "Terminar Turno", class: "list-group-item bg-danger" %>
+          <%= form.submit "Confirmar", class: "list-group-item bg-danger" %>
           <%= link_to "Volver", :back, class: "list-group-item bg-danger", style: "text-align:center" %>
         </div>
       </div>

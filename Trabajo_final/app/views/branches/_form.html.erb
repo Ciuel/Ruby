@@ -1,32 +1,32 @@
 <%= form_with(model: branch) do |form| %>
-  <% if branch.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(branch.errors.count, "error") %> prohibited this branch from being saved:</h2>
 
-      <ul>
-        <% branch.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="d-flex justify-content-center">
+    <div>
+      <%= render "shared/error_messages", resource: branch %>
+      <div class="card bg-danger " style="width: 20rem">
+        <div class="card-body">
+          <div>
+            <%= form.label :name, style: "display: block" %>
+            <%= form.text_field :name, class: "form-control" %>
+          </div>
+
+          <div>
+            <%= form.label :address, style: "display: block" %>
+            <%= form.text_area :address, rows: 2, class: "form-control" %>
+          </div>
+
+          <div>
+            <%= form.label :telephone, style: "display: block" %>
+            <%= form.number_field :telephone, class: "form-control" %>
+          </div>
+        </div>
+        <div class="card bg-danger ">
+          <div class="list-group list-group-flush d-flex">
+            <%= form.submit "Confirmar", class: "list-group-item bg-danger" %>
+            <%= link_to "Volver", :back, class: "list-group-item bg-danger", style: "text-align:center" %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div>
-    <%= form.label :telephone, style: "display: block" %>
-    <%= form.number_field :telephone %>
-  </div>
-
-  <div>
-    <%= form.submit %>
   </div>
 <% end %>

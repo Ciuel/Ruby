@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 
 <h1 class="text-center m-4">Sucursales</h1>
 
@@ -11,7 +9,7 @@
 <div class="d-flex justify-content-center">
   <div id="appointments" class="d-flex flex-column m-4" style="width: 40rem">
     <% @branches.each do |branch| %>
-      <div class="card mb-3 bg-danger text-white">
+      <div class="card mb-3 bg-danger ">
         <div class="row no-gutters">
           <div class="col-md-8">
             <div class="card-body">
@@ -21,9 +19,10 @@
           <div class="col-md-4 d-flex align-items-center justify-content-center">
             <div class="d-flex flex-column">
               <% if can? :edit, Branch %>
-                <%= link_to "Administrar", branch, class: "btn btn-secondary align-self-center m-1 w-100" %>
+                <%= link_to "Edit this branch", edit_branch_path(branch),class: "btn btn-secondary align-self-center m-1 w-100"%>
+                <%= button_to "Destroy this branch", branch, method: :delete, class: "btn btn-secondary align-self-center m-1 w-100" %>
               <% end %>
-              <% if can? :create, Appointment %>
+              <% if can?(:create, Appointment) && current_user.client?%>
                 <%= link_to "Pedir Turno", new_branch_appointment_path(branch), class: "btn btn-secondary align-self-center m-1 w-100" %>
               <% end %>
               <% if can? :index, Schedule %>

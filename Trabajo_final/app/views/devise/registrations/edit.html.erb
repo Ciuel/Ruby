@@ -5,7 +5,7 @@
   <div class="d-flex justify-content-center">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="card bg-danger " style="width: 50rem; color: #2E2F30">
+    <div class="card bg-danger " style="width: 50rem">
       <div class="row g-0">
         <div class="col-md-7">
           <div class="card-body d-flex flex-column ">
@@ -13,7 +13,7 @@
             <strong>Email</strong><br>
             <%= current_user.email %>
             <strong>Rol</strong><br>
-            <%= current_user.role %>
+            <%= current_user.role_to_s %>
             <% if current_user.branch %>
               <strong>Sucursal</strong><br>
               <%= current_user.branch %>
@@ -45,13 +45,13 @@
 
               </div>
               </div>
-              <div class="card bg-danger text-white">
+              <div class="card bg-danger ">
                 <div class="list-group list-group-flush d-flex flex-row">
                   <div class="col-md-7">
                     <%= link_to "Volver", :back, class: "list-group-item bg-danger", style: "text-align:center" %>
                   </div>
 
-                  <%= f.submit "Actualizar", class: "list-group-item bg-danger", style: "margin-left:6rem" %>
+                  <%= f.submit "Confirmar", class: "list-group-item bg-danger", style: "margin-left:6rem" %>
 
             <% end %>
             </div>
