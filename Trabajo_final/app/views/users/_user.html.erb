@@ -18,7 +18,7 @@
       <%= Appointment.where(user_id: user.id).accessible_by(current_ability).count %>
     <% else %>
       <strong>Turnos pendientes: </strong>
-      <%= Appointment.where(user_id: user.id, status: 0).count %>
+      <%= Appointment.where(user_id: user.id, status: :pending).count %>
     <% end %>
   <% end %>
 </div>

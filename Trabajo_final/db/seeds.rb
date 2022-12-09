@@ -40,7 +40,7 @@ User.where(role: 0).each do |user|
     branch = Branch.where(id: rand(1..10)).first
     schedule = branch.schedules.for_day(Date.today)
     date = DateTime.now.change(hour: schedule.start_time.hour + 1, min: schedule.start_time.min)
-    Appointment.create(branch_id: branch.id, user_id: user.id, staff_id: nil, date: date, reason: Faker::Quote.matz, status: 0, comment: nil)
+    Appointment.create(branch_id: branch.id, user_id: user.id, staff_id: nil, date: date, reason: Faker::Quote.matz, status: :pending, comment: nil)
   end
 end
 

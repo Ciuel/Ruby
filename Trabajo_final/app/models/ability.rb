@@ -56,19 +56,20 @@ class Ability
       if user.admin?
         can :manage, :all
         cannot :edit, Appointment, status: [:finished, :canceled]
+        cannot [:index,:show], Appointment, status: :canceled
         cannot [:edit,:destroy], User, role: :admin
       end
       if user.staff?
         can [:index, :show], Branch
         can [:index, :show], Schedule
         can [:index, :show], User, role: 'client'
-        can [:index, :show], Appointment, branch_id: user.branch_id, status: [1, 2], date: Date.today..Date.today + 1.day
-        can [:index, :show,:update], Appointment, branch_id: user.branch_id, status: 0, date: Date.today..Date.today + 1.day
+        can [:index, :show], Appointment, branch_id: user.branch_id, status: :finished, date: Date.today..Date.today + 1.day
+        can [:index, :show,:update], Appointment, branch_id: user.branch_id, status: :pending, date: Date.today..Date.today + 1.day
       end
       if user.client?
         can [:index], Branch
-        can [:index, :show, :create], Appointment, user_id: user.id
-        can [:destroy], Appointment, user_id: user.id, status: 0
+        can [:index, :show, :create], Appointment, user_id: user.id, status: [:finished, :pending]
+        can [:destroy,:update], Appointment, user_id: user.id, status: :pending
       end
     end
   end

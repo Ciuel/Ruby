@@ -46,7 +46,8 @@ class AppointmentsController < ApplicationController
         @appointment.status = :canceled
       end
     end
-    if current_user.admin?
+    params = appointment_params
+    if !current_user.staff?
       params = appointment_params.compact_blank
     end
     respond_to do |format|

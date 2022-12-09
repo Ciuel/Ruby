@@ -5,7 +5,7 @@ one:
   user: one
   date: 2022-11-30 12:18:33
   reason: MyString
-  status: 1
+  status: :canceled
   comment: MyText
   staff: one
 
@@ -14,6 +14,6 @@ two:
   user: two
   date: 2022-11-30 12:18:33
   reason: MyString
-  status: 1
+  status: :canceled
   comment: MyText
   staff: two

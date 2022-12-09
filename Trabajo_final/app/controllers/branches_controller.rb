@@ -45,8 +45,8 @@ class BranchesController < ApplicationController
   # DELETE /branches/1 or /branches/1.json
   def destroy
     # if there are no pending appointments for this branch, delete it, otherwise show an error message
-    if @branch.appointments.where(status: 0).empty?
-      @branch.appointments.where.not(status: 0).destroy_all
+    if @branch.appointments.where(status: :pending).empty?
+      @branch.appointments.where.not(status: :pending).destroy_all
       @branch.destroy
       respond_to do |format|
         format.html { redirect_to branches_url, notice: "Branch was successfully destroyed." }

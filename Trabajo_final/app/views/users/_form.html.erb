@@ -7,7 +7,7 @@
         <div class="card-body">
           <div class="field">
             <%= f.label :email %><br/>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
           </div>
 
           <div class="field">
@@ -15,35 +15,35 @@
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br/>
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
           </div>
 
           <div class="field">
             <%= f.label :password_confirmation %><br/>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
           </div>
 
           <div class="field">
             <%= f.label :role %><br/>
-            <%= f.select :role, options_for_select([["Admin", "admin"], ["Cliente", "client"], ["Personal", "staff"]], selected: @user.role) %>
+            <%= f.select :role, options_for_select([["Admin", "admin"], ["Personal", "staff"]], selected: @user.role),class:"form-control" %>
           </div>
 
           <% if @user.staff?%>
-          <div class="field" id="branch" >
+          <div class="field w-100" id="branch" >
             <%= f.label :branch %><br/>
-            <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, @user.branch_id), include_blank: true %>
+            <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, @user.branch_id), include_blank: true,class:"form-control" %>
           </div>
             <% else %>
             <div class="field" id="branch" style="display: none" >
               <%= f.label :branch %><br/>
-              <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, @user.branch_id), include_blank: true %>
+              <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, @user.branch_id), include_blank: true,class:"form-control" %>
             </div>
           <% end %>
         </div>
         <div class="card bg-danger ">
           <div class="list-group list-group-flush d-flex">
             <%= f.submit "Confirmar", class: "list-group-item bg-danger" %>
-            <%= link_to "Volver", :back, class: "list-group-item bg-danger", style: "text-align:center" %>
+            <%= link_to "Volver", users_path, class: "list-group-item bg-danger", style: "text-align:center" %>
           </div>
         </div>
       </div>
