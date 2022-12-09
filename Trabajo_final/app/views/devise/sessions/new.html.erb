@@ -7,7 +7,16 @@
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <h1 style="margin-bottom: 10rem" class="text-light text-center m-4">Iniciar Sesión</h1>
-          <% render "shared/messages" %>
+          <% if alert %>
+            <ul class="list-unstyled">
+              <li class="alert alert-warning"><%= alert %></li>
+            </ul>
+          <% end %>
+          <% if notice %>
+            <ul class="list-unstyled">
+              <li class="alert alert-info"><%= notice %></li>
+            </ul>
+          <% end %>
           <form>
             <div class="form-outline mb-3">
               <%= f.label :email, class: "form-label text-light" %>
@@ -15,7 +24,7 @@
             </div>
 
             <div class="form-outline mb-3">
-              <%= f.label :password, class: "form-label text-light" %>
+              <%= f.label :contraseña, class: "form-label text-light" %>
               <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg", placeholder: "Enter password" %>
             </div>
 

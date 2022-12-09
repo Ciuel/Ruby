@@ -11,7 +11,7 @@
           </div>
 
           <div class="field">
-            <%= f.label :password %>
+            <%= f.label :contraseña %>
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br/>
@@ -19,25 +19,15 @@
           </div>
 
           <div class="field">
-            <%= f.label :password_confirmation %><br/>
+            <%= f.label :confirmar_contraseña %><br/>
             <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :role %><br/>
-            <%= f.select :role, options_for_select([["Admin", "admin"], ["Personal", "staff"]], selected: @user.role),class:"form-control" %>
           </div>
 
           <% if @user.staff?%>
           <div class="field w-100" id="branch" >
-            <%= f.label :branch %><br/>
-            <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, @user.branch_id), include_blank: true,class:"form-control" %>
+            <%= f.label :Sucursal %><br/>
+            <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, selected:@user.branch_id),class:"form-control" %>
           </div>
-            <% else %>
-            <div class="field" id="branch" style="display: none" >
-              <%= f.label :branch %><br/>
-              <%= f.select :branch_id, options_from_collection_for_select(Branch.all, :id, :name, @user.branch_id), include_blank: true,class:"form-control" %>
-            </div>
           <% end %>
         </div>
         <div class="card bg-danger ">
@@ -50,16 +40,3 @@
     </div>
   </div>
 <% end %>
-<script>
-    //write a function that shows the branch field if the role field is set to staff and add the listener to the role field
-    function showBranch() {
-        var role = document.getElementById("user_role");
-        var branch = document.getElementById("branch");
-        if (role.value == "staff") {
-            branch.style.display = "block";
-        } else {
-            branch.style.display = "none";
-        }
-    }
-    document.getElementById("user_role").addEventListener("change", showBranch);
-</script>
