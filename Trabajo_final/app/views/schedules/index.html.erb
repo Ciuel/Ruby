@@ -1,0 +1,39 @@
+<h1 class="text-center m-4">Horarios de <%= @branch.name %></h1>
+<div class="d-flex justify-content-center">
+
+  <table class="table table-hover" style="width: 80rem">
+    <tr>
+      <th class="table-light">Día</th>
+      <th class="table-light">Inicio</th>
+      <th class="table-light">Fin</th>
+      <% if can? :destroy, Schedule %>
+        <th class="table-light">Acciones</th>
+        <th class="table-light"></th>
+      <% end %>
+    </tr>
+
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td class="table-light"><%= schedule.day %></td>
+        <td class="table-light"><%= schedule.start_time.to_s(:time) %></td>
+        <td class="table-light"><%= schedule.end_time.to_s(:time) %></td>
+        <% if can? :destroy, Schedule %>
+          <td class="table-light" style="width: 15rem"><%= link_to 'Editar', edit_branch_schedule_path(schedule.branch, schedule) %></td>
+          <td class="table-light" style="width: 15rem"><%= link_to 'Borrar', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %></td>
+
+        <% end %>
+      </tr>
+    <% end %>
+    <tr>
+      <th class="table-light"></th>
+      <th class="table-light"><%= link_to 'Volver', branches_path, class: "btn btn-secondary m-1" %></th>
+      <th class="table-light"></th>
+      <% if can? :create, Schedule %>
+        <th class="table-light"><%= link_to 'Crear Horario', new_branch_schedule_path(params[:branch_id]), class: "btn btn-secondary m-1" %></th>
+        <th class="table-light"></th>
+      <% end %>
+
+
+    </tr>
+  </table>
+</div>

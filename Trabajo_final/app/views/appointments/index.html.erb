@@ -1,0 +1,33 @@
+<h1 class="text-center m-4">Turnos</h1>
+
+<div class="d-flex justify-content-center">
+  <div id="appointments" class="d-flex flex-column m-4" style="width: 40rem">
+    <% @appointments.each do |appointment| %>
+      <div class="card mb-3 bg-danger ">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <div class="card-body">
+              <%= render appointment %>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <div class="d-flex flex-column">
+              <% if appointment.pending? %>
+                <% if can?(:edit, Appointment) %>
+                  <% if current_user.staff? %>
+                    <%= link_to "Atender", edit_branch_appointment_path(appointment.branch_id, appointment), class: "btn btn-secondary m-1" %>
+                  <% else %>
+                    <%= link_to "Editar", edit_branch_appointment_path(appointment.branch_id, appointment), class: "btn btn-secondary m-1" %>
+                  <% end %>
+                <% end %>
+                <% if can?(:create, Appointment) %>
+                  <%= link_to 'Cancelar', [appointment.branch, appointment], class: "btn btn-secondary align-self-center m-1", method: :delete, data: { turbo_method: "delete", confirm: '¿Seguro que desea cancelar su turno?' } %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div id="<%= dom_id user %>">
+  <strong>Email: </strong>
+  <%= user.email %>
+  <% if can? :create, User %>
+    <br>
+    <strong>Rol: </strong>
+    <%= user.role_to_s %>
+  <% end %>
+  <% if user.staff? %>
+    <br>
+    <strong>Sucursal: </strong>
+    <%= user.branch %>
+  <% end %>
+  <% if user.client? %>
+    <br>
+    <% if current_user.staff? %>
+      <strong>Turnos pendientes en esta sucursal: </strong>
+      <%= Appointment.where(user_id: user.id).accessible_by(current_ability).count %>
+    <% else %>
+      <strong>Turnos pendientes: </strong>
+      <%= Appointment.where(user_id: user.id, status: :pending).count %>
+    <% end %>
+  <% end %>
+</div>

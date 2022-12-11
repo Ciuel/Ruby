@@ -1,0 +1,38 @@
+
+<h1 class="text-center m-4">Sucursales</h1>
+
+<div class="d-flex justify-content-center">
+  <% if can? :create, Branch %>
+    <%= link_to "Nueva Sucursal", new_branch_path, class: "btn btn-secondary m-2" %>
+  <% end %>
+</div>
+<div class="d-flex justify-content-center">
+  <div id="appointments" class="d-flex flex-column m-4" style="width: 40rem">
+    <% @branches.each do |branch| %>
+      <div class="card mb-3 bg-danger ">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <div class="card-body">
+              <%= render branch %>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <div class="d-flex flex-column">
+              <% if can? :edit, Branch %>
+                <%= link_to "Editar", edit_branch_path(branch),class: "btn btn-secondary align-self-center m-1 w-100"%>
+                <%= link_to 'Borrar', branch, class: "btn btn-secondary align-self-center m-1 w-100", method: :delete, data: { turbo_method: "delete", confirm: '¿Seguro que desea borrar la sucursal?' } %>
+              <% end %>
+              <% if can?(:create, Appointment) && current_user.client?%>
+                <%= link_to "Pedir Turno", new_branch_appointment_path(branch), class: "btn btn-secondary align-self-center m-1 w-100" %>
+              <% end %>
+              <% if can? :index, Schedule %>
+                <%= link_to "Horarios", branch_schedules_path(branch), class: "btn btn-secondary align-self-center m-1 w-100" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>

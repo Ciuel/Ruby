@@ -1,0 +1,47 @@
+<div id="<%= dom_id appointment %>">
+  <% if !current_user.staff? %>
+    <p>
+      <strong>Sucursal:</strong>
+      <%= appointment.branch.name %>
+    </p>
+  <% end %>
+
+  <% if current_user.id != appointment.user_id %>
+    <p>
+      <strong>Cliente:</strong>
+      <%= appointment.user.email %>
+    </p>
+  <% end %>
+
+  <p>
+    <% if current_user.staff? %>
+      <strong>Hora:</strong>
+      <%= appointment.date.strftime("%H:%M") %>
+    <% else %>
+      <strong>Fecha y Hora:</strong>
+      <%= appointment.date.strftime("%Y-%m-%d %H:%M") %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Razón:</strong>
+    <%= appointment.reason %>
+  </p>
+
+  <p>
+    <strong>Estado:</strong>
+    <%= appointment.status_to_s %>
+  </p>
+  <% if appointment.comment %>
+    <p>
+      <strong>Comentario:</strong>
+      <%= appointment.comment %>
+    </p>
+  <% end %>
+  <% if appointment.comment %>
+    <p>
+      <strong>Atendio:</strong>
+      <%= appointment.staff.email %>
+    </p>
+  <% end %>
+</div>
