@@ -23,7 +23,7 @@
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
           </div>
 
-          <% if @user.email == "" %>
+          <% if @user.created_at.nil? %>
             <div class="field w-100">
               <%= f.label :Rol %><br/>
               <%= f.select :role, options_for_select([["Administrador", "admin"], ["Personal", "staff"]], selected: @user.role), class: "form-control" %>

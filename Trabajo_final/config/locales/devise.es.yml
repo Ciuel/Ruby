@@ -145,3 +145,7 @@ es:
       not_saved:
         one: 'Ocurrió un error al tratar de guardar %{resource}:'
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
+      blank: "es obligatorio"
+      taken: "ya está en uso"
+      too_short: "es demasiado corta (mínimo %{count} caracteres)"
+      present: "no debe estar en blanco"

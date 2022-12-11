@@ -1,14 +1,9 @@
 class User < ApplicationRecord
   enum role: [:client, :admin, :staff]
   validates :branch, presence: true, if: :staff?
-  validates :branch, absence: true, if: :admin?
-  validates :branch, absence: true, if: :client?
-  #validate email and password presence on create write the error messages in spanish
-  validates :email, presence: { message: "El correo electrónico es obligatorio" },on: :create
-  validates :password, presence: { message: "La contraseña es obligatoria" },on: :create
-  #has many appointments as client delete cascade
+  validates :email, presence: true
+  validates :password, presence: true,on: :create
   has_many :appointments, dependent: :destroy
-  #has many appointments as staff delete cascade
   has_many :appointments, dependent: :destroy, foreign_key: :staff_id
 
   def role_to_s
