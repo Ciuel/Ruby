@@ -28,6 +28,6 @@ Pasos para instalar la aplicación
   dominio.
 * El empleado solo ver el listado de sus turnos en su sucursal del día actual, y no puede ver los turnos de otras sucursales,
 esto es para reducir la carga de información.
-* El administrador puede manipular todos los elementos de la aplicación sin restricciones,
-la única acción que no está explícita con un botón es pedir un turno para si mismo, pero se puede hacer desde la ruta.
+* El administrador puede manipular todos los elementos sin restricciones, pero no puede ni cambiar el rol de una persona,
+ni pedir un turno a través de la interfaz
 * De los turnos el administrador puede borrarlos o editarlos
