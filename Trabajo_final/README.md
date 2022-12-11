@@ -33,6 +33,8 @@ ni pedir un turno a través de la interfaz
 * De los turnos el administrador puede borrarlos o editarlos mientras están pendientes.
 * Las contraseñas pueden ser modificadas tanto por el usuario como por el admin, pero no se puede ver la contraseña de un
   usuario, para crear una cuenta de personal o admin, la contraseña es asignada por el admin.
+* El admin al cancelar un turno, lo borra y si es un cliente, lo cambia de estado a cancelado, 
+esto es porque el usuario no debería pode borrar elementos de la db
 
 -Consideraciones
 *El usuario de admin es admin@admin.com y la contraseña es 123456,
