@@ -30,7 +30,7 @@ class AppointmentsController < ApplicationController
     @appointment = @branch.appointments.build(appointment_params.merge(user_id: current_user.id))
 
     if @appointment.save
-      redirect_to branch_appointments_url(@branch), notice: 'Appointment was successfully created.'
+      redirect_to branch_appointments_url(@branch), notice: "Turno solicitado en #{@branch.name} el #{@appointment.date.to_formatted_s(:short)}"
     else
       render action: 'new'
     end
@@ -52,7 +52,7 @@ class AppointmentsController < ApplicationController
     end
     respond_to do |format|
       if @appointment.update(params)
-        format.html { redirect_to branch_appointments_url(@branch), notice: "Appointment was successfully updated." }
+        format.html { redirect_to branch_appointments_url(@branch), notice: "Turno actualizado" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -63,17 +63,14 @@ class AppointmentsController < ApplicationController
   def destroy
     if current_user.client?
       if @appointment.status == "pending"
-        p @appointment.status
         @appointment.status = :canceled
-        p @appointment.status
         @appointment.save!
-
       end
     else
       @appointment.destroy
     end
     respond_to do |format|
-      format.html { redirect_to branch_appointments_path, notice: "Appointment was canceled." }
+      format.html { redirect_to branch_appointments_path, notice: "Turno cancelado" }
     end
   end
 

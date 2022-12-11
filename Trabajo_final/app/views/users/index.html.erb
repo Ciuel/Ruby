@@ -1,7 +1,9 @@
 <h1 class="text-center m-4">Usuarios</h1>
 <div class="d-flex justify-content-center">
   <div>
-    <%= link_to "Crear Usuario", new_user_path, class: "btn btn-secondary m-1" %>
+    <% if can? :create, User %>
+      <%= link_to "Crear Usuario", new_user_path, class: "btn btn-secondary m-1" %>
+    <% end %>
   </div>
 </div>
 <div class="d-flex justify-content-center">

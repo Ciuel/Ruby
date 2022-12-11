@@ -7,8 +7,13 @@ class Appointment < ApplicationRecord
   validates :date, presence: true
   validates :reason, presence: true
   validates :comment, presence: true, on: :update, if: -> {  !staff_id.blank? }
-
   validate :date_is_within_branch_hours
+  validate :appointment_is_in_the_future
+   def appointment_is_in_the_future
+       if date < Date.today
+         errors.add(:date, "La fecha no puede estar en el pasado")
+       end
+   end
 
   # validate :appointment_is_unique
   # def appointment_is_unique
@@ -17,6 +22,7 @@ class Appointment < ApplicationRecord
   #    errors.add(:date, "No hay turnos disponibles para ese horario)
   #  end
   # end
+  #
 
   def status_to_s
     case self[:status]

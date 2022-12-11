@@ -19,8 +19,8 @@
           <div class="col-md-4 d-flex align-items-center justify-content-center">
             <div class="d-flex flex-column">
               <% if can? :edit, Branch %>
-                <%= link_to "Edit this branch", edit_branch_path(branch),class: "btn btn-secondary align-self-center m-1 w-100"%>
-                <%= button_to "Destroy this branch", branch, method: :delete, class: "btn btn-secondary align-self-center m-1 w-100" %>
+                <%= link_to "Editar", edit_branch_path(branch),class: "btn btn-secondary align-self-center m-1 w-100"%>
+                <%= link_to 'Borrar', branch, class: "btn btn-secondary align-self-center m-1 w-100", method: :delete, data: { turbo_method: "delete", confirm: '¿Seguro que desea borrar la sucursal?' } %>
               <% end %>
               <% if can?(:create, Appointment) && current_user.client?%>
                 <%= link_to "Pedir Turno", new_branch_appointment_path(branch), class: "btn btn-secondary align-self-center m-1 w-100" %>
