@@ -23,7 +23,7 @@ class SchedulesController < ApplicationController
     @schedule = @branch.schedules.build(schedule_params)
 
     if @schedule.save
-      redirect_to([@schedule.branch, @schedule], notice: 'Schedule was successfully created.')
+      redirect_to(branch_schedules_url(@branch), notice: "Horario del #{@schedule.day} creado")
     else
       render action: 'new'
     end
@@ -33,7 +33,7 @@ class SchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to branch_schedules_url(@branch), notice: "Schedule was successfully updated." }
+        format.html { redirect_to branch_schedules_url(@branch), notice: "Horario del #{@schedule.day} actualizado" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -42,9 +42,11 @@ class SchedulesController < ApplicationController
 
   # DELETE branches/1/schedules/1
   def destroy
+    day = @schedule.day
     @schedule.destroy
-
-    redirect_to branch_schedules_url(@branch)
+    respond_to do |format|
+      format.html { redirect_to branch_schedules_url(@branch), notice: "Horario del #{day} borrado" }
+    end
   end
 
   private

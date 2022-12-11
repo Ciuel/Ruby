@@ -19,7 +19,7 @@
         <td class="table-light"><%= schedule.end_time.to_s(:time) %></td>
         <% if can? :destroy, Schedule %>
           <td class="table-light" style="width: 15rem"><%= link_to 'Editar', edit_branch_schedule_path(schedule.branch, schedule) %></td>
-          <td class="table-light" style="width: 15rem"><%= link_to 'Borrar', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Are you sure?' } %></td>
+          <td class="table-light" style="width: 15rem"><%= link_to 'Borrar', [schedule.branch, schedule], method: :delete, data: { turbo_method: "delete", confirm: 'Estás seguro?' } %></td>
 
         <% end %>
       </tr>

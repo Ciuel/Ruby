@@ -24,7 +24,7 @@ class BranchesController < ApplicationController
 
     respond_to do |format|
       if @branch.save
-        format.html { redirect_to branches_url, notice: "Branch was successfully created." }
+        format.html { redirect_to branches_url, notice: "Sucursal #{@branch.name} creada" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -35,7 +35,7 @@ class BranchesController < ApplicationController
   def update
     respond_to do |format|
       if @branch.update(branch_params)
-        format.html { redirect_to branches_url, notice: "Branch was successfully updated." }
+        format.html { redirect_to branches_url, notice: "Sucursal #{@branch.name} actualizada" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -47,9 +47,10 @@ class BranchesController < ApplicationController
     # if there are no pending appointments for this branch, delete it, otherwise show an error message
     if @branch.appointments.where(status: :pending).empty?
       @branch.appointments.where.not(status: :pending).destroy_all
+      name=@branch.name
       @branch.destroy
       respond_to do |format|
-        format.html { redirect_to branches_url, notice: "Branch was successfully destroyed." }
+        format.html { redirect_to branches_url, notice: "Sucursal #{name} borrada" }
       end
     else
       redirect_to branches_url, notice: "La sucursal no puede ser borrada, hay turnos pendientes"
