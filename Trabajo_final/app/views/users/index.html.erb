@@ -20,10 +20,10 @@
             <div class="d-flex flex-column">
               <% if !user.admin? %>
                 <% if can? :edit, User %>
-                  <%= link_to "Edit this user", edit_user_path(user), class: "btn btn-secondary m-1" %>
+                  <%= link_to "Editar", edit_user_path(user), class: "btn btn-secondary m-1" %>
                 <% end %>
                 <% if can? :destroy, User %>
-                  <%= button_to "Destroy this user", user, method: :delete, class: "btn btn-secondary m-1" %>
+                  <%= button_to "Borrar", user, method: :delete, class: "btn btn-secondary m-1" %>
                 <% end %>
               <% end %>
             </div>
