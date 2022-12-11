@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :branch, presence: true, if: :staff?
   validates :email, presence: true
   validates :password, presence: true,on: :create
-  has_many :appointments, dependent: :destroy
+  has_many :appointments, dependent: :destroy, foreign_key: :user_id
   has_many :appointments, dependent: :destroy, foreign_key: :staff_id
 
   def role_to_s
